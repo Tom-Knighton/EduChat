@@ -7,14 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D83D19514CF14694B8E56B2 /* Pods_EduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0AD9554694451EBFBE752E /* Pods_EduChat.framework */; };
 		E2030E9722FEFBE600932345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2030E9622FEFBE600932345 /* AppDelegate.swift */; };
 		E2030E9922FEFBE600932345 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2030E9822FEFBE600932345 /* ViewController.swift */; };
 		E2030E9C22FEFBE600932345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9A22FEFBE600932345 /* Main.storyboard */; };
 		E2030E9E22FEFBEA00932345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9D22FEFBEA00932345 /* Assets.xcassets */; };
 		E2030EA122FEFBEA00932345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9F22FEFBEA00932345 /* LaunchScreen.storyboard */; };
+		E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */; };
+		E28EE1422302FAEB00161EB4 /* SignupNameDOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */; };
+		E291555B23006DE300524EC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291555A23006DE300524EC1 /* Extensions.swift */; };
+		E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8A7122FF0512003B9F93 /* UserMethods.swift */; };
+		E2BA8A7522FF0529003B9F93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8A7422FF0529003B9F93 /* User.swift */; };
+		E2CB18DA2301897D009517DD /* Login_Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18D92301897D009517DD /* Login_Signup.storyboard */; };
+		E2CB18DC23018FC0009517DD /* Login_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18DB23018FC0009517DD /* Login_Host.swift */; };
+		E2CB18E72301BBBF009517DD /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18DE2301BBBD009517DD /* Montserrat-Italic.ttf */; };
+		E2CB18E82301BBBF009517DD /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18DF2301BBBE009517DD /* Montserrat-SemiBoldItalic.ttf */; };
+		E2CB18EB2301BBBF009517DD /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18E22301BBBE009517DD /* Montserrat-Bold.ttf */; };
+		E2CB18EC2301BBBF009517DD /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18E32301BBBE009517DD /* Montserrat-LightItalic.ttf */; };
+		E2CB18EE2301BBBF009517DD /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18E52301BBBF009517DD /* Montserrat-Medium.ttf */; };
+		E2CB18EF2301BBBF009517DD /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18E62301BBBF009517DD /* Montserrat-ExtraBold.ttf */; };
+		E2CB18F12301C00C009517DD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18F02301C00C009517DD /* LoginController.swift */; };
+		E2CB18F32301CE95009517DD /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18F22301CE95009517DD /* Montserrat-Regular.ttf */; };
+		E2CB18F52301D042009517DD /* FirstPageHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18F42301D042009517DD /* FirstPageHost.swift */; };
+		E2CB18F72301D784009517DD /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18F62301D784009517DD /* Montserrat-Light.ttf */; };
+		E2CB18F92302B811009517DD /* SignUp_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18F82302B811009517DD /* SignUp_Host.swift */; };
+		E2CB18FB2302EDE9009517DD /* SignupEmailUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18FA2302EDE9009517DD /* SignupEmailUsername.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4AD0358259FD8994DDADA730 /* Pods-EduChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EduChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-EduChat/Pods-EduChat.release.xcconfig"; sourceTree = "<group>"; };
+		4D73E6D507E9043B23405E7E /* Pods-EduChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EduChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EduChat/Pods-EduChat.debug.xcconfig"; sourceTree = "<group>"; };
+		DC0AD9554694451EBFBE752E /* Pods_EduChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EduChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2030E9322FEFBE600932345 /* EduChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EduChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2030E9622FEFBE600932345 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2030E9822FEFBE600932345 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +45,25 @@
 		E2030E9D22FEFBEA00932345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2030EA022FEFBEA00932345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2030EA222FEFBEA00932345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatingUser.swift; sourceTree = "<group>"; };
+		E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNameDOB.swift; sourceTree = "<group>"; };
+		E291555A23006DE300524EC1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		E2BA8A7122FF0512003B9F93 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
+		E2BA8A7422FF0529003B9F93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E2CB18D92301897D009517DD /* Login_Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login_Signup.storyboard; sourceTree = "<group>"; };
+		E2CB18DB23018FC0009517DD /* Login_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login_Host.swift; sourceTree = "<group>"; };
+		E2CB18DE2301BBBD009517DD /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		E2CB18DF2301BBBE009517DD /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		E2CB18E22301BBBE009517DD /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		E2CB18E32301BBBE009517DD /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		E2CB18E52301BBBF009517DD /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		E2CB18E62301BBBF009517DD /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
+		E2CB18F02301C00C009517DD /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		E2CB18F22301CE95009517DD /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		E2CB18F42301D042009517DD /* FirstPageHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageHost.swift; sourceTree = "<group>"; };
+		E2CB18F62301D784009517DD /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		E2CB18F82302B811009517DD /* SignUp_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_Host.swift; sourceTree = "<group>"; };
+		E2CB18FA2302EDE9009517DD /* SignupEmailUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailUsername.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +71,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D83D19514CF14694B8E56B2 /* Pods_EduChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4ACD7C7D16E13C6D61784FA7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4D73E6D507E9043B23405E7E /* Pods-EduChat.debug.xcconfig */,
+				4AD0358259FD8994DDADA730 /* Pods-EduChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E2030E8A22FEFBE600932345 = {
 			isa = PBXGroup;
 			children = (
 				E2030E9522FEFBE600932345 /* EduChat */,
 				E2030E9422FEFBE600932345 /* Products */,
+				4ACD7C7D16E13C6D61784FA7 /* Pods */,
+				F381C0EC7F4A5A8571B825E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +108,9 @@
 		E2030E9522FEFBE600932345 /* EduChat */ = {
 			isa = PBXGroup;
 			children = (
+				E2CB18D823018956009517DD /* Module_Login_Signup */,
+				E291555923006DD600524EC1 /* Misc */,
+				E2BA8A7022FF04FD003B9F93 /* API */,
 				E2030E9622FEFBE600932345 /* AppDelegate.swift */,
 				E2030E9822FEFBE600932345 /* ViewController.swift */,
 				E2030E9A22FEFBE600932345 /* Main.storyboard */,
@@ -64,6 +121,78 @@
 			path = EduChat;
 			sourceTree = "<group>";
 		};
+		E28EE1402302FAC800161EB4 /* SignupContent */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB18FA2302EDE9009517DD /* SignupEmailUsername.swift */,
+				E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */,
+			);
+			path = SignupContent;
+			sourceTree = "<group>";
+		};
+		E291555923006DD600524EC1 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB18DD2301BB75009517DD /* Fonts */,
+				E291555A23006DE300524EC1 /* Extensions.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		E2BA8A7022FF04FD003B9F93 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E2BA8A7322FF0520003B9F93 /* Objects */,
+				E2BA8A7122FF0512003B9F93 /* UserMethods.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E2BA8A7322FF0520003B9F93 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E2BA8A7422FF0529003B9F93 /* User.swift */,
+				E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
+		E2CB18D823018956009517DD /* Module_Login_Signup */ = {
+			isa = PBXGroup;
+			children = (
+				E28EE1402302FAC800161EB4 /* SignupContent */,
+				E2CB18D92301897D009517DD /* Login_Signup.storyboard */,
+				E2CB18F02301C00C009517DD /* LoginController.swift */,
+				E2CB18DB23018FC0009517DD /* Login_Host.swift */,
+				E2CB18F42301D042009517DD /* FirstPageHost.swift */,
+				E2CB18F82302B811009517DD /* SignUp_Host.swift */,
+			);
+			path = Module_Login_Signup;
+			sourceTree = "<group>";
+		};
+		E2CB18DD2301BB75009517DD /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E2CB18F62301D784009517DD /* Montserrat-Light.ttf */,
+				E2CB18F22301CE95009517DD /* Montserrat-Regular.ttf */,
+				E2CB18E22301BBBE009517DD /* Montserrat-Bold.ttf */,
+				E2CB18E62301BBBF009517DD /* Montserrat-ExtraBold.ttf */,
+				E2CB18DE2301BBBD009517DD /* Montserrat-Italic.ttf */,
+				E2CB18E32301BBBE009517DD /* Montserrat-LightItalic.ttf */,
+				E2CB18E52301BBBF009517DD /* Montserrat-Medium.ttf */,
+				E2CB18DF2301BBBE009517DD /* Montserrat-SemiBoldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F381C0EC7F4A5A8571B825E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DC0AD9554694451EBFBE752E /* Pods_EduChat.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +200,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E2030EA522FEFBEA00932345 /* Build configuration list for PBXNativeTarget "EduChat" */;
 			buildPhases = (
+				06FBA04F87C2C302E657C708 /* [CP] Check Pods Manifest.lock */,
 				E2030E8F22FEFBE600932345 /* Sources */,
 				E2030E9022FEFBE600932345 /* Frameworks */,
 				E2030E9122FEFBE600932345 /* Resources */,
+				660007B8AB48BA6997C35054 /* [CP] Embed Pods Frameworks */,
+				BB93421517D27F4CE81F4EC6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -122,21 +254,106 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2CB18F32301CE95009517DD /* Montserrat-Regular.ttf in Resources */,
+				E2CB18E82301BBBF009517DD /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				E2CB18E72301BBBF009517DD /* Montserrat-Italic.ttf in Resources */,
+				E2CB18DA2301897D009517DD /* Login_Signup.storyboard in Resources */,
 				E2030EA122FEFBEA00932345 /* LaunchScreen.storyboard in Resources */,
+				E2CB18EB2301BBBF009517DD /* Montserrat-Bold.ttf in Resources */,
 				E2030E9E22FEFBEA00932345 /* Assets.xcassets in Resources */,
+				E2CB18EF2301BBBF009517DD /* Montserrat-ExtraBold.ttf in Resources */,
 				E2030E9C22FEFBE600932345 /* Main.storyboard in Resources */,
+				E2CB18EC2301BBBF009517DD /* Montserrat-LightItalic.ttf in Resources */,
+				E2CB18EE2301BBBF009517DD /* Montserrat-Medium.ttf in Resources */,
+				E2CB18F72301D784009517DD /* Montserrat-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		06FBA04F87C2C302E657C708 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EduChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		660007B8AB48BA6997C35054 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EduChat/Pods-EduChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
+				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EduChat/Pods-EduChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB93421517D27F4CE81F4EC6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EduChat/Pods-EduChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E2030E8F22FEFBE600932345 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2BA8A7522FF0529003B9F93 /* User.swift in Sources */,
+				E2CB18F92302B811009517DD /* SignUp_Host.swift in Sources */,
+				E2CB18DC23018FC0009517DD /* Login_Host.swift in Sources */,
+				E291555B23006DE300524EC1 /* Extensions.swift in Sources */,
 				E2030E9922FEFBE600932345 /* ViewController.swift in Sources */,
 				E2030E9722FEFBE600932345 /* AppDelegate.swift in Sources */,
+				E28EE1422302FAEB00161EB4 /* SignupNameDOB.swift in Sources */,
+				E2CB18F12301C00C009517DD /* LoginController.swift in Sources */,
+				E2CB18F52301D042009517DD /* FirstPageHost.swift in Sources */,
+				E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */,
+				E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */,
+				E2CB18FB2302EDE9009517DD /* SignupEmailUsername.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +495,13 @@
 		};
 		E2030EA622FEFBEA00932345 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4D73E6D507E9043B23405E7E /* Pods-EduChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H3J46CN24;
 				INFOPLIST_FILE = EduChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,17 +509,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = online.tomk.EduChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E2030EA722FEFBEA00932345 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AD0358259FD8994DDADA730 /* Pods-EduChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H3J46CN24;
 				INFOPLIST_FILE = EduChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -308,7 +529,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = online.tomk.EduChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
