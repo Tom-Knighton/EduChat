@@ -8,6 +8,8 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import ChameleonFramework
+
 
 class SignupPasswordSchool: UIViewController, UITextFieldDelegate {
 
@@ -25,6 +27,8 @@ class SignupPasswordSchool: UIViewController, UITextFieldDelegate {
         self.continueButton.layer.cornerRadius = 20
         self.continueButton.layer.masksToBounds = true
         self.endEditingWhenViewTapped()
+        
+        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

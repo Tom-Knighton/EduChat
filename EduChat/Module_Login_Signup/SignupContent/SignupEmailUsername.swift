@@ -8,6 +8,8 @@
 
 import UIKit
 import SkyFloatingLabelTextField
+import ChameleonFramework
+
 
 class SignupEmailUsername: UIViewController, UITextFieldDelegate {
 
@@ -22,29 +24,32 @@ class SignupEmailUsername: UIViewController, UITextFieldDelegate {
         
         self.usernameField.delegate = self
         self.emailField.delegate = self
+        
+        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {
-        self.lockAndDisplayActivityIndicator(enable: true)
-        if self.emailField.text?.isEmail ?? false {
-            UserMethods.IsEmailFree(email: self.emailField.text ?? "") { (isEFree) in
-                if isEFree {
-                    UserMethods.IsUsernameFree(username: self.usernameField.text ?? "", completion: { (isUFree) in
-                        if isUFree {
+        self.lockAndDisplayActivityIndicator(enable: true) //Stops the user from interacting while app is working
+        if self.emailField.text?.isEmail ?? false { // If email is valid email (defaults to false unless is valid)
+            UserMethods.IsEmailFree(email: self.emailField.text ?? "") { (isEFree) in // isEFree is result boolean
+                if isEFree { //if email is free
+                    UserMethods.IsUsernameFree(username: self.usernameField.text ?? "", completion: { (isUFree) in //isUFree is result boolean
+                        if isUFree { // If username is free as well
                             SignUp_Host.signupVars.email = self.emailField.text!.trim()
-                            SignUp_Host.signupVars.username = self.usernameField.text!.trim()
-                            self.lockAndDisplayActivityIndicator(enable: false)
-                            self.performSegue(withIdentifier: "signupFirstToSecond", sender: self)
+                            SignUp_Host.signupVars.username = self.usernameField.text!.trim() //Sets the appropriate values in signupVars
+                            self.lockAndDisplayActivityIndicator(enable: false) //enables user interaction again
+                            self.performSegue(withIdentifier: "signupFirstToSecond", sender: self) //Transitions to the next view
                         }
                         else { self.lockAndDisplayActivityIndicator(enable: false); self.displayBasicError(title: "Error", message: "That username is already in use!")}
+                        // ^ enables interactin and informs the user the username is not free
                     })
                 }
-                else { self.lockAndDisplayActivityIndicator(enable: false); self.displayBasicError(title: "Error", message: "That email address is already in use!" )
-                    
-                }
+                else { self.lockAndDisplayActivityIndicator(enable: false); self.displayBasicError(title: "Error", message: "That email address is already in use!" ) }
+                // ^ enables interaction and informs the user the email is not free
             }
         }
         else { self.lockAndDisplayActivityIndicator(enable: false); self.displayBasicError(title: "Error", message: "Please enter a valid email addrress")}
+        // ^ enables interaction and informs the user that the email isn't valid
        
     }
     

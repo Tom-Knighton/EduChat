@@ -8,11 +8,13 @@
 
 import UIKit
 import TOCropViewController
+import ChameleonFramework
 
 class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var selectButton: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
     
     var hasChosenImage = false
     var chosenImage : UIImage = UIImage()
@@ -27,6 +29,10 @@ class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePicke
         
         self.profileImage.layer.borderColor = UIColor.flatGray.cgColor
         self.profileImage.layer.borderWidth = 0.5
+        self.continueButton.layer.cornerRadius = 20
+        self.continueButton.layer.masksToBounds = true
+        
+        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
 
     @IBAction func selectImagePressed(_ sender: Any) {
@@ -54,16 +60,18 @@ class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePicke
     
     @IBAction func continuePressed(_ sender: Any) {
         if (!hasChosenImage) { displayBasicError(title: "Error", message: "Please select an image"); return; }
+        // ^ if user has not chosen image display an error saying
+        self.lockAndDisplayActivityIndicator(enable: true) //disable user interaction
         
-        self.lockAndDisplayActivityIndicator(enable: true)
         let newUsr = User(UserId: 0, UserEmail: SignUp_Host.signupVars.email, UserName: SignUp_Host.signupVars.username, UserFullName: SignUp_Host.signupVars.name, UserProfilePictureURL: "null", UserSchool: SignUp_Host.signupVars.school, UserGender: SignUp_Host.signupVars.gender, UserDOB: SignUp_Host.signupVars.DOB, IsModerator: false, IsAdmin: false, IsDeleted: false, UserPassHash: SignUp_Host.signupVars.passHash)
-        UserMethods.CreateNewUser(usr: newUsr!) { (User, Error) in
+        // ^ Creates a new User object with values from signupVars
+        UserMethods.CreateNewUser(usr: newUsr!) { (User, Error) in //Creates the user
             if Error != nil { self.displayBasicError(title: "Error", message: "An error occurred creating this user, please try again"); return; }
-            
-            UserMethods.UploadUserProfilePicture(userid: User?.UserId ?? 0, img: self.chosenImage, completion: { (User) in
-                self.lockAndDisplayActivityIndicator(enable: false)
-                self.displayBasicError(title: "Success", message: "User Created")
-            })
+            // ^ if an error occurred inform the user
+            UserMethods.UploadUserProfilePicture(userid: User?.UserId ?? 0, img: self.chosenImage, completion: { (User) in // If there was no error, upload the profile pic
+                self.lockAndDisplayActivityIndicator(enable: false) // enable interaction again
+                self.displayBasicError(title: "Success", message: "User Created") // For now, just inform the user the account was created successfully
+             })
         }
     }
     

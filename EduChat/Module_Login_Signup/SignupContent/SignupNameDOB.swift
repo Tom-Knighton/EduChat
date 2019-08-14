@@ -9,6 +9,8 @@
 import UIKit
 import SkyFloatingLabelTextField
 import ActionSheetPicker_3_0
+import ChameleonFramework
+
 
 class SignupNameDOB: UIViewController, UITextFieldDelegate {
 
@@ -36,6 +38,8 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
         self.nameField.delegate = self
         self.continueButton.layer.cornerRadius = 20
         self.continueButton.layer.masksToBounds = true
+        
+        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
     
     @IBAction func genderFieldTapped(_ sender: SkyFloatingLabelTextField) {
@@ -62,18 +66,23 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func continuePressed(_ sender: Any) {
-        self.lockAndDisplayActivityIndicator(enable: true)
+        self.lockAndDisplayActivityIndicator(enable: true) //Disables user interaction
         if self.nameField.text?.trim() ?? "" != "" && self.dobField.text?.trim() ?? "" != "" && self.genderField.text?.trim() ?? "" != "" {
-            SignUp_Host.signupVars.name = self.nameField.text!.trim()
+            // ^ if all fields have text in them
+            SignUp_Host.signupVars.name = self.nameField.text!.trim() //Sets user full name to input name
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
             SignUp_Host.signupVars.DOB = (dateFormatter.date(from: self.dobField.text!.trim())?.toString(dateFormat: "yyyy-MM-ddTHH-mm-ss.SSSSz"))!
-            SignUp_Host.signupVars.gender = self.genderField.text!.trim()
-            self.lockAndDisplayActivityIndicator(enable: false)
-            self.performSegue(withIdentifier: "signupSecondToThird", sender: self)
+            // ^ above lines format date entered into a valid C# date
+            SignUp_Host.signupVars.gender = self.genderField.text!.trim() //sets gender
+            self.lockAndDisplayActivityIndicator(enable: false) //enables interaction
+            self.performSegue(withIdentifier: "signupSecondToThird", sender: self) //Transitions to next view
         }
         else { self.lockAndDisplayActivityIndicator(enable: false); displayBasicError(title: "Error", message: "Please fill out all fields.")}
+        // ^ enables interaction and asks user to fill out all fields
     }
+    
+    
     
     @objc func datePickerChanged(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
