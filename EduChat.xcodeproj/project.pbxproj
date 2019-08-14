@@ -13,8 +13,11 @@
 		E2030E9C22FEFBE600932345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9A22FEFBE600932345 /* Main.storyboard */; };
 		E2030E9E22FEFBEA00932345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9D22FEFBEA00932345 /* Assets.xcassets */; };
 		E2030EA122FEFBEA00932345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9F22FEFBEA00932345 /* LaunchScreen.storyboard */; };
+		E23DF35C2304C5A300864B09 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DF35B2304C5A300864B09 /* ActivityView.swift */; };
 		E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */; };
 		E28EE1422302FAEB00161EB4 /* SignupNameDOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */; };
+		E28EE1442303123F00161EB4 /* SignupPasswordSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EE1432303123F00161EB4 /* SignupPasswordSchool.swift */; };
+		E28EE1462303173800161EB4 /* SignupFinish.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EE1452303173800161EB4 /* SignupFinish.swift */; };
 		E291555B23006DE300524EC1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291555A23006DE300524EC1 /* Extensions.swift */; };
 		E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8A7122FF0512003B9F93 /* UserMethods.swift */; };
 		E2BA8A7522FF0529003B9F93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8A7422FF0529003B9F93 /* User.swift */; };
@@ -45,8 +48,11 @@
 		E2030E9D22FEFBEA00932345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2030EA022FEFBEA00932345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2030EA222FEFBEA00932345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E23DF35B2304C5A300864B09 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatingUser.swift; sourceTree = "<group>"; };
 		E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNameDOB.swift; sourceTree = "<group>"; };
+		E28EE1432303123F00161EB4 /* SignupPasswordSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordSchool.swift; sourceTree = "<group>"; };
+		E28EE1452303173800161EB4 /* SignupFinish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupFinish.swift; sourceTree = "<group>"; };
 		E291555A23006DE300524EC1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E2BA8A7122FF0512003B9F93 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
 		E2BA8A7422FF0529003B9F93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -126,6 +132,8 @@
 			children = (
 				E2CB18FA2302EDE9009517DD /* SignupEmailUsername.swift */,
 				E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */,
+				E28EE1432303123F00161EB4 /* SignupPasswordSchool.swift */,
+				E28EE1452303173800161EB4 /* SignupFinish.swift */,
 			);
 			path = SignupContent;
 			sourceTree = "<group>";
@@ -135,6 +143,7 @@
 			children = (
 				E2CB18DD2301BB75009517DD /* Fonts */,
 				E291555A23006DE300524EC1 /* Extensions.swift */,
+				E23DF35B2304C5A300864B09 /* ActivityView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -297,6 +306,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-EduChat/Pods-EduChat-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
@@ -304,9 +314,11 @@
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
 				"${BUILT_PRODUCTS_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework",
+				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
@@ -314,6 +326,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SkyFloatingLabelTextField.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -350,9 +363,12 @@
 				E2030E9722FEFBE600932345 /* AppDelegate.swift in Sources */,
 				E28EE1422302FAEB00161EB4 /* SignupNameDOB.swift in Sources */,
 				E2CB18F12301C00C009517DD /* LoginController.swift in Sources */,
+				E23DF35C2304C5A300864B09 /* ActivityView.swift in Sources */,
 				E2CB18F52301D042009517DD /* FirstPageHost.swift in Sources */,
+				E28EE1442303123F00161EB4 /* SignupPasswordSchool.swift in Sources */,
 				E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */,
 				E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */,
+				E28EE1462303173800161EB4 /* SignupFinish.swift in Sources */,
 				E2CB18FB2302EDE9009517DD /* SignupEmailUsername.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,13 +11,14 @@ import ChameleonFramework
 
 class SignUp_Host: UINavigationController {
 
-    public struct signupVars {
-        var email : String
-        var username : String
-        var name : String
-        var school : String
-        var DOB : Date
-        var passHash : String
+     public struct signupVars {
+        static var email : String = ""
+        static var username : String = ""
+        static var name : String = ""
+        static var gender : String = ""
+        static var school : String = "n/a"
+        static var DOB : String = ""
+        static var passHash : String = ""
         
     }
     

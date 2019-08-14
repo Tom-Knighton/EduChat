@@ -13,5 +13,6 @@ target 'EduChat' do
   pod 'Pastel'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
   pod 'SkyFloatingLabelTextField'
-
+  pod 'TOCropViewController'
+  pod 'ActionSheetPicker-3.0'
 end

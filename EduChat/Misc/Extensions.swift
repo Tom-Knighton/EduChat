@@ -28,6 +28,11 @@ extension String {
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
     }
     
+    var isValidPassword : Bool {
+        let regex = try! NSRegularExpression(pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}", options: [])
+        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
+    
     func trim() -> String
     {
         return self.trimmingCharacters(in: CharacterSet.whitespaces)
@@ -48,6 +53,21 @@ extension UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+    }
+    
+    var activityView : UIView {
+        return (self.storyboard?.instantiateViewController(withIdentifier: "Login_Activity").view)!
+    }
+    
+    func lockAndDisplayActivityIndicator(enable: Bool) {
+        if enable {
+            self.view.isUserInteractionEnabled = false
+            self.view.addSubview(activityView)
+        }
+        else {
+            self.view.isUserInteractionEnabled = true
+            self.view.viewWithTag(999)?.removeFromSuperview()
+        }
     }
 }
 
@@ -75,4 +95,15 @@ extension UIApplication {
         }
         return base
     }
+}
+
+extension Date
+{
+    func toString( dateFormat format  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: self)
+    }
+    
 }

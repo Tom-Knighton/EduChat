@@ -19,14 +19,14 @@ public struct User: Mappable, Codable {
     var UserProfilePictureURL : String?
     var UserSchool : String?
     var UserGender : String?
-    var UserDOB : Date?
+    var UserDOB : String?
     var IsModerator : Bool?
     var IsAdmin : Bool?
     var IsDeleted : Bool?
     var UserPassHash : String?
     
     
-    public init?(UserId: Int, UserEmail: String, UserName: String, UserFullName: String, UserProfilePictureURL: String, UserSchool: String, UserGender: String, UserDOB: Date,
+    public init?(UserId: Int, UserEmail: String, UserName: String, UserFullName: String, UserProfilePictureURL: String, UserSchool: String, UserGender: String, UserDOB: String,
                  IsModerator: Bool, IsAdmin: Bool, IsDeleted: Bool, UserPassHash: String) {
         
         self.UserId = UserId; self.UserEmail = UserEmail; self.UserName = UserName; self.UserFullName = UserFullName; self.UserProfilePictureURL = UserProfilePictureURL

@@ -14,6 +14,7 @@ import AlamofireObjectMapper
 public class UserMethods {
     
     static let URLBASE : String = "https://educhat.tomk.online/api/User/"
+    //static let URLBASE : String = "http://localhost:5000/api/User"
     enum Errors : Error { case NotFound }
     
     static func GetUserById(userid: Int, completion: @escaping(User?, Error?) -> ()) { //Creates a method that can return a user or an error

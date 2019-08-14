@@ -1,4 +1,5 @@
 PODS:
+  - ActionSheetPicker-3.0 (2.3.0)
   - Alamofire (4.7.2)
   - AlamofireObjectMapper (5.0.0):
     - Alamofire (~> 4.1)
@@ -10,14 +11,17 @@ PODS:
   - ObjectMapper (3.2.0)
   - Pastel (0.4.0)
   - SkyFloatingLabelTextField (3.5.1)
+  - TOCropViewController (2.5.1)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - Alamofire
   - AlamofireObjectMapper
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CryptoSwift
   - Pastel
   - SkyFloatingLabelTextField
+  - TOCropViewController
 
 EXTERNAL SOURCES:
   ChameleonFramework:
@@ -29,6 +33,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ViccAlexander/Chameleon.git
 
 SPEC CHECKSUMS:
+  ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
@@ -36,7 +41,8 @@ SPEC CHECKSUMS:
   ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
   Pastel: 7fa5e26123b3dbe11f7ed255654bf37100b199a5
   SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
+  TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
 
-PODFILE CHECKSUM: c16893ad1e945066673bc541bccab1a09f4dbd9b
+PODFILE CHECKSUM: f84199a7db5ccc60ca6e6d8c47371209bb8d8f5b
 
 COCOAPODS: 1.4.0
