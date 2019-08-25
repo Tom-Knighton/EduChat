@@ -15,4 +15,7 @@ target 'EduChat' do
   pod 'SkyFloatingLabelTextField'
   pod 'TOCropViewController'
   pod 'ActionSheetPicker-3.0'
+  pod 'ShadowView'
+  pod 'EZSwipeController', :git => 'https://github.com/RichardFevrier/EZSwipeController.git'
+  pod 'Magnetic', :git => 'https://github.com/TomKicloud/Magnetic.git'
 end

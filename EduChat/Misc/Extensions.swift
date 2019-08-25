@@ -9,12 +9,20 @@
 import Foundation
 import UIKit
 import CryptoSwift
+import Magnetic
+import Alamofire
 
 extension String {
     var toBool : Bool {
         return NSString(string: self).boolValue
     }
     
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        var request = try urlRequest.asURLRequest()
+        request.httpBody = data(using: .utf8, allowLossyConversion: false)
+        return request
+    }
+
     var encrypt: String {
         let password : Array<UInt8> = Array(self.utf8) // Converts string to an array of UInt8
         let hash : Array<UInt8> = Array("tYWbvhsGjuJvppzDiofv".utf8) //Secret 'salt' string
@@ -25,12 +33,16 @@ extension String {
     
     var isEmail : Bool {
         let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        // ^ regex for a string in the format of an email
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+        //if string matches
     }
     
     var isValidPassword : Bool {
-        let regex = try! NSRegularExpression(pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}", options: [])
+        let regex = try! NSRegularExpression(pattern: "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_]).{8,}", options: [])
+        // ^ regex for a string that has at least one lower case, one upper case, one special character and is 8 or more characters long
         return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+        //if string matches
     }
     
     func trim() -> String
@@ -59,15 +71,25 @@ extension UIViewController {
         return (self.storyboard?.instantiateViewController(withIdentifier: "Login_Activity").view)!
     }
     
+    var bubbleSubjectPicker : UIViewController {
+        return UIStoryboard(name: "Login_Signup", bundle: nil).instantiateViewController(withIdentifier: "SubjectBubblePicker") as UIViewController
+    }
+    
     func lockAndDisplayActivityIndicator(enable: Bool) {
         if enable {
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
             self.view.isUserInteractionEnabled = false
             self.view.addSubview(activityView)
         }
         else {
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
             self.view.isUserInteractionEnabled = true
             self.view.viewWithTag(999)?.removeFromSuperview()
         }
+    }
+    
+    func displayBubbleSubjectPicker() {
+        self.present(bubbleSubjectPicker, animated: true, completion: nil)
     }
 }
 
@@ -76,6 +98,13 @@ extension UIView {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
          UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+    }
+}
+
+extension Array {
+    /// Convert the receiver array to a `Parameters` object.
+    func asParameters() -> Parameters {
+        return [arrayParametersKey: self]
     }
 }
 
@@ -97,6 +126,8 @@ extension UIApplication {
     }
 }
 
+
+
 extension Date
 {
     func toString( dateFormat format  : String ) -> String
@@ -106,4 +137,47 @@ extension Date
         return dateFormatter.string(from: self)
     }
     
+}
+
+
+
+private let arrayParametersKey = "arrayParametersKey"
+public struct ArrayEncoding: ParameterEncoding {
+    
+    /// The options for writing the parameters as JSON data.
+    public let options: JSONSerialization.WritingOptions
+    
+    
+    /// Creates a new instance of the encoding using the given options
+    ///
+    /// - parameter options: The options used to encode the json. Default is `[]`
+    ///
+    /// - returns: The new instance
+    public init(options: JSONSerialization.WritingOptions = []) {
+        self.options = options
+    }
+    
+    public func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        var urlRequest = try urlRequest.asURLRequest()
+        
+        guard let parameters = parameters,
+            let array = parameters[arrayParametersKey] else {
+                return urlRequest
+        }
+        
+        do {
+            let data = try JSONSerialization.data(withJSONObject: array, options: options)
+            
+            if urlRequest.value(forHTTPHeaderField: "Content-Type") == nil {
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            }
+            
+            urlRequest.httpBody = data
+            
+        } catch {
+            throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+        }
+        
+        return urlRequest
+    }
 }

@@ -8,8 +8,11 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - CryptoSwift (0.10.0)
+  - EZSwipeController (0.7.0)
+  - Magnetic (3.1.0)
   - ObjectMapper (3.2.0)
   - Pastel (0.4.0)
+  - ShadowView (1.4.3)
   - SkyFloatingLabelTextField (3.5.1)
   - TOCropViewController (2.5.1)
 
@@ -19,18 +22,31 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CryptoSwift
+  - EZSwipeController (from `https://github.com/RichardFevrier/EZSwipeController.git`)
+  - Magnetic (from `https://github.com/TomKicloud/Magnetic.git`)
   - Pastel
+  - ShadowView
   - SkyFloatingLabelTextField
   - TOCropViewController
 
 EXTERNAL SOURCES:
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
+  EZSwipeController:
+    :git: https://github.com/RichardFevrier/EZSwipeController.git
+  Magnetic:
+    :git: https://github.com/TomKicloud/Magnetic.git
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
     :git: https://github.com/ViccAlexander/Chameleon.git
+  EZSwipeController:
+    :commit: b2b97a927c6c6dbabd33e045e1135fcd1adc4d67
+    :git: https://github.com/RichardFevrier/EZSwipeController.git
+  Magnetic:
+    :commit: 99084418828366523b360c2af92092eb6b6b104b
+    :git: https://github.com/TomKicloud/Magnetic.git
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
@@ -38,11 +54,14 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
+  EZSwipeController: 4b89d65a65f6d7f16dff5172d5c9cb7b15d267b0
+  Magnetic: d272eee4a4a4a94309360671549974cf57ce35e1
   ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
   Pastel: 7fa5e26123b3dbe11f7ed255654bf37100b199a5
+  ShadowView: d2d92fd2706b3f6a182be2147149db0b1cf7700d
   SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
 
-PODFILE CHECKSUM: f84199a7db5ccc60ca6e6d8c47371209bb8d8f5b
+PODFILE CHECKSUM: abd82c8b8a1f688c0cbb6701ad074e34fab9d31b
 
 COCOAPODS: 1.4.0

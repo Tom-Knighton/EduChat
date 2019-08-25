@@ -25,6 +25,8 @@ public struct User: Mappable, Codable {
     var IsDeleted : Bool?
     var UserPassHash : String?
     
+    var Subjects : [Subject]?
+    
     
     public init?(UserId: Int, UserEmail: String, UserName: String, UserFullName: String, UserProfilePictureURL: String, UserSchool: String, UserGender: String, UserDOB: String,
                  IsModerator: Bool, IsAdmin: Bool, IsDeleted: Bool, UserPassHash: String) {
@@ -42,7 +44,7 @@ public struct User: Mappable, Codable {
     public mutating func mapping(map: Map) {
         self.UserId <- map["userId"]; self.UserEmail <- map["userEmail"]; self.UserName <- map["userName"]; self.UserFullName <- map["userFullName"]
         self.UserProfilePictureURL <- map["userProfilePictureURL"]; self.UserSchool <- map["userSchool"]; self.UserGender <- map["userGender"]; self.UserDOB <- map["userDOB"]
-        self.IsModerator <- map["isModerator"]; self.IsAdmin <- map["isAdmin"]; self.IsDeleted <- map["isDeleted"]; self.UserPassHash <- map["userPassHash"]
+        self.IsModerator <- map["isModerator"]; self.IsAdmin <- map["isAdmin"]; self.IsDeleted <- map["isDeleted"]; self.UserPassHash <- map["userPassHash"]; self.Subjects <- map["subjects"]
         //Mapping function, as json will return result in camelCase rather than CamelCase
     }
     

@@ -20,17 +20,7 @@ class Login_Host: UIViewController {
         loginButton.layer.cornerRadius = 20
         loginButton.layer.masksToBounds = true
         self.endEditingWhenViewTapped()
-        /*authenticatorPassField.layer.borderWidth = 1
-        loginPassField.layer.borderWidth = 1
-        authenticatorPassField.layer.borderColor = UIColor.flatGray.cgColor
-        loginPassField.layer.borderColor = UIColor.flatGray.cgColor
-        authenticatorPassField.layer.cornerRadius = 10
-        authenticatorPassField.layer.masksToBounds = true
-        loginPassField.layer.cornerRadius = 10
-        loginPassField.layer.masksToBounds = true
-        
-        authenticatorPassField.layer.backgroundColor = UIColor.flatWhite.cgColor
-        loginPassField.layer.backgroundColor = UIColor.flatWhite.cgColor*/
+
         
     }
     

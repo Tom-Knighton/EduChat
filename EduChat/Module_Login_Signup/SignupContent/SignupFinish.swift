@@ -70,7 +70,14 @@ class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePicke
             // ^ if an error occurred inform the user
             UserMethods.UploadUserProfilePicture(userid: User?.UserId ?? 0, img: self.chosenImage, completion: { (User) in // If there was no error, upload the profile pic
                 self.lockAndDisplayActivityIndicator(enable: false) // enable interaction again
-                self.displayBasicError(title: "Success", message: "User Created") // For now, just inform the user the account was created successfully
+                
+                UserDefaults.standard.set(User?.UserId, forKey: "CacheUserId")
+                UserDefaults.standard.set(User?.UserEmail, forKey: "CacheUserEmail")
+                UserDefaults.standard.set(User?.UserPassHash, forKey: "CacheUserPass")
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "signupToMain", sender: self)
+                }
+                // ^ stores user details in cache data for quick login
              })
         }
     }

@@ -33,10 +33,10 @@ public class UserMethods {
             //Makes the request with our paramaters, expects a user in response
             if response.response?.statusCode == 200 { //If successful
                 let user = response.result.value ?? nil //Gets user returned
-                if user == nil { print("usr nill"); completion?(nil, Errors.NotFound) } //if nil return not found
-                else { print(user!.toJSONString()!); completion?(user, nil) } //else return the user
+                if user == nil {  completion?(nil, Errors.NotFound) } //if nil return not found
+                else { completion?(user, nil) } //else return the user
             }
-            else { print("not 200"); completion?(nil, Errors.NotFound) } //if not successful, return not founds
+            else { completion?(nil, Errors.NotFound) } //if not successful, return not founds
         }
     }
     
@@ -62,6 +62,7 @@ public class UserMethods {
                 else { completion?(user, nil) }
             }
             else { completion?(nil, Errors.NotFound) }
+            
         }
     }
     
@@ -83,6 +84,17 @@ public class UserMethods {
                 completion?(nil)
                 break
             }
+        }
+    }
+    
+    static func SubscribeUserToSubjects(userid: Int, subjects: [Int], completion : ((User?, Error?) ->())?) {
+        
+        Alamofire.request(URLBASE+"SubscribeUserToSubjects/\(userid)", method: .post, parameters: subjects.asParameters(), encoding: ArrayEncoding()).responseObject { (response: DataResponse<User>) in
+            
+            if response.response?.statusCode == 200 {
+                completion?(response.result.value, nil)
+            }
+            else { completion?(nil, Errors.NotFound) }
         }
     }
     
