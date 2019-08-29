@@ -17,6 +17,7 @@
 		E25B717923116BF900393E22 /* SubjectPickerSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25B717823116BF900393E22 /* SubjectPickerSignup.swift */; };
 		E25B717B23116E6F00393E22 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25B717A23116E6F00393E22 /* Subject.swift */; };
 		E25B717D23116E6F00393E22 /* SubjectMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25B717C23116E6F00393E22 /* SubjectMethods.swift */; };
+		E2772B5B2317DCEF00579233 /* MainScreensController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2772B5A2317DCEF00579233 /* MainScreensController.swift */; };
 		E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */; };
 		E28EE1422302FAEB00161EB4 /* SignupNameDOB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */; };
 		E28EE1442303123F00161EB4 /* SignupPasswordSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28EE1432303123F00161EB4 /* SignupPasswordSchool.swift */; };
@@ -41,7 +42,7 @@
 		E2D0E17D230EC6F30087F551 /* MainHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0E17C230EC6F30087F551 /* MainHost.swift */; };
 		E2DDC41223128813002844F3 /* EduChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDC41123128813002844F3 /* EduChat.swift */; };
 		E2DDC4142312E968002844F3 /* zeroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDC4132312E968002844F3 /* zeroPage.swift */; };
-		E2F2E6B2230607D900376FB8 /* Profile_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2E6B1230607D900376FB8 /* Profile_Host.swift */; };
+		E2F2E6B2230607D900376FB8 /* Profile_Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2E6B1230607D900376FB8 /* Profile_Content.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		E25B717823116BF900393E22 /* SubjectPickerSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectPickerSignup.swift; sourceTree = "<group>"; };
 		E25B717A23116E6F00393E22 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		E25B717C23116E6F00393E22 /* SubjectMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectMethods.swift; sourceTree = "<group>"; };
+		E2772B5A2317DCEF00579233 /* MainScreensController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreensController.swift; sourceTree = "<group>"; };
 		E27E53FB230030B300A4F3FF /* AuthenticatingUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatingUser.swift; sourceTree = "<group>"; };
 		E28EE1412302FAEB00161EB4 /* SignupNameDOB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupNameDOB.swift; sourceTree = "<group>"; };
 		E28EE1432303123F00161EB4 /* SignupPasswordSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupPasswordSchool.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		E2D0E17C230EC6F30087F551 /* MainHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHost.swift; sourceTree = "<group>"; };
 		E2DDC41123128813002844F3 /* EduChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EduChat.swift; sourceTree = "<group>"; };
 		E2DDC4132312E968002844F3 /* zeroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zeroPage.swift; sourceTree = "<group>"; };
-		E2F2E6B1230607D900376FB8 /* Profile_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Host.swift; sourceTree = "<group>"; };
+		E2F2E6B1230607D900376FB8 /* Profile_Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Content.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +159,7 @@
 		E28FD6C12304CFD300141153 /* Module_Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E2F2E6B1230607D900376FB8 /* Profile_Host.swift */,
+				E2F2E6B1230607D900376FB8 /* Profile_Content.swift */,
 			);
 			path = Module_Profile;
 			sourceTree = "<group>";
@@ -170,6 +172,7 @@
 				E23DF35B2304C5A300864B09 /* ActivityView.swift */,
 				E2DDC41123128813002844F3 /* EduChat.swift */,
 				E2DDC4132312E968002844F3 /* zeroPage.swift */,
+				E2772B5A2317DCEF00579233 /* MainScreensController.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -340,7 +343,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/EZSwipeController/EZSwipeController.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Magnetic/Magnetic.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/Pastel/Pastel.framework",
@@ -355,7 +358,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EZSwipeController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Magnetic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pastel.framework",
@@ -403,8 +406,9 @@
 				E2D0E17D230EC6F30087F551 /* MainHost.swift in Sources */,
 				E23DF35C2304C5A300864B09 /* ActivityView.swift in Sources */,
 				E2CB18F52301D042009517DD /* FirstPageHost.swift in Sources */,
+				E2772B5B2317DCEF00579233 /* MainScreensController.swift in Sources */,
 				E28EE1442303123F00161EB4 /* SignupPasswordSchool.swift in Sources */,
-				E2F2E6B2230607D900376FB8 /* Profile_Host.swift in Sources */,
+				E2F2E6B2230607D900376FB8 /* Profile_Content.swift in Sources */,
 				E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */,
 				E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */,
 				E28EE1462303173800161EB4 /* SignupFinish.swift in Sources */,

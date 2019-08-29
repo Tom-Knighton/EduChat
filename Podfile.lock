@@ -8,7 +8,7 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - CryptoSwift (0.10.0)
-  - EZSwipeController (0.7.0)
+  - Kingfisher (5.7.1)
   - Magnetic (3.1.0)
   - ObjectMapper (3.2.0)
   - Pastel (0.4.0)
@@ -22,7 +22,7 @@ DEPENDENCIES:
   - AlamofireObjectMapper
   - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
   - CryptoSwift
-  - EZSwipeController (from `https://github.com/RichardFevrier/EZSwipeController.git`)
+  - Kingfisher (from `https://github.com/TomKicloud/Kingfisher.git`)
   - Magnetic (from `https://github.com/TomKicloud/Magnetic.git`)
   - Pastel
   - ShadowView
@@ -32,8 +32,8 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   ChameleonFramework:
     :git: https://github.com/ViccAlexander/Chameleon.git
-  EZSwipeController:
-    :git: https://github.com/RichardFevrier/EZSwipeController.git
+  Kingfisher:
+    :git: https://github.com/TomKicloud/Kingfisher.git
   Magnetic:
     :git: https://github.com/TomKicloud/Magnetic.git
 
@@ -41,9 +41,9 @@ CHECKOUT OPTIONS:
   ChameleonFramework:
     :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
     :git: https://github.com/ViccAlexander/Chameleon.git
-  EZSwipeController:
-    :commit: b2b97a927c6c6dbabd33e045e1135fcd1adc4d67
-    :git: https://github.com/RichardFevrier/EZSwipeController.git
+  Kingfisher:
+    :commit: e10540e5a057c80c952275f6dae2aa67c314df15
+    :git: https://github.com/TomKicloud/Kingfisher.git
   Magnetic:
     :commit: 99084418828366523b360c2af92092eb6b6b104b
     :git: https://github.com/TomKicloud/Magnetic.git
@@ -54,7 +54,7 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
-  EZSwipeController: 4b89d65a65f6d7f16dff5172d5c9cb7b15d267b0
+  Kingfisher: 23d87cae80eebace09ac9928f9321e52fd2d8016
   Magnetic: d272eee4a4a4a94309360671549974cf57ce35e1
   ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
   Pastel: 7fa5e26123b3dbe11f7ed255654bf37100b199a5
@@ -62,6 +62,6 @@ SPEC CHECKSUMS:
   SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
 
-PODFILE CHECKSUM: abd82c8b8a1f688c0cbb6701ad074e34fab9d31b
+PODFILE CHECKSUM: 24456e7726067df283640274c2bed2c39ea3ee2a
 
 COCOAPODS: 1.4.0

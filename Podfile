@@ -16,6 +16,6 @@ target 'EduChat' do
   pod 'TOCropViewController'
   pod 'ActionSheetPicker-3.0'
   pod 'ShadowView'
-  pod 'EZSwipeController', :git => 'https://github.com/RichardFevrier/EZSwipeController.git'
+  pod 'Kingfisher', :git => 'https://github.com/TomKicloud/Kingfisher.git'
   pod 'Magnetic', :git => 'https://github.com/TomKicloud/Magnetic.git'
 end
