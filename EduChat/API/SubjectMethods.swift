@@ -22,7 +22,7 @@ public class SubjectMethods {
             if response.response?.statusCode == 200 {
                 completion?(response.value, nil)
             }
-            else { completion?(nil, Errors.NotFound) }z
+            else { completion?(nil, Errors.NotFound) }
         }
         
     }

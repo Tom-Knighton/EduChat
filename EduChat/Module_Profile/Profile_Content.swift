@@ -36,29 +36,38 @@ class Profile_Content: UITableViewController{
 
 extension Profile_Content {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
         let view = UIView.init(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        //^ creates View with width of whole view
         let shView = ShadowView.init(frame: view.frame)
+        //^ creates shadow view same size as previous view
         shView.shadowRadius = 5
         shView.shadowOpacity = 0.3
         shView.shadowColor = UIColor.flatBlack
         shView.shadowOffset = CGSize.zero
+        // ^ sets up shadow
         view.backgroundColor = UIColor.white
         let title = UILabel.init(frame: CGRect(x: 4, y: 5, width: 276, height: 29))
         title.font = UIFont(name: "Montserrat-Bold", size: 17)
+        //^ Creates a title and sets the font
         if section == 1 {
             title.text = "Subjects:"
             view.roundCorners(corners: [.topRight, .topLeft], radius: 20)
+            //^ if first section, title is Subjects and view is rounded
         }
-        if section == 2 { title.text = "Posts:" }
+        if section == 2 { title.text = "Posts:" } //Else, title is Posts
         
         view.addSubview(title)
         view.bringSubviewToFront(title)
+        //Adds title and shadow to main view
         return view
+        //Sets the header section to the view we created
         
     }
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 { return 0 }
         return 40
+        //View MUST BE > 0 for header to show
     }
 
 }

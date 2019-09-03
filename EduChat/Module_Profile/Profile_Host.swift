@@ -17,10 +17,12 @@ class Profile_Host: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navBarTitle.title = EduChat.currentUser?.UserName ?? "My Profile"
+        //sets title to username
     }
     
 
     @IBAction func settingsButtonPressed(_ sender: Any) {
+        
         let alert = UIAlertController(title: "Confirmation", message: "Log out?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
             EduChat.currentUser = nil
@@ -33,6 +35,8 @@ class Profile_Host: UIViewController {
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        
+        //For now, when settings is pressed simply ask user if they want to log out
     }
     
     @IBAction func subjectsButtonPressed(_ sender: Any) {
