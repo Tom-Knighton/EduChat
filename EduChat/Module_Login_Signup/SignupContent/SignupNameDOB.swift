@@ -31,7 +31,7 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
         datePicker.datePickerMode = .date
         datePicker.maximumDate = calendar.date(byAdding: components, to: Date())
         self.dobField.inputView = datePicker
-        datePicker.addTarget(self, action: #selector(self.datePickerChanged), for: UIControlEvents.valueChanged)
+        datePicker.addTarget(self, action: #selector(self.datePickerChanged), for: UIControl.Event.valueChanged)
         
         self.genderField.delegate = self
         self.genderField.inputView = UIView()
@@ -39,7 +39,7 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
         self.continueButton.layer.cornerRadius = 20
         self.continueButton.layer.masksToBounds = true
         
-        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
     
     @IBAction func genderFieldTapped(_ sender: SkyFloatingLabelTextField) {

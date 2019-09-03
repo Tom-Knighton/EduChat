@@ -58,11 +58,14 @@ class SubjectPickerSignup: UIViewController, MagneticDelegate {
     }
     
     func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
-        selectedSubjects.remove(at: (selectedSubjects.index(of: (node.tag as! Subject).SubjectId!))!)
+        selectedSubjects.remove(at: (selectedSubjects.firstIndex(of: (node.tag as! Subject).SubjectId!))!)
         //removes id when deselected
     }
     @IBAction func skip(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        UserMethods.SubscribeUserToSubjects(userid: EduChat.currentUser?.UserId ?? 0, subjects: [1]) { (User, err) in
+            EduChat.currentUser = User
+            UIApplication.topViewController()?.kickToZeroPage()
+        }
     }
     
     @IBAction func subscribe(_ sender: Any) {
@@ -71,7 +74,7 @@ class SubjectPickerSignup: UIViewController, MagneticDelegate {
         UserMethods.SubscribeUserToSubjects(userid: EduChat.currentUser?.UserId ?? 0, subjects: selectedSubjects) { (User, Error) in // Calls subscribe to subjects endpoint
             if Error == nil { //If no erros
                 EduChat.currentUser = User // Sets the static User reference to our new user object with new subjects
-                self.dismiss(animated: true, completion: nil) // dismisses view
+                UIApplication.topViewController()?.kickToZeroPage() // dismisses view
             }
             else { self.displayBasicError(title: "Error", message: "An error occurred subscribing to these subjects"); } // else ,display error
         }

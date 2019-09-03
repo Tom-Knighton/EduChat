@@ -571,13 +571,17 @@ class SafeArray<Element> {
         get {
             lock.lock()
             defer { lock.unlock() }
-            return array.indices ~= index ? array[index] : nil
+            if index >= 0 && index < array.count {
+                return array[index]
+            } else {
+                return nil
+            }
         }
         
-        set {
+        set(newValue) {
             lock.lock()
             defer { lock.unlock() }
-            if let newValue = newValue, array.indices ~= index {
+            if let newValue = newValue, index >= 0 && index < array.count {
                 array[index] = newValue
             }
         }

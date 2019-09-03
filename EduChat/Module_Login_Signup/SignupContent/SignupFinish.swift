@@ -32,7 +32,7 @@ class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePicke
         self.continueButton.layer.cornerRadius = 20
         self.continueButton.layer.masksToBounds = true
         
-        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
 
     @IBAction func selectImagePressed(_ sender: Any) {
@@ -42,13 +42,14 @@ class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePicke
         self.present(imagePicker, animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as? UIImage
         if image == nil { displayBasicError(title: "Error", message: "Error selecting image"); picker.dismiss(animated: true, completion: nil); return; }
         picker.dismiss(animated: true, completion: nil)
         let crop = TOCropViewController(croppingStyle: .circular, image: image!)
         crop.delegate = self
         self.present(crop, animated: true, completion: nil)
+        
     }
     func cropViewController(_ cropViewController: TOCropViewController, didCropToCircularImage image: UIImage, with cropRect: CGRect, angle: Int) {
         self.profileImage.image = image
@@ -75,6 +76,8 @@ class SignupFinish: UIViewController, TOCropViewControllerDelegate, UIImagePicke
                 UserDefaults.standard.set(User?.UserEmail, forKey: "CacheUserEmail")
                 UserDefaults.standard.set(User?.UserPassHash, forKey: "CacheUserPass")
                 DispatchQueue.main.async {
+                    EduChat.currentUser = User
+                    EduChat.isAuthenticated = true
                     self.performSegue(withIdentifier: "signupToMain", sender: self)
                 }
                 // ^ stores user details in cache data for quick login

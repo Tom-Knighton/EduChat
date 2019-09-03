@@ -67,7 +67,7 @@ public class UserMethods {
     }
     
     static func UploadUserProfilePicture(userid: Int, img: UIImage, completion: ((User?) -> ())?) {
-        let imgData = UIImageJPEGRepresentation(img, 0.5)
+        let imgData = img.jpegData(compressionQuality: 0.5)
 
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
             MultipartFormData.append(imgData!, withName: "profilePic", fileName: "profile_pic.jpg", mimeType: "image/jpeg")

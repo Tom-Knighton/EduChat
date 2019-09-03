@@ -12,7 +12,7 @@ import ObjectMapper
 public struct Subject : Mappable, Codable {
     
     public mutating func mapping(map: Map) {
-        self.SubjectId <- map["subjectId"]; self.SubjectName <- map["subjectName"]
+        self.SubjectId <- map["subjectId"]; self.SubjectName <- map["subjectName"]; self.ShortSubjectName <- map["shortSubjectName"]
         self.IsEducational <- map["isEducational"]; self.IsAdvanced <- map["isAdvanced"]
         self.IsEnabled <- map["isEnabled"]
     }
@@ -20,6 +20,7 @@ public struct Subject : Mappable, Codable {
     
     var SubjectId : Int?
     var SubjectName : String?
+    var ShortSubjectName : String?
     var IsEducational : Bool?
     var IsAdvanced : Bool?
     var IsEnabled : Bool?

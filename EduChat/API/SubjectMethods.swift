@@ -20,9 +20,9 @@ public class SubjectMethods {
     static func GetAllSubjects(completion: (([Subject]?, Error?) -> ())?) {
         Alamofire.request(URLBASE+"GetAllSubjects", method: .get).responseArray { (response: DataResponse<[Subject]>) in
             if response.response?.statusCode == 200 {
-                completion?(response.result.value, nil)
+                completion?(response.value, nil)
             }
-            else { completion?(nil, Errors.NotFound) }
+            else { completion?(nil, Errors.NotFound) }z
         }
         
     }

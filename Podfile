@@ -7,15 +7,15 @@ target 'EduChat' do
 
   # Pods for EduChat
   
-  pod 'Alamofire'
-  pod 'AlamofireObjectMapper'
+  pod 'Alamofire', '4.8.1'
+  pod 'AlamofireObjectMapper', '5.2'
   pod 'CryptoSwift'
   pod 'Pastel'
-  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/kenmueller/Chameleon.git'
   pod 'SkyFloatingLabelTextField'
   pod 'TOCropViewController'
   pod 'ActionSheetPicker-3.0'
   pod 'ShadowView'
-  pod 'Kingfisher', :git => 'https://github.com/TomKicloud/Kingfisher.git'
   pod 'Magnetic', :git => 'https://github.com/TomKicloud/Magnetic.git'
+  pod 'Kingfisher'
 end

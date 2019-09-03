@@ -25,7 +25,7 @@ class SignupEmailUsername: UIViewController, UITextFieldDelegate {
         self.usernameField.delegate = self
         self.emailField.delegate = self
         
-        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
     }
     
     @IBAction func continuePressed(_ sender: UIButton) {

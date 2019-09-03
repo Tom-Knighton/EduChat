@@ -1,67 +1,75 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
-  - Alamofire (4.7.2)
-  - AlamofireObjectMapper (5.0.0):
-    - Alamofire (~> 4.1)
-    - ObjectMapper (~> 3.0)
+  - Alamofire (4.8.1)
+  - AlamofireObjectMapper (5.2.0):
+    - Alamofire (~> 4.7)
+    - ObjectMapper (~> 3.4)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - CryptoSwift (0.10.0)
+  - CryptoSwift (1.0.0)
   - Kingfisher (5.7.1)
   - Magnetic (3.1.0)
-  - ObjectMapper (3.2.0)
-  - Pastel (0.4.0)
+  - ObjectMapper (3.5.1)
+  - Pastel (0.6.0)
   - ShadowView (1.4.3)
-  - SkyFloatingLabelTextField (3.5.1)
+  - SkyFloatingLabelTextField (3.7.0)
   - TOCropViewController (2.5.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
-  - Alamofire
-  - AlamofireObjectMapper
-  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Alamofire (= 4.8.1)
+  - AlamofireObjectMapper (= 5.2)
+  - ChameleonFramework/Swift (from `https://github.com/kenmueller/Chameleon.git`)
   - CryptoSwift
-  - Kingfisher (from `https://github.com/TomKicloud/Kingfisher.git`)
+  - Kingfisher
   - Magnetic (from `https://github.com/TomKicloud/Magnetic.git`)
   - Pastel
   - ShadowView
   - SkyFloatingLabelTextField
   - TOCropViewController
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - ActionSheetPicker-3.0
+    - Alamofire
+    - AlamofireObjectMapper
+    - CryptoSwift
+    - Kingfisher
+    - ObjectMapper
+    - Pastel
+    - ShadowView
+    - SkyFloatingLabelTextField
+    - TOCropViewController
+
 EXTERNAL SOURCES:
   ChameleonFramework:
-    :git: https://github.com/ViccAlexander/Chameleon.git
-  Kingfisher:
-    :git: https://github.com/TomKicloud/Kingfisher.git
+    :git: https://github.com/kenmueller/Chameleon.git
   Magnetic:
     :git: https://github.com/TomKicloud/Magnetic.git
 
 CHECKOUT OPTIONS:
   ChameleonFramework:
-    :commit: 6dd284bde21ea2e7f9fd89bc36f40df16e16369d
-    :git: https://github.com/ViccAlexander/Chameleon.git
-  Kingfisher:
-    :commit: e10540e5a057c80c952275f6dae2aa67c314df15
-    :git: https://github.com/TomKicloud/Kingfisher.git
+    :commit: f41669a6a8a91203c06cfb6fbc0a7f5769dae3f9
+    :git: https://github.com/kenmueller/Chameleon.git
   Magnetic:
     :commit: 99084418828366523b360c2af92092eb6b6b104b
     :git: https://github.com/TomKicloud/Magnetic.git
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
-  AlamofireObjectMapper: 5fafc816351cbbc0d486611aaeba7461c0cbad49
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  CryptoSwift: 6c778d69282bed3b4e975ff97a79d074f20bb011
-  Kingfisher: 23d87cae80eebace09ac9928f9321e52fd2d8016
-  Magnetic: d272eee4a4a4a94309360671549974cf57ce35e1
-  ObjectMapper: 5cccd2de6f253eda859df8116a5a554d9769e859
-  Pastel: 7fa5e26123b3dbe11f7ed255654bf37100b199a5
+  CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
+  Magnetic: 93655c6d01bd75643b4329dfbcdd0733f95ee757
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  Pastel: 814f081efbe2859c37e65ee44f396e6e5be88619
   ShadowView: d2d92fd2706b3f6a182be2147149db0b1cf7700d
-  SkyFloatingLabelTextField: 4cbeece9c3aae97c6019d8fae511cb5b755874f7
+  SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
 
-PODFILE CHECKSUM: 24456e7726067df283640274c2bed2c39ea3ee2a
+PODFILE CHECKSUM: 6f888f14bbf36b159bc619c281df25eeb1603a3a
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.7.5

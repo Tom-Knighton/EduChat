@@ -92,7 +92,7 @@ public enum ExpirationExtending {
     /// The item expiration extends by the original cache time after each access.
     case cacheTime
     /// The item expiration extends by the provided time after each access.
-    case expirationTime(StorageExpiration)
+    case expirationTime(_ expiration: StorageExpiration)
 }
 
 /// Represents types which cost in memory can be calculated.

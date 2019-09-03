@@ -35,7 +35,7 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
     private var pendingIndex: Int?
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
+        guard let vcIndex = viewControllerList.firstIndex(of: viewController) else {return nil}
         let previousIndex = vcIndex - 1
         guard previousIndex >= 0 else {return nil}
         guard viewControllerList.count > previousIndex else {return nil}
@@ -44,7 +44,7 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
+        guard let vcIndex = viewControllerList.firstIndex(of: viewController) else {return nil}
         let nextIndex = vcIndex + 1
         guard viewControllerList.count != nextIndex else {return nil}
         guard viewControllerList.count > nextIndex else {return nil}
@@ -55,12 +55,22 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = GradientColor(.diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        
+        
+        if EduChat.currentUser == nil || EduChat.isAuthenticated == false {
+            UIApplication.topViewController()?.kickToZeroPage()
+            return
+        }
+        if EduChat.currentUser?.Subjects?.count == 0 {
+            UIApplication.topViewController()?.displayBubbleSubjectPicker()
+        }
+        
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageContainer.delegate = self
         pageContainer.dataSource = self
         let secondViewController = viewControllerList[1]
-        pageContainer.setViewControllers([secondViewController], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
+        pageContainer.setViewControllers([secondViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         
         self.view.addSubview(pageContainer.view)
     }

@@ -74,6 +74,9 @@ extension UIViewController {
     var bubbleSubjectPicker : UIViewController {
         return UIStoryboard(name: "Login_Signup", bundle: nil).instantiateViewController(withIdentifier: "SubjectBubblePicker") as UIViewController
     }
+    var zeroPageController : UIViewController{
+        return UIStoryboard(name: "Login_Signup", bundle: nil).instantiateViewController(withIdentifier: "zeroPage") as UIViewController
+    }
     
     func lockAndDisplayActivityIndicator(enable: Bool) {
         if enable {
@@ -89,7 +92,12 @@ extension UIViewController {
     }
     
     func displayBubbleSubjectPicker() {
+        
         self.present(bubbleSubjectPicker, animated: true, completion: nil)
+    }
+    
+    func kickToZeroPage() {
+        self.present(zeroPageController, animated: false, completion: nil)
     }
 }
 
@@ -98,6 +106,12 @@ extension UIView {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
          UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+    }
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
     }
 }
 
@@ -181,3 +195,6 @@ public struct ArrayEncoding: ParameterEncoding {
         return urlRequest
     }
 }
+
+
+

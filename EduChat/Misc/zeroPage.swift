@@ -12,7 +12,6 @@ class zeroPage: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("didLoad")
         let cachedId = UserDefaults.standard.integer(forKey: "CacheUserId")
         let cachedEmail = UserDefaults.standard.string(forKey: "CacheUserEmail") ?? ""
         let cachedHash = UserDefaults.standard.string(forKey: "CacheUserPass") ?? ""
@@ -24,6 +23,7 @@ class zeroPage: UIViewController {
                     //Success, user still logged in
                     
                     DispatchQueue.main.async {
+                        EduChat.currentUser = User
                         print("goToMain")
 
                         self.performSegue(withIdentifier: "zeroPageToMain", sender: self)
