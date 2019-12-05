@@ -10,9 +10,12 @@
 
 import UIKit
 import ChameleonFramework
+import SwiftSignalRClient
+
 
 class MainScreensController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
+    static var chatConnection : Chat_Signal = Chat_Signal()
     lazy var viewControllerList:[UIViewController] = {
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -22,6 +25,8 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
         let vc3 = sb.instantiateViewController(withIdentifier: "ChatHost")
         
         return[vc1, vc2, vc3]
+        
+        
     }()
     
     // The UIPageViewController
@@ -33,6 +38,7 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
     // Track the current index
     var currentIndex: Int?
     private var pendingIndex: Int?
+    
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let vcIndex = viewControllerList.firstIndex(of: viewController) else {return nil}
@@ -55,6 +61,9 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+            
         self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
         
         
@@ -73,8 +82,21 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
         pageContainer.setViewControllers([secondViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         
         self.view.addSubview(pageContainer.view)
+        
+        MainScreensController.chatConnection.setup_signal()
+        NotificationCenter.default.addObserver(self, selector: #selector(enableSwipe(_:)), name: .enableSwipe, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(disableSwipe(_:)), name: .disableSwipe, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(onChatMessage(_:)), name: .onChatMessage, object: nil)
+        
+    }
+
+    @objc func disableSwipe(_ notification: NSNotification){
+        pageContainer.dataSource = nil
+    }
+    
+    @objc func enableSwipe(_: NSNotification){
+        pageContainer.dataSource = self
     }
 
     
-
 }

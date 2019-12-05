@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class Profile_Host: UIViewController {
 
     @IBOutlet weak var navBar: UINavigationBar!
@@ -18,29 +17,28 @@ class Profile_Host: UIViewController {
         super.viewDidLoad()
         self.navBarTitle.title = EduChat.currentUser?.UserName ?? "My Profile"
         //sets title to username
+      
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navBarTitle.title = EduChat.currentUser?.UserName ?? "My Profile"
+        if #available(iOS 11.0, *) {
+            self.navBar.prefersLargeTitles = true
+        }
+    }
 
     @IBAction func settingsButtonPressed(_ sender: Any) {
         
-        let alert = UIAlertController(title: "Confirmation", message: "Log out?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-            EduChat.currentUser = nil
-            EduChat.isAuthenticated = false
-            UserDefaults.standard.set(-1, forKey: "CacheUserId")
-            UserDefaults.standard.set("", forKey: "CacheUserEmail")
-            UserDefaults.standard.set("", forKey: "CacheUserPass")
-            let view = UIStoryboard(name: "Login_Signup", bundle: nil).instantiateInitialViewController()
-            UIApplication.topViewController()?.present(view!, animated: false, completion: nil)
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         
-        //For now, when settings is pressed simply ask user if they want to log out
+        
+        let v = (storyboard?.instantiateViewController(withIdentifier: "profileSettingsPage"))!
+        UIApplication.topViewController()?.present(v, animated: false, completion: nil)
+        
     }
     
     @IBAction func subjectsButtonPressed(_ sender: Any) {
-        
+        let view = storyboard?.instantiateViewController(withIdentifier: "profileSubjectManagement")
+        self.present(view!, animated: true, completion: nil)
     }
     
 }

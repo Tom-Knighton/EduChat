@@ -13,4 +13,7 @@ import UIKit
 class EduChat {
     static var currentUser : User?
     static var isAuthenticated: Bool?
+    
+    
+    
 }

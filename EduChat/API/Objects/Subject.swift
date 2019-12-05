@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-public struct Subject : Mappable, Codable {
+public struct Subject : Mappable, Codable, Equatable {
     
     public mutating func mapping(map: Map) {
         self.SubjectId <- map["subjectId"]; self.SubjectName <- map["subjectName"]; self.ShortSubjectName <- map["shortSubjectName"]

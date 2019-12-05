@@ -9,7 +9,8 @@
 import UIKit
 import ShadowView
 import ChameleonFramework
-import Kingfisher
+import SwiftSignalRClient
+import SDWebImage
 
 class Profile_Content: UITableViewController{
 
@@ -20,19 +21,40 @@ class Profile_Content: UITableViewController{
     
     @IBOutlet weak var subjectsCollection: UICollectionView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        self.profileHeaderName.text = EduChat.currentUser?.UserFullName ?? "My Account"//Sets full name label to value of EduChat.currentUser
-        self.profileHeaderImage.kf.setImage(with: URL(string: EduChat.currentUser?.UserProfilePictureURL ?? "")) //Sets profile image view to image from profile URL
-        
-        
+        reloadData()
         self.subjectsCollection.dataSource = self //Sets the subjects collection view to pull data from this class
         self.subjectsCollection.delegate = self
         
-    }    
+    }
+    
+    func reloadData() {
+        self.title = EduChat.currentUser?.UserName
+        self.profileHeaderName.text = EduChat.currentUser?.UserFullName ?? "My Account"//Sets full name label to value of EduChat.currentUser
+        self.profileHeaderImage.sd_setImage(with: URL(string: EduChat.currentUser?.UserProfilePictureURL ?? "")) //Sets profile image view to image from profile URL
+        self.subjectsCollection.reloadData()
+        
+    }
+    
+   
 }
+
+
+extension Profile_Content {
+    @IBAction func changeProfilePic(_ sender: Any) {
+        let v = (storyboard?.instantiateViewController(withIdentifier: "changePicPage"))!
+        self.navigationController?.pushViewController(v, animated: true)
+    }
+}
+
+
+
 
 extension Profile_Content {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -72,6 +94,17 @@ extension Profile_Content {
 
 }
 
+extension Profile_Content {
+    @IBAction func settingsPressed(sender: Any) {
+        let settings = (storyboard?.instantiateViewController(withIdentifier: "settingsVC"))!
+        self.navigationController?.pushViewController(settings, animated: true)
+    }
+    @IBAction func subjectsPressed(sender: Any) {
+        let subjects = (storyboard?.instantiateViewController(withIdentifier: "subjectsVC"))!
+        self.navigationController?.pushViewController(subjects, animated: true)
+    }
+}
+
 extension Profile_Content: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -83,6 +116,7 @@ extension Profile_Content: UICollectionViewDataSource, UICollectionViewDelegate 
         let cell : profileSubjectCell = self.subjectsCollection.dequeueReusableCell(withReuseIdentifier: "profileSubjectCell", for: indexPath) as! profileSubjectCell
         cell.subjectLabel.text = EduChat.currentUser?.Subjects![indexPath.row].ShortSubjectName ?? EduChat.currentUser?.Subjects![indexPath.row].SubjectName ?? ""
         cell.backView?.backgroundColor = UIColor.init(randomFlatColorExcludingColorsIn: [UIColor.gray, UIColor.darkGray, UIColor.flatGray, UIColor.flatGrayDark])
+        cell.subjectLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn: cell.backView.backgroundColor!, isFlat: true)
         // Above sets each subject cell to the correct class, and sets a random background colour and the subject name as a title
         return cell
     }

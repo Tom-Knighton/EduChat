@@ -66,11 +66,24 @@ public class UserMethods {
         }
     }
     
+    static func ModifyUser(usr: User, userid: Int, completion: ((User?, Error?) ->())?) {
+        let payload : Data = try! JSONEncoder().encode(usr)
+        let dataString = String(data: payload, encoding: String.Encoding.utf8)
+        let params = convertToDictionary(text: dataString)
+        Alamofire.request(URLBASE+"ModifyUser/\(userid)", method: .post, parameters: params, encoding: JSONEncoding.default).responseObject { (response: DataResponse<User>) in
+            if response.response?.statusCode == 200 {
+                let user = response.result.value ?? nil
+                if user == nil { completion?(nil, Errors.NotFound) }
+                else { completion?(user, nil) }
+            }
+            else { completion?(nil, Errors.NotFound) }
+        }
+    }
     static func UploadUserProfilePicture(userid: Int, img: UIImage, completion: ((User?) -> ())?) {
         let imgData = img.jpegData(compressionQuality: 0.5)
 
         Alamofire.upload(multipartFormData: { (MultipartFormData) in
-            MultipartFormData.append(imgData!, withName: "profilePic", fileName: "profile_pic.jpg", mimeType: "image/jpeg")
+            MultipartFormData.append(imgData!, withName: "profilePic", fileName: UUID().uuidString.lowercased()+".jpg", mimeType: "image/jpeg")
         }, to: URLBASE+"UploadUserProfilePic/\(userid)") { (result) in
             switch result {
             case .success(let upload, _, _):
@@ -82,6 +95,7 @@ public class UserMethods {
                 break
             case .failure(_):
                 completion?(nil)
+                print("fail")
                 break
             }
         }
@@ -97,7 +111,16 @@ public class UserMethods {
             else { completion?(nil, Errors.NotFound) }
         }
     }
-    
+    static func UnsubscribeUserToSubjects(userid: Int, subjects: [Int], completion : ((User?, Error?) ->())?) {
+        
+        Alamofire.request(URLBASE+"UnsubscribeUserToSubjects/\(userid)", method: .post, parameters: subjects.asParameters(), encoding: ArrayEncoding()).responseObject { (response: DataResponse<User>) in
+            
+            if response.response?.statusCode == 200 {
+                completion?(response.result.value, nil)
+            }
+            else { completion?(nil, Errors.NotFound) }
+        }
+    }
 
     
     static func convertToDictionary(text: String?) -> [String: Any]? {

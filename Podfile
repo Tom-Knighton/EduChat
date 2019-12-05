@@ -17,5 +17,10 @@ target 'EduChat' do
   pod 'ActionSheetPicker-3.0'
   pod 'ShadowView'
   pod 'Magnetic', :git => 'https://github.com/TomKicloud/Magnetic.git'
-  pod 'Kingfisher'
+  pod 'SDWebImage'
+  pod 'SwiftSignalRClient'
+  pod 'IGListKit'
+  pod 'MessageKit', :git => 'https://github.com/MessageKit/MessageKit.git',  :branch => '3.0.0-swift5'
+  pod 'SwiftyGif', '5.1.1'
+  pod 'Agrume'
 end

@@ -8,8 +8,9 @@
 
 import Foundation
 import ObjectMapper
+import MessageKit
 
-public struct User: Mappable, Codable {
+public class User: Mappable, Codable {
     
     
     var UserId : Int?
@@ -39,13 +40,31 @@ public struct User: Mappable, Codable {
         // let usr : User = new User("test", "test" .....) etc.
     }
     
-    public init? (map: Map) {}
+    required public init? (map: Map) {}
     
-    public mutating func mapping(map: Map) {
+    public func mapping(map: Map) {
         self.UserId <- map["userId"]; self.UserEmail <- map["userEmail"]; self.UserName <- map["userName"]; self.UserFullName <- map["userFullName"]
         self.UserProfilePictureURL <- map["userProfilePictureURL"]; self.UserSchool <- map["userSchool"]; self.UserGender <- map["userGender"]; self.UserDOB <- map["userDOB"]
         self.IsModerator <- map["isModerator"]; self.IsAdmin <- map["isAdmin"]; self.IsDeleted <- map["isDeleted"]; self.UserPassHash <- map["userPassHash"]; self.Subjects <- map["subjects"]
         //Mapping function, as json will return result in camelCase rather than CamelCase
     }
+    
+    public func flatPack() -> User {
+        let usr = self
+        usr.Subjects = [];
+        return usr
+    }
+    
+}
+
+extension User : SenderType {
+    public var senderId: String {
+        return String(describing: self.UserId)
+    }
+    
+    public var displayName: String {
+        return self.UserName ?? ""
+    }
+    
     
 }

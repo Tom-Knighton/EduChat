@@ -50,5 +50,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Gives the app access to save downloaded images to the camera roll</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Gives the app access to upload images you select</string>
 </dict>
 </plist>
