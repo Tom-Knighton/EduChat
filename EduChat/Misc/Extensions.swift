@@ -203,6 +203,7 @@ extension Notification.Name {
     static let enableSwipe = Notification.Name("enableSwipe")
     static let disableSwipe = Notification.Name("disableSwipe")
     static let removeMessage = Notification.Name("removeMessage")
+    static let updateFriendshipList = Notification.Name("updateFriendshipList")
 }
 
 extension UnicodeScalar {

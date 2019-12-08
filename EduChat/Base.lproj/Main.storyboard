@@ -16,6 +16,9 @@
         <array key="Montserrat-Light.ttf">
             <string>Montserrat-Light</string>
         </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
@@ -801,8 +804,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Chats" id="J2a-Je-ziN">
                         <rightBarButtonItems>
-                            <barButtonItem image="invite" id="fcD-ym-FT3"/>
-                            <barButtonItem image="addUser" id="dwT-cQ-XQJ"/>
+                            <barButtonItem image="invite" id="54y-Lx-K5X">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </barButtonItem>
+                            <barButtonItem image="addUser" id="ZbS-yK-s9X">
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="addUserPressed:" destination="vgs-xT-Tnc" id="fif-PU-6lk"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -812,6 +822,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUi-qa-xWY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="845.60000000000002" y="-628.33583208395805"/>
+        </scene>
+        <!--Friends-->
+        <scene sceneID="Mv5-Ix-MEa">
+            <objects>
+                <tableViewController storyboardIdentifier="chatFriendsTable" title="Friends" id="ke5-ae-K5x" customClass="Chat_Friends" customModule="EduChat" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="D7D-zS-5dg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="chatFriendCell" rowHeight="80" id="AUJ-WO-fRp" customClass="ChatFriendsCell" customModule="EduChat" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AUJ-WO-fRp" id="K9c-NH-hg9">
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sAC-ve-tkj">
+                                            <rect key="frame" x="16" y="10" width="60" height="60"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2b-xx-cpA">
+                                            <rect key="frame" x="303" y="24" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" image="cancel"/>
+                                            <connections>
+                                                <action selector="blockUserPressed:" destination="AUJ-WO-fRp" eventType="touchUpInside" id="VhS-gM-BXv"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxh-4y-Y0K">
+                                            <rect key="frame" x="84" y="10" width="213" height="59"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="removeUser" destination="v2b-xx-cpA" id="3hL-V6-9hU"/>
+                                    <outlet property="userImage" destination="sAC-ve-tkj" id="xDP-CE-Qtq"/>
+                                    <outlet property="userName" destination="Bxh-4y-Y0K" id="bqB-rw-LiR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ke5-ae-K5x" id="kAR-mA-uAT"/>
+                            <outlet property="delegate" destination="ke5-ae-K5x" id="waO-xI-TcL"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="table" destination="D7D-zS-5dg" id="wd3-mQ-E0S"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sgb-si-zng" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="845.60000000000002" y="40.929535232383813"/>
         </scene>
         <!--Main Host-->
         <scene sceneID="o1H-dy-wUI">
@@ -867,6 +934,7 @@
     </scenes>
     <resources>
         <image name="addUser" width="32" height="32"/>
+        <image name="cancel" width="32" height="32"/>
         <image name="chat" width="32" height="32"/>
         <image name="feed" width="32" height="32"/>
         <image name="invite" width="32" height="32"/>

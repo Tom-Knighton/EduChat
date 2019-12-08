@@ -27,6 +27,8 @@ public class User: Mappable, Codable {
     var UserPassHash : String?
     
     var Subjects : [Subject]?
+    var Chats : [Chat]?
+    var Friendships : [Friendship]?
     
     
     public init?(UserId: Int, UserEmail: String, UserName: String, UserFullName: String, UserProfilePictureURL: String, UserSchool: String, UserGender: String, UserDOB: String,
@@ -46,12 +48,15 @@ public class User: Mappable, Codable {
         self.UserId <- map["userId"]; self.UserEmail <- map["userEmail"]; self.UserName <- map["userName"]; self.UserFullName <- map["userFullName"]
         self.UserProfilePictureURL <- map["userProfilePictureURL"]; self.UserSchool <- map["userSchool"]; self.UserGender <- map["userGender"]; self.UserDOB <- map["userDOB"]
         self.IsModerator <- map["isModerator"]; self.IsAdmin <- map["isAdmin"]; self.IsDeleted <- map["isDeleted"]; self.UserPassHash <- map["userPassHash"]; self.Subjects <- map["subjects"]
+        self.Friendships <- map["friendships"]
         //Mapping function, as json will return result in camelCase rather than CamelCase
     }
     
     public func flatPack() -> User {
         let usr = self
         usr.Subjects = [];
+        usr.Chats = [];
+        usr.Friendships = [];
         return usr
     }
     

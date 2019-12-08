@@ -29,12 +29,6 @@ class ChatListContent: UIViewController {
         self.chatTable.dataSource = self
         loadData()
     }
-    /*override func viewWillDisappear(_ animated: Bool) {
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
-        }
-    }*/
-    
     func loadData() {
         ChatMethods.GetAllChatsForUser(userid: EduChat.currentUser?.UserId ?? 0) { (chats, err) in
             if err == nil {
@@ -44,6 +38,14 @@ class ChatListContent: UIViewController {
             else { print("err") }
         }
     }
+    
+    @IBAction func addUserPressed(_ sender: Any) {
+        let v = (storyboard?.instantiateViewController(withIdentifier: "chatFriendsTable"))
+        self.navigationController?.pushViewController(v ?? UIViewController(), animated: true)
+    }
+    
+    
+    
 }
 
 extension ChatListContent : UITableViewDelegate, UITableViewDataSource {
