@@ -23,4 +23,5 @@ target 'EduChat' do
   pod 'MessageKit', :git => 'https://github.com/MessageKit/MessageKit.git',  :branch => '3.0.0-swift5'
   pod 'SwiftyGif', '5.1.1'
   pod 'Agrume'
+  pod 'PinterestSegment'
 end

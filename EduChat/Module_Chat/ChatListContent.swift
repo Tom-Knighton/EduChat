@@ -14,12 +14,13 @@ class ChatListContent: UIViewController {
 
     @IBOutlet weak var chatTable: UITableView!
     
-    var chatListContent = [Any]()
+    var chatListContent : [Chat] = []
     
     override func viewWillAppear(_ animated: Bool) {
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
         }
+        loadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,10 @@ class ChatListContent: UIViewController {
         self.navigationController?.pushViewController(v ?? UIViewController(), animated: true)
     }
     
+    @IBAction func createChatPressed(_ sender: Any) {
+        let v = (storyboard?.instantiateViewController(withIdentifier: "createChatTable"))
+        self.navigationController?.pushViewController(v ?? UIViewController(), animated: true)
+    }
     
     
 }
@@ -64,45 +69,15 @@ extension ChatListContent : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.chatTable.dequeueReusableCell(withIdentifier: "chatListCell", for: indexPath) as! ChatListCell
-        let chat = self.chatListContent[indexPath.row] as! Chat
-        
-        /* Setup: */
-        
-        //PROFILE PICTURE:
-        if chat.members?.count == 1 { //Only 1 member
-            cell.chatCover.sd_setImage(with: URL(string: EduChat.currentUser?.UserProfilePictureURL ?? "")) //sets image to user's picture
-        }
-        else if chat.members?.count == 2 { //Private Chat
-            cell.chatCover.sd_setImage(with: URL(string: chat.members?.first(where: {$0.UserId != EduChat.currentUser?.UserId})?.User?.UserProfilePictureURL ?? ""))
-            // ^ finds first member that is not current user and sets picture to theirs
-        }
-        else { // Group Chat
-            cell.chatCover.image = UIImage(named: "pengu")
-            // ^ will be replaced with group chat icon when made
-        }
-        
-        // CHAT NAME:
-        if chat.members?.count == 1 { // 1 member
-            cell.chatLabel.text = "Lonely Chat"
-        }
-        else if chat.members?.count == 2 { // private chat
-            cell.chatLabel.text = chat.members?.first(where: {$0.UserId != EduChat.currentUser?.UserId})?.User?.UserName
-
-        }
-        else { //Group Chat
-            cell.chatLabel.text = chat.chatName ?? "Group Chat"
-            
-        }
-        
-        
-        return cell
-        
+        guard let cell = self.chatTable.dequeueReusableCell(withIdentifier: "chatListCell", for: indexPath) as? ChatListCell else { return UITableViewCell() } //gets cell as ChatListCell, on fail just return
+        let chat = self.chatListContent.sorted(by: {$0.lastModified?.toDate().compare($1.lastModified?.toDate() ?? Date()) == .orderedDescending})[indexPath.row] //Get the chat from our list, sorted by most recently modified
+        cell.configureWithItem(chat: chat) //Calls the cell configure method
+        return cell //return the modified cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = storyboard?.instantiateViewController(withIdentifier: "ChatView") as! Chat_View
-        vc.currentChat = self.chatListContent[indexPath.row] as? Chat
-        self.navigationController?.pushViewController(vc, animated: true)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ChatView") as! Chat_View //gets the view controller
+        vc.currentChat = self.chatListContent.sorted(by: {$0.lastModified?.toDate().compare($1.lastModified?.toDate() ?? Date()) == .orderedDescending})[indexPath.row] //Gets the chat from our list, sorted by most recently modified
+        self.navigationController?.pushViewController(vc, animated: true) //adds the view to the screen
     }
     
     

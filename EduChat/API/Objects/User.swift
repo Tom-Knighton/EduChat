@@ -48,7 +48,7 @@ public class User: Mappable, Codable {
         self.UserId <- map["userId"]; self.UserEmail <- map["userEmail"]; self.UserName <- map["userName"]; self.UserFullName <- map["userFullName"]
         self.UserProfilePictureURL <- map["userProfilePictureURL"]; self.UserSchool <- map["userSchool"]; self.UserGender <- map["userGender"]; self.UserDOB <- map["userDOB"]
         self.IsModerator <- map["isModerator"]; self.IsAdmin <- map["isAdmin"]; self.IsDeleted <- map["isDeleted"]; self.UserPassHash <- map["userPassHash"]; self.Subjects <- map["subjects"]
-        self.Friendships <- map["friendships"]
+        self.Friendships <- map["friendships"]; self.Chats <- map["chats"]
         //Mapping function, as json will return result in camelCase rather than CamelCase
     }
     

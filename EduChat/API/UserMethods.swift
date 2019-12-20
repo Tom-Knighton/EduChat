@@ -24,6 +24,13 @@ public class UserMethods {
             else { completion(usr, nil) }
         }
     }
+    static func GetUserByUsername(username: String, completion: @escaping(User?, Error?) -> ()) { //Creates a method that can return a user or an error
+        Alamofire.request(URLBASE+"GetUserByUsername/\(username)", method: .get).responseObject { (response: DataResponse<User>) in
+            let usr = response.result.value ?? nil
+            if usr == nil { completion(nil, Errors.NotFound)}
+            else { completion(usr, nil) }
+        }
+    }
     
     static func AuthenticateUser(usr: AuthenticatingUser, completion: ((User?, Error?) -> ())?) {
         let payload : Data = try! JSONEncoder().encode(usr) //Encodes the AuthenticatingUser object to JSON

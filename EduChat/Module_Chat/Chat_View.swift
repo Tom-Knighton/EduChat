@@ -283,12 +283,9 @@ extension Chat_View : InputBarAccessoryViewDelegate, UIImagePickerControllerDele
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) { //Hooks into text bars send button
         if (text.trim() != "" && text.trim() != " ") {
-            let msg = ChatMessage(chatid: self.currentChat?.chatId ?? 0, userid: EduChat.currentUser?.UserId ?? 0, messageType: 1, messageText: text.trim(), dateCreated: Date())
             // ^ Creates text object with text entered
+            let msg = ChatMessage(chatid: self.currentChat?.chatId ?? 0, userid: EduChat.currentUser?.UserId ?? 0, messageType: 1, messageText: text.trim(), dateCreated: Date().toString())
             msg?.User = EduChat.currentUser //Sets the message's user to the current one
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MM-yyyy"
-            msg?.DateCreated = (dateFormatter.date(from: Date().toString(dateFormat: "yyyy-MM-ddTHH-mm-ss.SSSSz"))) //^ Formats current date to MysqL format
             ChatMethods.AddNewMessageToChat(chatid: self.currentChat?.chatId ?? 0, message: msg!) { (success, returnMsg) in //Cals AddNewMessage endpoint
                 if success == false { print("error") } //if fails, print error
                 else { MainHost.chatConnection.sendMessage(senderId: EduChat.currentUser?.UserId ?? 0, groupToSendTo: self.currentChat?.getGroupNameForSignalR() ?? "", messageId: returnMsg?.MessageId ?? 0)} //Else, call our SignalR function
@@ -300,11 +297,9 @@ extension Chat_View : InputBarAccessoryViewDelegate, UIImagePickerControllerDele
                 switch (attachment) { //The attachment object is a 'struct' so we switch through possible types
                 case .image(let image): //If it is an image
                     ChatMethods.UploadChatAttachment(chatId: self.currentChat?.chatId ?? 0, img: image) { (url) in //Uploads image
-                        let msg = ChatMessage(chatid: self.currentChat?.chatId ?? 0, userid: EduChat.currentUser?.UserId ?? 0, messageType: 2, messageText: url ?? "", dateCreated: Date())
+                       
+                        let msg = ChatMessage(chatid: self.currentChat?.chatId ?? 0, userid: EduChat.currentUser?.UserId ?? 0, messageType: 2, messageText: url ?? "", dateCreated: Date().toString())
                         msg?.User = EduChat.currentUser //Sets the message's user to the current one
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "dd-MM-yyyy"
-                        msg?.DateCreated = (dateFormatter.date(from: Date().toString(dateFormat: "yyyy-MM-ddTHH-mm-ss.SSSSz")))
                         // ^ After the new URL is returned, create a new message object, attach the date and user
                         ChatMethods.AddNewMessageToChat(chatid: self.currentChat?.chatId ?? 0, message: msg!, completion: { (success, returnMsg) in
                             if success == false { print("error") } //<^ Sends off message to API, if there is an error print it

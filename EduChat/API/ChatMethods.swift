@@ -61,6 +61,17 @@ public class ChatMethods {
         }
     }
     
+    static func CreateNewChat(chat: Chat, completion: ((Chat?) -> ())?) {
+        let payload : Data = try! JSONEncoder().encode(chat)
+        let dataString = String(data: payload, encoding: String.Encoding.utf8)
+        let params = convertToDictionary(text: dataString)
+        Alamofire.request(URLBASE+"CreateNewChat", method: .post, parameters: params, encoding: JSONEncoding.default).responseObject { (response: DataResponse<Chat>) in
+            if response.response?.statusCode == 200 {
+                completion?(response.value)
+            }
+            else { completion?(nil) }
+        }
+    }
     
     static func UploadChatAttachment(chatId: Int, img: UIImage?, completion: ((String?) -> ())?) {
         Alamofire.upload(multipartFormData: { (MultipartFormData) in //Creates mutipartFormData request

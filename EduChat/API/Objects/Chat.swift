@@ -16,12 +16,15 @@ public class Chat: Mappable, Codable {
     var isProtected : Bool?
     var isPublic : Bool?
     var isDeleted : Bool?
-    
+    var dateCreated : String?
     var members : [ChatMember]?
+    var memberIds : [Int]?
+    var lastMessage : ChatMessage?
+    var lastModified : String?
     
-    public init?(chatId: Int, chatName: String, isProtected: Bool, isPublic: Bool, isDeleted: Bool) {
+    public init?(chatId: Int, chatName: String, isProtected: Bool, isPublic: Bool, isDeleted: Bool, dateCreated: String) {
         self.chatId = chatId; self.chatName = chatName; self.isProtected = isProtected;
-        self.isPublic = isPublic; self.isDeleted = isDeleted;
+        self.isPublic = isPublic; self.isDeleted = isDeleted; self.dateCreated = dateCreated
     }
     required public init?(map: Map) {}
     
@@ -29,6 +32,9 @@ public class Chat: Mappable, Codable {
         self.chatId <- map["chatId"]; self.chatName <- map["chatName"]
         self.isProtected <- map["isProtected"]; self.isPublic <- map["isPublic"]
         self.isDeleted <- map["isDeleted"]; self.members <- map["members"]
+        self.memberIds <- map["memberIds"]; self.dateCreated <- map["dateCreated"]
+        self.lastMessage <- map["lastMessage"]
+        self.lastModified = self.lastMessage == nil ? self.dateCreated : self.lastMessage?.DateCreated
     }
 }
 

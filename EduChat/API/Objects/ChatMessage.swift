@@ -18,12 +18,12 @@ class ChatMessage : Mappable, Codable {
     var MessageType : Int?
     var MessageText : String?
     var HasBeenEdited : Bool?
-    var DateCreated : Date?
+    var DateCreated : String?
     var IsDeleted : Bool?
     var User : User?
     
     
-    public init? (chatid: Int, userid: Int, messageType: Int, messageText: String, dateCreated: Date) {
+    public init? (chatid: Int, userid: Int, messageType: Int, messageText: String, dateCreated: String) {
         self.MessageId = 0; self.HasBeenEdited = false; self.IsDeleted = false;
         self.ChatId = chatid; self.UserId = userid; self.MessageType = messageType; self.MessageText = messageText; self.DateCreated = dateCreated;
     }
@@ -47,7 +47,11 @@ extension ChatMessage : MessageType {
     }
     
     var sentDate: Date {
-        return self.DateCreated ?? Date() //date created
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        let date = dateFormatter.date(from: self.DateCreated ?? "")!
+        return date
     }
     
     var kind: MessageKind {

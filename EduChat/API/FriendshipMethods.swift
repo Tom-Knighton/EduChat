@@ -58,9 +58,16 @@ public class FriendshipMethods {
         
         Alamofire.request(URLBASE+"CreateFriendship", method: .post, parameters: params, encoding: JSONEncoding.default).responseObject { (response: DataResponse<Friendship>) in
             if response.response?.statusCode == 200 {
-                completion?(response.result.value)
+                completion?(response.result.value); return;
             }
             completion?(nil)
+        }
+    }
+    
+    static func RemoveFriendship(userid1: Int, userid2: Int, completion: ((Int?) -> ())?) {
+        Alamofire.request(URLBASE+"RemoveFriendship/\(userid1)/\(userid2)").responseString { (response) in
+            let userid = Int(response.result.value ?? "") ?? 0
+            completion?(userid)
         }
     }
     

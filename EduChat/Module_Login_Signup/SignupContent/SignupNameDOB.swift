@@ -72,7 +72,7 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
             SignUp_Host.signupVars.name = self.nameField.text!.trim() //Sets user full name to input name
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MM-yyyy"
-            SignUp_Host.signupVars.DOB = (dateFormatter.date(from: self.dobField.text!.trim())?.toString(dateFormat: "yyyy-MM-ddTHH-mm-ss.SSSSz"))!
+            SignUp_Host.signupVars.DOB = (dateFormatter.date(from: self.dobField.text!.trim())?.toString())!
             // ^ above lines format date entered into a valid C# date
             SignUp_Host.signupVars.gender = self.genderField.text!.trim() //sets gender
             self.lockAndDisplayActivityIndicator(enable: false) //enables interaction

@@ -49,6 +49,34 @@ extension String {
     {
         return self.trimmingCharacters(in: CharacterSet.whitespaces)
     }
+    
+    func toDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        dateFormatter.timeZone = TimeZone.current
+        dateFormatter.locale = Locale.current
+        return dateFormatter.date(from: self) ?? Date() // replace Date String
+    }
+}
+
+class ScaledHeightImageView: UIImageView {
+    
+    override var intrinsicContentSize: CGSize {
+        
+        if let myImage = self.image {
+            let myImageWidth = myImage.size.width
+            let myImageHeight = myImage.size.height
+            let myViewWidth = self.frame.size.width
+            
+            let ratio = myViewWidth/myImageWidth
+            let scaledHeight = myImageHeight * ratio
+            
+            return CGSize(width: myViewWidth, height: scaledHeight)
+        }
+        
+        return CGSize(width: -1.0, height: -1.0)
+    }
+    
 }
 
 extension UIViewController {
@@ -144,11 +172,12 @@ extension UIApplication {
 
 extension Date
 {
-    func toString( dateFormat format  : String ) -> String
+    func toString() -> String
     {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = format
-        return dateFormatter.string(from: self)
+        let date = self //The current date
+        let format = DateFormatter() //
+        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return format.string(from: date)
     }
     
 }
