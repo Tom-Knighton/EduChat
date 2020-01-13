@@ -10,7 +10,6 @@ target 'EduChat' do
   pod 'Alamofire', '4.8.1'
   pod 'AlamofireObjectMapper', '5.2'
   pod 'CryptoSwift'
-  pod 'Pastel'
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/kenmueller/Chameleon.git'
   pod 'SkyFloatingLabelTextField'
   pod 'TOCropViewController'
@@ -23,5 +22,9 @@ target 'EduChat' do
   pod 'MessageKit', :git => 'https://github.com/MessageKit/MessageKit.git',  :branch => '3.0.0-swift5'
   pod 'SwiftyGif', '5.1.1'
   pod 'Agrume'
-  pod 'PinterestSegment'
+  pod 'SwiftyJSON'
+  pod 'Lightbox'
+  pod 'Loaf', '~> 0.5'
+  pod 'ListPlaceholder'
+  pod 'HGPlaceholders'
 end

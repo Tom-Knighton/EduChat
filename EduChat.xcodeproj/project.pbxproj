@@ -29,6 +29,8 @@
 		E249D5B3231EE91E00E90DB3 /* Profile_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249D5B2231EE91E00E90DB3 /* Profile_Host.swift */; };
 		E24F0CD62322D3300007B247 /* Chat_Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F0CD52322D3300007B247 /* Chat_Signal.swift */; };
 		E2552955232C38E9009714D9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2552954232C38E9009714D9 /* ChatMessage.swift */; };
+		E256D29923CC6DF800A7F43A /* EduChat+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E256D29823CC6DF800A7F43A /* EduChat+UITextView.swift */; };
+		E25AC71B23CC6892002E3DB1 /* FeedCreateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25AC71A23CC6892002E3DB1 /* FeedCreateController.swift */; };
 		E25B717923116BF900393E22 /* SubjectPickerSignup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25B717823116BF900393E22 /* SubjectPickerSignup.swift */; };
 		E25B717B23116E6F00393E22 /* Subject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25B717A23116E6F00393E22 /* Subject.swift */; };
 		E25B717D23116E6F00393E22 /* SubjectMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25B717C23116E6F00393E22 /* SubjectMethods.swift */; };
@@ -36,10 +38,14 @@
 		E25D565E23A11B08005A8750 /* ChatCreateUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25D565D23A11B08005A8750 /* ChatCreateUserCell.swift */; };
 		E25DE506233118B0007829E1 /* Chat_View.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DE505233118B0007829E1 /* Chat_View.swift */; };
 		E25DF8CF238D6F390058A8A1 /* MediaItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF8CE238D6F390058A8A1 /* MediaItems.swift */; };
+		E25E613823BBA69400943EC6 /* FeedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E613723BBA69400943EC6 /* FeedPost.swift */; };
+		E25E613A23BBAB8000943EC6 /* FeedMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E613923BBAB8000943EC6 /* FeedMethods.swift */; };
 		E2656D31231FA2FB00D791F7 /* Profile_Subject_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D30231FA2FB00D791F7 /* Profile_Subject_Cell.swift */; };
 		E2656D35231FCEFD00D791F7 /* Settings_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D34231FCEFD00D791F7 /* Settings_Controller.swift */; };
 		E2656D39231FD33E00D791F7 /* Settings_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D38231FD33E00D791F7 /* Settings_Host.swift */; };
 		E2656D3B232027C400D791F7 /* Settings_Profile_Pic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D3A232027C400D791F7 /* Settings_Profile_Pic.swift */; };
+		E27040C723C60E380063C53B /* FeedCommentsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27040C623C60E380063C53B /* FeedCommentsTable.swift */; };
+		E27040C923C60E580063C53B /* FeedCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27040C823C60E580063C53B /* FeedCommentsCell.swift */; };
 		E2746E2A23A8DF52008CD3E2 /* FeedMainTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2746E2923A8DF52008CD3E2 /* FeedMainTable.swift */; };
 		E2746E3223A8E6C8008CD3E2 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2746E3023A8E6C8008CD3E2 /* Feed.storyboard */; };
 		E2772B5B2317DCEF00579233 /* MainScreensController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2772B5A2317DCEF00579233 /* MainScreensController.swift */; };
@@ -67,6 +73,7 @@
 		E2D0E17D230EC6F30087F551 /* MainHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0E17C230EC6F30087F551 /* MainHost.swift */; };
 		E2DDC41223128813002844F3 /* EduChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDC41123128813002844F3 /* EduChat.swift */; };
 		E2DDC4142312E968002844F3 /* zeroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDC4132312E968002844F3 /* zeroPage.swift */; };
+		E2EE3D9123CB4DDF00B2B543 /* PinterestSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE3D9023CB4DDF00B2B543 /* PinterestSegment.swift */; };
 		E2F2E6B2230607D900376FB8 /* Profile_Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2E6B1230607D900376FB8 /* Profile_Content.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +104,8 @@
 		E249D5B2231EE91E00E90DB3 /* Profile_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Host.swift; sourceTree = "<group>"; };
 		E24F0CD52322D3300007B247 /* Chat_Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_Signal.swift; sourceTree = "<group>"; };
 		E2552954232C38E9009714D9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		E256D29823CC6DF800A7F43A /* EduChat+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UITextView.swift"; sourceTree = "<group>"; };
+		E25AC71A23CC6892002E3DB1 /* FeedCreateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCreateController.swift; sourceTree = "<group>"; };
 		E25B717823116BF900393E22 /* SubjectPickerSignup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectPickerSignup.swift; sourceTree = "<group>"; };
 		E25B717A23116E6F00393E22 /* Subject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subject.swift; sourceTree = "<group>"; };
 		E25B717C23116E6F00393E22 /* SubjectMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectMethods.swift; sourceTree = "<group>"; };
@@ -104,10 +113,14 @@
 		E25D565D23A11B08005A8750 /* ChatCreateUserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCreateUserCell.swift; sourceTree = "<group>"; };
 		E25DE505233118B0007829E1 /* Chat_View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_View.swift; sourceTree = "<group>"; };
 		E25DF8CE238D6F390058A8A1 /* MediaItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItems.swift; sourceTree = "<group>"; };
+		E25E613723BBA69400943EC6 /* FeedPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPost.swift; sourceTree = "<group>"; };
+		E25E613923BBAB8000943EC6 /* FeedMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedMethods.swift; path = Objects/FeedMethods.swift; sourceTree = "<group>"; };
 		E2656D30231FA2FB00D791F7 /* Profile_Subject_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Subject_Cell.swift; sourceTree = "<group>"; };
 		E2656D34231FCEFD00D791F7 /* Settings_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_Controller.swift; sourceTree = "<group>"; };
 		E2656D38231FD33E00D791F7 /* Settings_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_Host.swift; sourceTree = "<group>"; };
 		E2656D3A232027C400D791F7 /* Settings_Profile_Pic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_Profile_Pic.swift; sourceTree = "<group>"; };
+		E27040C623C60E380063C53B /* FeedCommentsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsTable.swift; sourceTree = "<group>"; };
+		E27040C823C60E580063C53B /* FeedCommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsCell.swift; sourceTree = "<group>"; };
 		E2746E2923A8DF52008CD3E2 /* FeedMainTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedMainTable.swift; sourceTree = "<group>"; };
 		E2746E3123A8E6C8008CD3E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Feed.storyboard; sourceTree = "<group>"; };
 		E2772B5A2317DCEF00579233 /* MainScreensController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreensController.swift; sourceTree = "<group>"; };
@@ -135,6 +148,7 @@
 		E2D0E17C230EC6F30087F551 /* MainHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHost.swift; sourceTree = "<group>"; };
 		E2DDC41123128813002844F3 /* EduChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EduChat.swift; sourceTree = "<group>"; };
 		E2DDC4132312E968002844F3 /* zeroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zeroPage.swift; sourceTree = "<group>"; };
+		E2EE3D9023CB4DDF00B2B543 /* PinterestSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestSegment.swift; sourceTree = "<group>"; };
 		E2F2E6B1230607D900376FB8 /* Profile_Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Content.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				E227CC6623A91E7100D0BDDA /* FeedPostContentCell.swift */,
+				E27040C823C60E580063C53B /* FeedCommentsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +242,14 @@
 			path = Module_Chat;
 			sourceTree = "<group>";
 		};
+		E256D29723CC6DE400A7F43A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E256D29823CC6DF800A7F43A /* EduChat+UITextView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E2656D32231FCEE100D791F7 /* Subjects */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,6 +274,8 @@
 			children = (
 				E227CC6523A91E4C00D0BDDA /* Views */,
 				E2746E2923A8DF52008CD3E2 /* FeedMainTable.swift */,
+				E27040C623C60E380063C53B /* FeedCommentsTable.swift */,
+				E25AC71A23CC6892002E3DB1 /* FeedCreateController.swift */,
 			);
 			path = Module_Feed;
 			sourceTree = "<group>";
@@ -280,6 +305,8 @@
 		E291555923006DD600524EC1 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				E256D29723CC6DE400A7F43A /* Extensions */,
+				E2EE3D9023CB4DDF00B2B543 /* PinterestSegment.swift */,
 				E249D5AF231EC7B200E90DB3 /* Models */,
 				E2CB18DD2301BB75009517DD /* Fonts */,
 				E291555A23006DE300524EC1 /* Extensions.swift */,
@@ -310,6 +337,7 @@
 				E25B717C23116E6F00393E22 /* SubjectMethods.swift */,
 				E23ACAF92326885900A97BCC /* ChatMethods.swift */,
 				E2B20AB7239BF0C9005BCF9C /* FriendshipMethods.swift */,
+				E25E613923BBAB8000943EC6 /* FeedMethods.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -324,6 +352,7 @@
 				E293003623266B9D00F94F46 /* ChatMember.swift */,
 				E2552954232C38E9009714D9 /* ChatMessage.swift */,
 				E2B20AB5239BEF5D005BCF9C /* Friendship.swift */,
+				E25E613723BBA69400943EC6 /* FeedPost.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -489,17 +518,22 @@
 				E2930033232669BE00F94F46 /* ChatListCell.swift in Sources */,
 				E2B20AB1239AE531005BCF9C /* Chat_Friends.swift in Sources */,
 				E293003723266B9D00F94F46 /* ChatMember.swift in Sources */,
+				E25E613823BBA69400943EC6 /* FeedPost.swift in Sources */,
 				E2BA8A7522FF0529003B9F93 /* User.swift in Sources */,
 				E2656D31231FA2FB00D791F7 /* Profile_Subject_Cell.swift in Sources */,
 				E2B20AB4239AE5B2005BCF9C /* ChatFriendsCell.swift in Sources */,
 				E23ACAFA2326885900A97BCC /* ChatMethods.swift in Sources */,
 				E2CB18F92302B811009517DD /* SignUp_Host.swift in Sources */,
 				E25D565E23A11B08005A8750 /* ChatCreateUserCell.swift in Sources */,
+				E2EE3D9123CB4DDF00B2B543 /* PinterestSegment.swift in Sources */,
+				E25E613A23BBAB8000943EC6 /* FeedMethods.swift in Sources */,
 				E2CB18DC23018FC0009517DD /* Login_Host.swift in Sources */,
+				E27040C923C60E580063C53B /* FeedCommentsCell.swift in Sources */,
 				E291555B23006DE300524EC1 /* Extensions.swift in Sources */,
 				E2DDC4142312E968002844F3 /* zeroPage.swift in Sources */,
 				E2030E9922FEFBE600932345 /* ViewController.swift in Sources */,
 				E25D565C23A11974005A8750 /* Chat_Create.swift in Sources */,
+				E27040C723C60E380063C53B /* FeedCommentsTable.swift in Sources */,
 				E29300312326698A00F94F46 /* ChatListContent.swift in Sources */,
 				E2656D3B232027C400D791F7 /* Settings_Profile_Pic.swift in Sources */,
 				E2B20AB8239BF0C9005BCF9C /* FriendshipMethods.swift in Sources */,
@@ -524,6 +558,8 @@
 				E2F2E6B2230607D900376FB8 /* Profile_Content.swift in Sources */,
 				E25DE506233118B0007829E1 /* Chat_View.swift in Sources */,
 				E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */,
+				E25AC71B23CC6892002E3DB1 /* FeedCreateController.swift in Sources */,
+				E256D29923CC6DF800A7F43A /* EduChat+UITextView.swift in Sources */,
 				E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */,
 				E24F0CD62322D3300007B247 /* Chat_Signal.swift in Sources */,
 				E28EE1462303173800161EB4 /* SignupFinish.swift in Sources */,
@@ -688,7 +724,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H3J46CN24;
 				INFOPLIST_FILE = EduChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -708,7 +744,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8H3J46CN24;
 				INFOPLIST_FILE = EduChat/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -17,5 +17,22 @@ class Profile_Subject_Cell: UITableViewCell {
 
     @IBOutlet weak var toggle: UISwitch!
     @IBOutlet weak var subjectLabel: UILabel!
+    var subject : Subject?
+    var subjectManagerDelegate : SubjectManagerDelegate?
+    
+    func configureCellWithItem(subject: Subject) {
+        self.subject = subject
+        if EduChat.currentUser?.Subjects?.contains(subject) ?? false {
+            self.toggle.setOn(true, animated: false)
+        }
+        else { self.toggle.setOn(false, animated: false) }
+        self.subjectLabel.text = subject.SubjectName ?? ""
+        
+    }
+    
+    @IBAction func switchToggled(_ sender: UISwitch) {
+        self.subjectManagerDelegate?.subjectToggled(toggled: sender.isOn, sub: self.subject ?? nil)
+    }
+    
     
 }

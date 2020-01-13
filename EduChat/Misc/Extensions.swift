@@ -12,6 +12,7 @@ import CryptoSwift
 import Magnetic
 import Alamofire
 
+
 extension String {
     var toBool : Bool {
         return NSString(string: self).boolValue
@@ -56,6 +57,71 @@ extension String {
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.locale = Locale.current
         return dateFormatter.date(from: self) ?? Date() // replace Date String
+    }
+    
+    var glyphCount: Int {
+        let richText = NSAttributedString(string: self)
+        let line = CTLineCreateWithAttributedString(richText)
+        return CTLineGetGlyphCount(line)
+    }
+    
+    var isSingleEmoji: Bool {
+        return glyphCount == 1 && containsEmoji
+    }
+    
+    var containsEmoji: Bool {
+        return unicodeScalars.contains { $0.isEmoji }
+    }
+    
+    var containsOnlyEmoji: Bool {
+        return !isEmpty
+            && !unicodeScalars.contains(where: {
+                !$0.isEmoji && !$0.isZeroWidthJoiner
+            })
+    }
+    
+    // The next tricks are mostly to demonstrate how tricky it can be to determine emoji's
+    // If anyone has suggestions how to improve this, please let me know
+    var emojiString: String {
+        return emojiScalars.map { String($0) }.reduce("", +)
+    }
+    
+    var emojis: [String] {
+        var scalars: [[UnicodeScalar]] = []
+        var currentScalarSet: [UnicodeScalar] = []
+        var previousScalar: UnicodeScalar?
+        
+        for scalar in emojiScalars {
+            if let prev = previousScalar, !prev.isZeroWidthJoiner, !scalar.isZeroWidthJoiner {
+                scalars.append(currentScalarSet)
+                currentScalarSet = []
+            }
+            currentScalarSet.append(scalar)
+            
+            previousScalar = scalar
+        }
+        
+        scalars.append(currentScalarSet)
+        
+        return scalars.map { $0.map { String($0) }.reduce("", +) }
+    }
+    
+    fileprivate var emojiScalars: [UnicodeScalar] {
+        var chars: [UnicodeScalar] = []
+        var previous: UnicodeScalar?
+        for cur in unicodeScalars {
+            if let previous = previous, previous.isZeroWidthJoiner, cur.isEmoji {
+                chars.append(previous)
+                chars.append(cur)
+                
+            } else if cur.isEmoji {
+                chars.append(cur)
+            }
+            
+            previous = cur
+        }
+        
+        return chars
     }
 }
 
@@ -180,6 +246,40 @@ extension Date
         return format.string(from: date)
     }
     
+    var timeAgoSinceNow: String {
+        return getTimeAgoSinceNow()
+    }
+    
+    private func getTimeAgoSinceNow() -> String {
+        
+        var interval = Calendar.current.dateComponents([.year], from: self, to: Date()).year!
+        if interval > 0 {
+            return interval == 1 ? "\(interval)" + " year ago" : "\(interval)" + " years ago"
+        }
+        
+        interval = Calendar.current.dateComponents([.month], from: self, to: Date()).month!
+        if interval > 0 {
+            return interval == 1 ? "\(interval)" + " month ago" : "\(interval)" + " months ago"
+        }
+        
+        interval = Calendar.current.dateComponents([.day], from: self, to: Date()).day!
+        if interval > 0 {
+            return interval == 1 ? "\(interval)" + " day ago" : "\(interval)" + " days ago"
+        }
+        
+        interval = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour!
+        if interval > 0 {
+            return interval == 1 ? "\(interval)" + " hour ago" : "\(interval)" + " hours ago"
+        }
+        
+        interval = Calendar.current.dateComponents([.minute], from: self, to: Date()).minute!
+        if interval > 0 {
+            return interval == 1 ? "\(interval)" + " minute ago" : "\(interval)" + " minutes ago"
+        }
+        
+        return "just now"
+    }
+    
 }
 
 
@@ -262,72 +362,43 @@ extension UnicodeScalar {
         return value == 8205
     }
 }
-extension String {
-    // Not needed anymore in swift 4.2 and later, using `.count` will give you the correct result
-    var glyphCount: Int {
-        let richText = NSAttributedString(string: self)
-        let line = CTLineCreateWithAttributedString(richText)
-        return CTLineGetGlyphCount(line)
-    }
-    
-    var isSingleEmoji: Bool {
-        return glyphCount == 1 && containsEmoji
-    }
-    
-    var containsEmoji: Bool {
-        return unicodeScalars.contains { $0.isEmoji }
-    }
-    
-    var containsOnlyEmoji: Bool {
-        return !isEmpty
-            && !unicodeScalars.contains(where: {
-                !$0.isEmoji && !$0.isZeroWidthJoiner
-            })
-    }
-    
-    // The next tricks are mostly to demonstrate how tricky it can be to determine emoji's
-    // If anyone has suggestions how to improve this, please let me know
-    var emojiString: String {
-        return emojiScalars.map { String($0) }.reduce("", +)
-    }
-    
-    var emojis: [String] {
-        var scalars: [[UnicodeScalar]] = []
-        var currentScalarSet: [UnicodeScalar] = []
-        var previousScalar: UnicodeScalar?
-        
-        for scalar in emojiScalars {
-            if let prev = previousScalar, !prev.isZeroWidthJoiner, !scalar.isZeroWidthJoiner {
-                scalars.append(currentScalarSet)
-                currentScalarSet = []
-            }
-            currentScalarSet.append(scalar)
+
+extension UITableView {
+    func scrollToBottomRow() {
+        DispatchQueue.main.async {
+            guard self.numberOfSections > 0 else { return }
             
-            previousScalar = scalar
-        }
-        
-        scalars.append(currentScalarSet)
-        
-        return scalars.map { $0.map { String($0) }.reduce("", +) }
-    }
-    
-    fileprivate var emojiScalars: [UnicodeScalar] {
-        var chars: [UnicodeScalar] = []
-        var previous: UnicodeScalar?
-        for cur in unicodeScalars {
-            if let previous = previous, previous.isZeroWidthJoiner, cur.isEmoji {
-                chars.append(previous)
-                chars.append(cur)
+            // Make an attempt to use the bottom-most section with at least one row
+            var section = max(self.numberOfSections - 1, 0)
+            var row = max(self.numberOfRows(inSection: section) - 1, 0)
+            var indexPath = IndexPath(row: row, section: section)
+            
+            // Ensure the index path is valid, otherwise use the section above (sections can
+            // contain 0 rows which leads to an invalid index path)
+            while !self.indexPathIsValid(indexPath) {
+                section = max(section - 1, 0)
+                row = max(self.numberOfRows(inSection: section) - 1, 0)
+                indexPath = IndexPath(row: row, section: section)
                 
-            } else if cur.isEmoji {
-                chars.append(cur)
+                // If we're down to the last section, attempt to use the first row
+                if indexPath.section == 0 {
+                    indexPath = IndexPath(row: 0, section: 0)
+                    break
+                }
             }
             
-            previous = cur
+            // In the case that [0, 0] is valid (perhaps no data source?), ensure we don't encounter an
+            // exception here
+            guard self.indexPathIsValid(indexPath) else { return }
+            
+            self.scrollToRow(at: indexPath, at: .bottom, animated: true)
         }
-        
-        return chars
+    }
+    
+    func indexPathIsValid(_ indexPath: IndexPath) -> Bool {
+        let section = indexPath.section
+        let row = indexPath.row
+        return section < self.numberOfSections && row < self.numberOfRows(inSection: section)
     }
 }
-
 

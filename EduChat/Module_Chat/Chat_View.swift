@@ -9,7 +9,8 @@
 import UIKit
 import MessageKit
 import InputBarAccessoryView
-import Agrume
+import Lightbox
+import Loaf
 
 class Chat_View: MessagesViewController {
     
@@ -127,21 +128,25 @@ class Chat_View: MessagesViewController {
             guard let indexPath = messagesCollectionView.indexPathForItem(at: touchLocation) else { return } //If the location is actually a message
             let msg = self.messages[indexPath.section] //Get the message from the touch point
             var alertText = "Select an option"; if msg.MessageType == 1 { alertText = alertText+": "+(msg.MessageText ?? "") } //Set the alert text
-            let alert = UIAlertController(title: "Message Options", message: alertText, preferredStyle: .alert) //Create the alert
+            let alert = UIAlertController(title: "Message Options", message: alertText, preferredStyle: .actionSheet) //Create the alert
 
             switch msg.MessageType { //Switch through each message type
             case 1: //text
                 alert.addAction(UIAlertAction(title: "Copy Text", style: .default, handler: { (_) in //adds copy text action
                     UIPasteboard.general.string = msg.MessageText ?? "" //sets the text to the clipboard
                     self.shouldRegisterLongPress = true //starts listening again
+                    Loaf("Message copied successfully!", state: .success, sender: UIApplication.topViewController()!).show()
+                    let generator = UINotificationFeedbackGenerator(); generator.notificationOccurred(.success)
                 }))
                 break;
             case 2: //image
                 alert.addAction(UIAlertAction(title: "View Image", style: .default, handler: { (_) in //adds view action
                     let img = UIImageView(); img.sd_setImage(with: URL(string: msg.MessageText ?? ""), completed: nil)
                     //^ Creates image view and sets image to the url
-                    let agrume = Agrume(image: img.image ?? UIImage(), background: .blurred(.regular)) //Creates full screen image view
-                    self.present(agrume, animated: true, completion: nil) //shows the image in full screen
+                    let imgs = [LightboxImage(image: img.image ?? UIImage())]
+                    let controller = LightboxController(images: imgs, startIndex: 0)
+                     //Creates full screen image view
+                    self.present(controller, animated: true, completion: nil) //shows the image in full screen
                     self.shouldRegisterLongPress = true //starts listening again
                 }))
                 alert.addAction(UIAlertAction(title: "Save Image", style: .default, handler: { (_) in //adds save action
@@ -399,8 +404,9 @@ extension Chat_View : UITextViewDelegate {
 extension Chat_View : MessagesLayoutDelegate, MessagesDisplayDelegate, MessageCellDelegate {
     func didTapImage(in cell: MessageCollectionViewCell) {
         let c = cell as! MediaMessageCell
-        let agrume = Agrume(image: c.imageView.image ?? UIImage(), background: .blurred(.regular))
-        self.present(agrume, animated: true, completion: nil)
+        let imgs = [LightboxImage(image: c.imageView.image ?? UIImage())]
+        let controller = LightboxController(images: imgs, startIndex: 0)
+        self.present(controller, animated: true, completion: nil)
     }
     
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Pastel
 import ChameleonFramework
 
 class Login_Host: UIViewController {

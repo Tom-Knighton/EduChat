@@ -6,24 +6,30 @@ PODS:
   - AlamofireObjectMapper (5.2.0):
     - Alamofire (~> 4.7)
     - ObjectMapper (~> 3.4)
+  - Cache (5.2.0)
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - CryptoSwift (1.0.0)
+  - HGPlaceholders (0.4.0)
   - IGListKit (3.4.0):
     - IGListKit/Default (= 3.4.0)
   - IGListKit/Default (3.4.0):
     - IGListKit/Diffing
   - IGListKit/Diffing (3.4.0)
+  - Imaginary (4.2.0):
+    - Cache (~> 5.0)
   - InputBarAccessoryView (4.3.1):
     - InputBarAccessoryView/Core (= 4.3.1)
   - InputBarAccessoryView/Core (4.3.1)
+  - Lightbox (2.3.0):
+    - Imaginary (~> 4.0)
+  - ListPlaceholder (1.4)
+  - Loaf (0.5.0)
   - Magnetic (3.1.0)
   - MessageKit (3.1.0):
     - InputBarAccessoryView (~> 4.3.0)
   - ObjectMapper (3.5.1)
-  - Pastel (0.6.0)
-  - PinterestSegment (1.2.3)
   - SDWebImage (5.1.1):
     - SDWebImage/Core (= 5.1.1)
   - SDWebImage/Core (5.1.1)
@@ -31,6 +37,7 @@ PODS:
   - SkyFloatingLabelTextField (3.7.0)
   - SwiftSignalRClient (0.6.2)
   - SwiftyGif (5.1.1)
+  - SwiftyJSON (5.0.0)
   - TOCropViewController (2.5.1)
 
 DEPENDENCIES:
@@ -40,16 +47,19 @@ DEPENDENCIES:
   - AlamofireObjectMapper (= 5.2)
   - ChameleonFramework/Swift (from `https://github.com/kenmueller/Chameleon.git`)
   - CryptoSwift
+  - HGPlaceholders
   - IGListKit
+  - Lightbox
+  - ListPlaceholder
+  - Loaf (~> 0.5)
   - Magnetic (from `https://github.com/TomKicloud/Magnetic.git`)
   - MessageKit (from `https://github.com/MessageKit/MessageKit.git`, branch `3.0.0-swift5`)
-  - Pastel
-  - PinterestSegment
   - SDWebImage
   - ShadowView
   - SkyFloatingLabelTextField
   - SwiftSignalRClient
   - SwiftyGif (= 5.1.1)
+  - SwiftyJSON
   - TOCropViewController
 
 SPEC REPOS:
@@ -58,17 +68,22 @@ SPEC REPOS:
     - Agrume
     - Alamofire
     - AlamofireObjectMapper
+    - Cache
     - CryptoSwift
+    - HGPlaceholders
     - IGListKit
+    - Imaginary
     - InputBarAccessoryView
+    - Lightbox
+    - ListPlaceholder
+    - Loaf
     - ObjectMapper
-    - Pastel
-    - PinterestSegment
     - SDWebImage
     - ShadowView
     - SkyFloatingLabelTextField
     - SwiftSignalRClient
     - SwiftyGif
+    - SwiftyJSON
     - TOCropViewController
 
 EXTERNAL SOURCES:
@@ -96,22 +111,27 @@ SPEC CHECKSUMS:
   Agrume: 171c1d1079324195c7ce04af4c7a66d86a9cf952
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   AlamofireObjectMapper: 92b6ce2423a9d159e686f6a1d514a009bf903ddc
+  Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CryptoSwift: d81eeaa59dc5a8d03720fe919a6fd07b51f7439f
+  HGPlaceholders: fd580aaf6050782bf2ee51eb62ed499ded6615b7
   IGListKit: 7a5d788e9fb746bcd402baa8e8b24bc3bd2a5a07
+  Imaginary: dae33d06dbc2ada22f98afef5eb45cc061311a2c
   InputBarAccessoryView: 58a348be7ea2736c7eec60e5c315511c2dbb39fd
+  Lightbox: d317750e4132bfb871a5307cfe0a2c7d6a583c65
+  ListPlaceholder: 08ddaddf67520a20fc52cf37160fb56aa64d071d
+  Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
   Magnetic: 93655c6d01bd75643b4329dfbcdd0733f95ee757
   MessageKit: 3beb578737a5aa2bba25cc27c7b6d6faa09af5a7
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
-  Pastel: 814f081efbe2859c37e65ee44f396e6e5be88619
-  PinterestSegment: 3dd673ffd9feb00dc7816bb1e503d70459e8eaa8
   SDWebImage: 96d7f03415ccb28d299d765f93557ff8a617abd8
   ShadowView: d2d92fd2706b3f6a182be2147149db0b1cf7700d
   SkyFloatingLabelTextField: 4b46db0ab1ccde0919cded29c656e6b4805eda04
   SwiftSignalRClient: c6a7341d28d58d65e820fff2680efb16b711e9be
   SwiftyGif: f7702483db93586a41f04f4927cd682852a2fa10
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   TOCropViewController: 00dc36c4e4a0f4a45efa91adbf22df8a4fae01d3
 
-PODFILE CHECKSUM: 6d56291d60fd033a22dde061939f881b4c002955
+PODFILE CHECKSUM: b68617903a94431666cd4a6d315913f20bf80040
 
 COCOAPODS: 1.7.5
