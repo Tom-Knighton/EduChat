@@ -118,6 +118,18 @@ public class ChatMethods {
         }
     }
     
+    static func ModifyChatName(chatid: Int, newName: String, completion: ((Chat?) -> ())?) {
+        Alamofire.request(URLBASE+"ModifyChatName/\(chatid)", method: .put, parameters: ["name":newName], encoding: JSONEncoding.default).responseObject { (response: DataResponse<Chat>) in
+            if response.response?.statusCode == 200 { completion?(response.result.value) }
+            else { completion?(nil) }
+        }
+    }
+    static func RemoveUserFromChat(userId: Int, chatId: Int, success: @escaping(Bool?) -> ()) {
+        Alamofire.request(URLBASE+"RemoveUserFromChat/\(chatId)/\(userId)", method: .put).response { (response) in
+            if response.response?.statusCode == 200 { success(true) }
+            else { success(false) }
+        }
+    }
     
     static func convertToDictionary(text: String?) -> [String: Any]? {
         if let data = text?.data(using: .utf8) {

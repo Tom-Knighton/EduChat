@@ -164,6 +164,18 @@ class Chat_View: MessagesViewController {
                     self.shouldRegisterLongPress = true //do nothing for now
                 }))
             }
+            else {
+                alert.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in //Adds view profile
+                    UserMethods.GetUserById(userid: msg.UserId ?? 0, completion: { (user, err) in //Gets msg user
+                        if let user = user { //if user is not nil
+                            guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
+                            vc.currentUser = user; //sets profile to currentUser
+                            UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+                            //^ Pushes view onto stack
+                        }
+                    })
+                }))
+            }
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (_) in //adds cancel action
                 self.shouldRegisterLongPress = true //do nothing and start listening
             }))

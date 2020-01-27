@@ -14,6 +14,8 @@ protocol FeedMainTableDelegate {
 
 class FeedMainTable: UITableViewController {
     
+    var selectedSubject = 1
+    
     lazy var segmentStyle : PinterestSegmentStyle = { [unowned self] in //Lazily creates a style object
         var style = PinterestSegmentStyle() //A lazy var only calls this object into memory when needed
         style.indicatorColor = UIColor(white: 0.95, alpha: 1) //Basic UI layout below
@@ -36,7 +38,6 @@ class FeedMainTable: UITableViewController {
         self.tableView.dataSource = self; self.tableView.delegate = self
         self.tableView.tableHeaderView = self.segment //Sets our header to the segment control
        
-        self.reloadAllData() //Gets our posts
         self.tableView.refreshControl = refresher
         self.refresher.addTarget(self, action: #selector(refreshPulled(_:)), for: .valueChanged)
         self.tableView.estimatedRowHeight = 444 //Random height
@@ -44,6 +45,14 @@ class FeedMainTable: UITableViewController {
         //^ resizes the cell depending on labels and heights of everything in cell
         self.createAddButton()
         segment.valueChange = { sId in self.changeSubject(subjectId: sId); }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        FeedMethods.GetAllPostsForSubject(subjectId: selectedSubject) { (newPosts) in
+            //^ Calls GetAllPostsForSubject with our new subjectid value from the picker
+            self.postsToDisplay = newPosts ?? [] //Sets the global array to the new posts
+            self.tableView.reloadData() //Reloads table
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -67,6 +76,16 @@ class FeedMainTable: UITableViewController {
             cell.feedDelegate = self
             return cell
         }
+        else if post is FeedPoll {
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "feedCellPollPost", for: indexPath) as? FeedPollCell else { return UITableViewCell() }
+            cell.populate(with: post as! FeedPoll)
+            return cell
+        }
+        else if post is FeedQuiz {
+            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "feedCellQuizPost", for: indexPath) as? FeedQuizCell else { return UITableViewCell() }
+            cell.populate(with: post as! FeedQuiz)
+            return cell
+        }
         else { return UITableViewCell() }
     }
     
@@ -79,6 +98,16 @@ extension FeedMainTable : FeedMainTableDelegate {
             self.postsToDisplay[index] = post
         } //^ And below get index of the post to be modified and replace it with the new post
         else if post is FeedMediaPost {
+            let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedMediaPost)?.PostId == (post as! FeedMediaPost).PostId}) ?? 0
+            self.postsToDisplay[index] = post
+        }
+        else if post is FeedPoll {
+            let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedMediaPost)?.PostId == (post as! FeedMediaPost).PostId}) ?? 0
+            self.postsToDisplay[index] = post
+            let indexPath = IndexPath(item: index, section: 0)
+            self.tableView.reloadRows(at: [indexPath], with: .none)
+        }
+        else if post is FeedQuiz {
             let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedMediaPost)?.PostId == (post as! FeedMediaPost).PostId}) ?? 0
             self.postsToDisplay[index] = post
         }
@@ -104,12 +133,24 @@ extension FeedMainTable {
     }
     
     @objc func createPostButtonPressed(_ sender: UIBarButtonItem) {
-        print("create pressed")
-        let vc = UIStoryboard(name: "Feed", bundle: nil).instantiateViewController(withIdentifier: "feedCreateView")
-        UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+        let alert = UIAlertController(title: "Upload Post", message: "Select which type of post to upload", preferredStyle: .alert)
+        //Asks user to uplaod post or quiz
+        alert.addAction(UIAlertAction(title: "Feed Post (Post/Poll)", style: .default, handler: { (_) in //On feed post
+            guard let vc = UIStoryboard(name: "Feed", bundle: nil).instantiateViewController(withIdentifier: "feedCreateView") as? FeedCreateController else { return; }
+            vc.selectedSubject = self.selectedSubject //^ Displays the feedCreateView in the view controller
+            UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Quiz", style: .default, handler: { (_) in //On quiz
+            guard let vc = UIStoryboard(name: "Feed", bundle: nil).instantiateViewController(withIdentifier: "feedCreateQuizView") as? FeedCreateQuizController else { return; }
+            vc.selectedSubject = self.selectedSubject //Displays the feedCreateQuizView in the view controller
+            UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil)) //cancel
+        self.present(alert, animated: true, completion: nil)
     }
     
     func changeSubject(subjectId: Int) {
+        self.selectedSubject = subjectId
         self.postsToDisplay = []; self.tableView.reloadData() //Wipes table
         FeedMethods.GetAllPostsForSubject(subjectId: subjectId) { (newPosts) in
             //^ Calls GetAllPostsForSubject with our new subjectid value from the picker

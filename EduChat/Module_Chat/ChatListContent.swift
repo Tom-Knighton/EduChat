@@ -10,6 +10,12 @@
 import UIKit
 import SDWebImage
 
+protocol ChatListDelegate {
+    func updateOrRefreshList()
+    func updateChat(chatId: Int, chat: Chat)
+}
+
+
 class ChatListContent: UIViewController {
 
     @IBOutlet weak var chatTable: UITableView!
@@ -72,6 +78,7 @@ extension ChatListContent : UITableViewDelegate, UITableViewDataSource {
         guard let cell = self.chatTable.dequeueReusableCell(withIdentifier: "chatListCell", for: indexPath) as? ChatListCell else { return UITableViewCell() } //gets cell as ChatListCell, on fail just return
         let chat = self.chatListContent.sorted(by: {$0.lastModified?.toDate().compare($1.lastModified?.toDate() ?? Date()) == .orderedDescending})[indexPath.row] //Get the chat from our list, sorted by most recently modified
         cell.configureWithItem(chat: chat) //Calls the cell configure method
+        cell.chatListDelegate = self
         return cell //return the modified cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,3 +89,17 @@ extension ChatListContent : UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+extension ChatListContent : ChatListDelegate {
+    func updateOrRefreshList() {
+        self.loadData()
+    }
+    
+    func updateChat(chatId: Int, chat: Chat) {
+        let index = self.chatListContent.firstIndex(where: {$0.chatId == chatId} )
+        self.chatListContent[index ?? 0] = chat
+        let indexPath = IndexPath(row: index ?? 0, section: 0)
+        self.chatTable.reloadRows(at: [indexPath], with: .fade)
+    }
+}
+

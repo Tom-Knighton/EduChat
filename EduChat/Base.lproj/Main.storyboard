@@ -395,7 +395,7 @@
         <!--User Profile Name-->
         <scene sceneID="fKh-YA-EXo">
             <objects>
-                <tableViewController id="IwO-Se-sfO" customClass="Profile_Content" customModule="EduChat" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="profileView" id="IwO-Se-sfO" customClass="Profile_Content" customModule="EduChat" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Izz-eM-5DA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -709,6 +709,8 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="friendsLabel" destination="vem-2I-Hr9" id="d40-NK-Sde"/>
+                        <outlet property="postsLabel" destination="Puz-8H-1i5" id="GFS-9p-WP5"/>
                         <outlet property="postsTable" destination="Izz-eM-5DA" id="QF6-Sq-V1g"/>
                         <outlet property="profileHeaderImage" destination="jen-tc-tvc" id="et9-ce-UdP"/>
                         <outlet property="profileHeaderName" destination="kVZ-yZ-y7g" id="Owo-Ij-G6J"/>

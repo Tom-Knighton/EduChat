@@ -20,6 +20,10 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Gives the app access to save downloaded images to the camera roll</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Gives the app access to upload images you select</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
@@ -30,6 +34,12 @@
 		<string>Montserrat-SemiBold.ttf</string>
 		<string>Montserrat-Light.ttf</string>
 		<string>Montserrat-Regular.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>fetch</string>
+		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -50,9 +60,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Gives the app access to save downloaded images to the camera roll</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Gives the app access to upload images you select</string>
 </dict>
 </plist>
