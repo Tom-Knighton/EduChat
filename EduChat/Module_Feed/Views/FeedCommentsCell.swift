@@ -25,7 +25,7 @@ class FeedCommentsCell: UITableViewCell {
         let fullComment = NSMutableAttributedString(string: (Comment.commenter?.UserName ?? "") + " ", attributes: [NSAttributedString.Key.font : UIFont(name: "Montserrat-Bold", size: 14) ?? UIFont()]) //Part of the mutable string made of the username
         fullComment.append(comment) //Adds the comment to the username
         self.comment.attributedText = fullComment //sets the label text to the fullComment
-        self.commenterImage.sd_setImage(with: URL(string: EduChat.currentUser?.UserProfilePictureURL ?? ""), completed: nil)
+        self.commenterImage.sd_setImage(with: URL(string: Comment.commenter?.UserProfilePictureURL ?? ""), completed: nil)
         // Sets the profile image to the user's profile image
         self.commentDetails.text = Comment.DatePosted?.toDate().timeAgoSinceNow //Sets the date ago label to the date ago posted
     }

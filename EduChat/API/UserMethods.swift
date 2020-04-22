@@ -129,6 +129,41 @@ public class UserMethods {
         }
     }
 
+    static func GetAllFeedPosts(for UserId: Int, completion: (([FeedPost?]) -> ())?) {
+        Alamofire.request(URLBASE+"GetAllPostsForUser/\(UserId)").responseJSON { (response) in
+            if let json = response.result.value as? [[String:Any]] {
+                var posts : [FeedPost?] = []
+                for child in json {
+                    if let type = child["postType"] as? String {
+                        switch(type){
+                        case "text":
+                            posts.append(FeedTextPost(JSON: child))
+                            break;
+                        case "media":
+                            posts.append(FeedMediaPost(JSON: child))
+                            break;
+                        case "poll":
+                            posts.append(FeedPoll(JSON: child))
+                        case "quiz":
+                            posts.append(FeedQuiz(JSON: child))
+                        default:
+                            break;
+                        }
+                    }
+                }
+                completion?(posts)
+            }
+        }
+    }
+    
+    static func UploadNewBio(for UserId: Int, bio: UserBio, completion: @escaping(String?) -> ()) {
+        let payload : Data = try! JSONEncoder().encode(bio)
+        let dataString = String(data: payload, encoding: String.Encoding.utf8)
+        let params = convertToDictionary(text: dataString)
+        Alamofire.request(URLBASE+"UploadNewBioForUser/\(UserId)", method: .post, parameters: params, encoding: JSONEncoding.default).responseString { (response) in
+            completion(response.value)
+        }
+    }
     
     static func convertToDictionary(text: String?) -> [String: Any]? {
         if let data = text?.data(using: .utf8) {

@@ -28,7 +28,7 @@ extension String {
         let password : Array<UInt8> = Array(self.utf8) // Converts string to an array of UInt8
         let hash : Array<UInt8> = Array("tYWbvhsGjuJvppzDiofv".utf8) //Secret 'salt' string
         
-        let key = try! PKCS5.PBKDF2(password: password, salt: hash).calculate() //Encrypts the password with the salt
+        let key = try! PKCS5.PBKDF2(password: password, salt: hash, keyLength: 64).calculate() //Encrypts the password with the salt
         return key.toBase64() ?? "" //returns the encrypted password as a string
     }
     
@@ -57,6 +57,14 @@ extension String {
         dateFormatter.timeZone = TimeZone.current
         dateFormatter.locale = Locale.current
         return dateFormatter.date(from: self) ?? Date() // replace Date String
+    }
+    func toSimpleDate() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        guard let date = dateFormatter.date(from: self) else { return self.toDate() }
+        return date
     }
     
     var glyphCount: Int {
@@ -196,17 +204,7 @@ extension UIViewController {
 }
 
 extension UIView {
-    func displayBasicError(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-         UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
-    }
-    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-        let mask = CAShapeLayer()
-        mask.path = path.cgPath
-        layer.mask = mask
-    }
+    
 }
 
 extension Array {
@@ -242,9 +240,10 @@ extension Date
     {
         let date = self //The current date
         let format = DateFormatter() //
-        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        format.dateFormat = "yyyy-MM-dd hh:mm:ss"
         return format.string(from: date)
     }
+    
     
     var timeAgoSinceNow: String {
         return getTimeAgoSinceNow()

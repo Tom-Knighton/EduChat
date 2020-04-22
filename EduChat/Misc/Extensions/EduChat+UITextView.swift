@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 @IBDesignable open class PlaceholderTextView: UITextView {
-    
     // MARK: - Private Properties
     
     private var placeholderAttributes: [NSAttributedString.Key: Any] {

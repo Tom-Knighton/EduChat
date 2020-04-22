@@ -39,9 +39,9 @@ class FeedCellTextPost: UITableViewCell {
         sheet.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in
             UserMethods.GetUserById(userid: self.post?.PosterId ?? 0, completion: { (user, err) in //Gets msg user
                 if let user = user { //if user is not nil
-                    guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
-                    vc.currentUser = user; //sets profile to currentUser
-                    UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+                   // guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
+                    //vc.currentUser = user; //sets profile to currentUser
+                    //UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
                     //^ Pushes view onto stack
                 }
             })
@@ -110,9 +110,9 @@ class FeedCellMediaPost: UITableViewCell {
         sheet.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in //View the profile
             UserMethods.GetUserById(userid: self.post?.PosterId ?? 0, completion: { (user, err) in //Gets msg user
                 if let user = user { //if user is not nil
-                    guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
-                    vc.currentUser = user; //sets profile to currentUser
-                    UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+                    //guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
+                    //vc.currentUser = user; //sets profile to currentUser
+                    //UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
                     //^ Pushes view onto stack
                 }
             })
@@ -131,7 +131,7 @@ class FeedCellMediaPost: UITableViewCell {
     }
     @IBAction func likeButtonPressed(_ sender: UIButton) {
         FeedMethods.SetLikeForPost(postid: self.post?.PostId ?? 0, userid: EduChat.currentUser?.UserId ?? 0, like: !(self.post?.isLiked() ?? false)) { (newPost) in //Calls SetLikeForPost API method
-            self.feedDelegate?.UpdatePost(post: newPost as Any) //Calls Our UpdatePost method on the table view
+            self.feedDelegate?.UpdatePost(post: newPost) //Calls Our UpdatePost method on the table view
             if !(self.post?.isLiked() ?? false) == true { //If the user is liking the image
                 self.postLikeButton.setImage(UIImage(named: "love"), for: .normal) //Set the heart to full
             }
@@ -217,7 +217,7 @@ class FeedPollCell : UITableViewCell {
         FeedMethods.SetLikeForPost(postid: self.poll?.PostId ?? 0, userid: EduChat.currentUser?.UserId ?? 0, like: !(self.poll?.isLiked() ?? false)) {
             (newPost) in //Calls SetLikeForPost API method
             print("like pressed")
-            self.feedDelegate?.UpdatePost(post: newPost as Any) //Calls Our UpdatePost method on the table view
+            self.feedDelegate?.UpdatePost(post: newPost) //Calls Our UpdatePost method on the table view
             if !(self.poll?.isLiked() ?? false) == true { //If the user is liking the image
                 self.postLikeButton.setImage(UIImage(named: "love"), for: .normal) //Set the heart to full
             }
@@ -241,9 +241,9 @@ class FeedPollCell : UITableViewCell {
         sheet.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in
             UserMethods.GetUserById(userid: self.poll?.PosterId ?? 0, completion: { (user, err) in //Gets msg user
                 if let user = user { //if user is not nil
-                    guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
-                    vc.currentUser = user; //sets profile to currentUser
-                    UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+                    //guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
+                    //vc.currentUser = user; //sets profile to currentUser
+                    //UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
                     //^ Pushes view onto stack
                 }
             })

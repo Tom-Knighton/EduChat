@@ -68,8 +68,8 @@ open class TextMessageCell: MessageContentCell {
             fatalError(MessageKitError.nilMessagesDisplayDelegate)
         }
 
-        
         let enabledDetectors = displayDelegate.enabledDetectors(for: message, at: indexPath, in: messagesCollectionView)
+
         messageLabel.configure {
             messageLabel.enabledDetectors = enabledDetectors
             for detector in enabledDetectors {

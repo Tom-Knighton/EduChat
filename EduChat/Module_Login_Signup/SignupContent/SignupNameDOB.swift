@@ -27,7 +27,7 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
         
         let calendar = Calendar(identifier: .gregorian)
         var components = DateComponents()
-        components.year = -11
+        components.year = -13
         datePicker.datePickerMode = .date
         datePicker.maximumDate = calendar.date(byAdding: components, to: Date())
         self.dobField.inputView = datePicker
@@ -38,8 +38,8 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
         self.nameField.delegate = self
         self.continueButton.layer.cornerRadius = 20
         self.continueButton.layer.masksToBounds = true
-        
         self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+
     }
     
     @IBAction func genderFieldTapped(_ sender: SkyFloatingLabelTextField) {
@@ -93,5 +93,16 @@ class SignupNameDOB: UIViewController, UITextFieldDelegate {
     
     @IBAction func backPressed(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        guard #available(iOS 13, *) else {
+            return
+        }
+        if traitCollection.userInterfaceStyle == .dark { self.view.backgroundColor = .systemBackground }
+        else {
+             self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        }
     }
 }

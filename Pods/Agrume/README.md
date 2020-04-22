@@ -29,7 +29,7 @@ Or [Carthage](https://github.com/Carthage/Carthage). Add the dependency to your 
 github "JanGorman/Agrume"
 ```
 
-## How
+## Usage
 
 There are multiple ways you can use the image viewer (and the included sample project shows them all).
 
@@ -160,15 +160,6 @@ let agrume = Agrume(dataSource: dataSource)
 agrume.show(from: self)
 ```
 
-### Custom Background Snapshot
-
-When showing the Agrume view controller, it'll default to taking a snapshot of the root view and blurring that. You can customize this behaviour by passing in a different view that it will blur and display:
-
-```swift
-let agrume = Agrume(image: image)
-agrume.show(from: self, backgroundSnapshotVC: self)
-```
-
 ### Status Bar Appearance
 
 You can customize the status bar appearance when displaying the zoomed in view. `Agrume` has a `statusBarStyle` property:
@@ -179,9 +170,50 @@ agrume.statusBarStyle = .lightContent
 agrume.show(from: self)
 ```
 
+### Long Press Gesture and Downloading Images
+
+If you want to handle long press gestures on the images, there is an optional `onLongPress` closure. This will pass an optional `UIImage` and a reference to the Agrume `UIViewController` as parameters. The project includes a helper class to easily opt into downloading the image to the user's photo library called `AgrumePhotoLibraryHelper`. First, create an instance of the helper:
+
+```swift
+private func makeHelper() -> AgrumePhotoLibraryHelper {
+  let saveButtonTitle = NSLocalizedString("Save Photo", comment: "Save Photo")
+  let cancelButtonTitle = NSLocalizedString("Cancel", comment: "Cancel")
+  let helper = AgrumePhotoLibraryHelper(saveButtonTitle: saveButtonTitle, cancelButtonTitle: cancelButtonTitle) { error in
+    guard error == nil else {
+      print("Could not save your photo")
+      return
+    }
+    print("Photo has been saved to your library")
+  }
+  return helper
+}
+```
+
+and then pass this helper's long press handler to `Agrume` as follows:
+
+```swift
+let helper = makeHelper()
+agrume.onLongPress = helper.makeSaveToLibraryLongPressGesture
+```
+
+### Custom Overlay View
+
+You can customise the look and functionality of the image views. To do so, you need create a class that inherits from `AgrumeOverlayView: UIView`. As this is nothing more than a regular `UIView` you can do anything you want with it like add a custom toolbar or buttons to it. The example app shows a detailed example of how this can be achieved.
+
 ### Lifecycle
 
-To get information about lifecycle events in `Agrume` you have the option to set a `didDismiss` handler. Similarly, to be informed about whenever the user scrolls through the image collection, there is a `didScroll` handler that is called with the current page index.
+`Agrume` offers the following lifecycle closures that you can optionally set:
+- `willDismiss`
+- `didDismiss`
+- `didScroll`
+
+### Running the Sample Code
+
+The project ships with an example app that shows the different functions documented above. Since there is a dependency on [SwiftyGif](https://github.com/kirualex/SwiftyGif) you will also need to fetch that to run the project. It's included as git submodule. After fetching the repository, from the project's root directory run:
+
+```bash
+git submodule update --init
+```
 
 ## Licence
 

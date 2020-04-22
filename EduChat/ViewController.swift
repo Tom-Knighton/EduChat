@@ -21,13 +21,13 @@ class ViewController: UIViewController {
         
         authenticatorPassField.layer.borderWidth = 1
         loginPassField.layer.borderWidth = 1
-        authenticatorPassField.layer.backgroundColor = UIColor.flatGray.cgColor
-        loginPassField.layer.borderColor = UIColor.flatGray.cgColor
+        authenticatorPassField.layer.backgroundColor = UIColor.flatGray().cgColor
+        loginPassField.layer.borderColor = UIColor.flatGray().cgColor
         authenticatorPassField.layer.cornerRadius = 10
         authenticatorPassField.layer.masksToBounds = true
         loginPassField.layer.cornerRadius = 10
         loginPassField.layer.masksToBounds = true
-        
+
     }
 
     

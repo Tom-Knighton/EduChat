@@ -25,7 +25,18 @@ class SignUp_Host: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        guard #available(iOS 13, *) else {
+            return
+        }
+        if traitCollection.userInterfaceStyle == .dark { self.view.backgroundColor = .systemBackground }
+        else {
+             self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        }
     }
 }

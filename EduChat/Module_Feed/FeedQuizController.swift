@@ -33,7 +33,7 @@ class FeedQuizController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.resultsView.isHidden = true
-        self.finishQuizButton.backgroundColor = .flatBlue
+        self.finishQuizButton.backgroundColor = .flatBlue()
         self.resultsTableView.delegate = self; self.resultsTableView.dataSource = self;
         self.lockAndDisplayActivityIndicator(enable: true) //Locks display temporarily
         FeedMethods.GetFullQuizPost(for: currentQuiz?.PostId ?? 0) { (returnQuiz) in
@@ -59,7 +59,7 @@ class FeedQuizController: UIViewController {
                 let button = UIButton(frame: .zero) //Create a button
                 button.setTitle(answer, for: .normal) //Sets the title to the answer
                 button.cornerRadius = 15 //Round the corners
-                button.backgroundColor = .flatBlue //Set background to blue
+                button.backgroundColor = .flatBlue() //Set background to blue
                 button.heightAnchor.constraint(equalToConstant: 50).isActive = true
                 //^ Set height of button to 50
                 button.addTarget(self, action: #selector(answerButtonPressed(_:)), for: .touchUpInside)
@@ -115,7 +115,7 @@ class FeedQuizController: UIViewController {
         }()
         self.answersStackView.addArrangedSubview(finishLabel)
         self.answersStackView.addArrangedSubview(scoreLabel) //Adds the two labels to the stack view
-        self.quitQuizButton.backgroundColor = .flatBlue; self.quitQuizButton.setTitleColor(.white, for: .normal)
+        self.quitQuizButton.backgroundColor = .flatBlue(); self.quitQuizButton.setTitleColor(.white, for: .normal)
         self.quitQuizButton.setTitle("Finish  ➡️", for: .normal)
         // ^ Sets the quitQuizButton to a blue background and 'finish' text
         
@@ -127,14 +127,14 @@ class FeedQuizController: UIViewController {
         if sender.titleLabel?.text ?? "" == currentQuestion?.CorrectAnswer {
             //If the answer was correct, show the current button as green and increment
             //answeredCorrectly
-            sender.backgroundColor = .flatGreen
+            sender.backgroundColor = .flatGreen()
             self.answeredCorrectly += 1
         }
         else { //IF the user chose the wrong answer:
             for view in self.answersStackView.arrangedSubviews { //For each view in the stack
                 if view is UIButton { //If the view is a button
-                    if (view as! UIButton).titleLabel?.text == self.currentQuestion?.CorrectAnswer { view.backgroundColor = .flatGreen }
-                    else { view.backgroundColor = .flatRed } //Set the correct answer to green and all others to red
+                    if (view as! UIButton).titleLabel?.text == self.currentQuestion?.CorrectAnswer { view.backgroundColor = .flatGreen() }
+                    else { view.backgroundColor = .flatRed() } //Set the correct answer to green and all others to red
                 }
             }
         }

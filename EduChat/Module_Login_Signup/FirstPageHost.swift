@@ -15,19 +15,30 @@ class FirstPageHost: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         loginButton.layer.cornerRadius = 20
         loginButton.layer.masksToBounds = true
         signupButton.layer.cornerRadius = 20
         signupButton.layer.masksToBounds = true
-        
+
         self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+
     }
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
     @IBAction func goToWebPressed(_ sender: Any) {
         UIApplication.shared.open(URL(string: "https://educhat.tomk.online")!, options: [:], completionHandler: nil)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        guard #available(iOS 13, *) else {
+            return
+        }
+        if traitCollection.userInterfaceStyle == .dark { self.view.backgroundColor = .systemBackground }
+        else {
+             self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        }
     }
     
 

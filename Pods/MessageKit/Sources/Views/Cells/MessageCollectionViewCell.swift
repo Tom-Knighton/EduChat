@@ -42,5 +42,4 @@ open class MessageCollectionViewCell: UICollectionViewCell {
         // Should be overridden
     }
 
-   
 }

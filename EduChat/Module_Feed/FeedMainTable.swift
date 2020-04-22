@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FeedMainTableDelegate {
-    func UpdatePost(post: Any)
+    func UpdatePost(post: FeedPost?)
 }
 
 class FeedMainTable: UITableViewController {
@@ -31,7 +31,7 @@ class FeedMainTable: UITableViewController {
         return PinterestSegment(frame: CGRect(x: 20, y: 200, width: self.view.frame.width, height: 40), segmentStyle: self.segmentStyle, subjects: EduChat.currentUser?.Subjects ?? []) //Filled segment with dummy subjects for now
     }()
     
-    var postsToDisplay : [Any] = [] //global array holding all posts
+    var postsToDisplay : [FeedPost?] = [] //global array holding all posts
     let refresher = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad() //Calls super method
@@ -92,23 +92,23 @@ class FeedMainTable: UITableViewController {
 }
 
 extension FeedMainTable : FeedMainTableDelegate {
-    func UpdatePost(post: Any) {
+    func UpdatePost(post: FeedPost?) {
         if post is FeedTextPost {
-            let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedTextPost)?.PostId == (post as! FeedTextPost).PostId}) ?? 0
+            let index = self.postsToDisplay.firstIndex(where: {$0?.PostId == post?.PostId}) ?? 0
             self.postsToDisplay[index] = post
         } //^ And below get index of the post to be modified and replace it with the new post
         else if post is FeedMediaPost {
-            let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedMediaPost)?.PostId == (post as! FeedMediaPost).PostId}) ?? 0
+            let index = self.postsToDisplay.firstIndex(where: {$0?.PostId == post?.PostId}) ?? 0
             self.postsToDisplay[index] = post
         }
         else if post is FeedPoll {
-            let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedMediaPost)?.PostId == (post as! FeedMediaPost).PostId}) ?? 0
+            let index = self.postsToDisplay.firstIndex(where: {$0?.PostId == post?.PostId}) ?? 0
             self.postsToDisplay[index] = post
             let indexPath = IndexPath(item: index, section: 0)
             self.tableView.reloadRows(at: [indexPath], with: .none)
         }
         else if post is FeedQuiz {
-            let index = self.postsToDisplay.firstIndex(where: {($0 as? FeedMediaPost)?.PostId == (post as! FeedMediaPost).PostId}) ?? 0
+            let index = self.postsToDisplay.firstIndex(where: {$0?.PostId == post?.PostId}) ?? 0
             self.postsToDisplay[index] = post
         }
     }
@@ -129,7 +129,7 @@ extension FeedMainTable : FeedMainTableDelegate {
 extension FeedMainTable {
     func createAddButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "add"), style: .plain, target: self, action: #selector(createPostButtonPressed(_:)))
-        self.navigationItem.rightBarButtonItem?.tintColor = .flatBlack
+        self.navigationItem.rightBarButtonItem?.tintColor = .flatBlack()
     }
     
     @objc func createPostButtonPressed(_ sender: UIBarButtonItem) {

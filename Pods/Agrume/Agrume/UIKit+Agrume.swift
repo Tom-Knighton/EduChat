@@ -10,32 +10,18 @@ extension CGFloat {
   static let maxScaleForExpandingOffscreen: CGFloat = 1.25
   static let targetZoomForDoubleTap: CGFloat = 3
   static let minFlickDismissalVelocity: CGFloat = 800
-  static let highScrollVelocity: CGFloat = 1600
+  static let highScrollVelocity: CGFloat = 1_600
   
 }
 
+extension CGSize {
+  static func * (size: CGSize, scale: CGFloat) -> CGSize {
+    size.applying(CGAffineTransform(scaleX: scale, y: scale))
+  }
+}
+
 extension UIView {
-  
-  final func snapshot() -> UIImage {
-    UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0)
-    drawHierarchy(in: bounds, afterScreenUpdates: true)
-    let snapshot = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return snapshot!
-  }
-  
-  func snapshotView() -> UIView? {
-    UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
-    defer {
-      UIGraphicsEndImageContext()
-    }
-    guard let context = UIGraphicsGetCurrentContext() else {
-      return nil
-    }
-    layer.render(in: context)
-    return UIImageView(image: UIGraphicsGetImageFromCurrentImageContext())
-  }
-  
+
   func usesAutoLayout(_ useAutoLayout: Bool) {
     translatesAutoresizingMaskIntoConstraints = !useAutoLayout
   }
@@ -44,7 +30,7 @@ extension UIView {
     if #available(iOS 11.0, *) {
       return safeAreaLayoutGuide.topAnchor
     }
-    return topAnchor
+    return layoutMarginsGuide.topAnchor
   }
 
 }
@@ -67,7 +53,7 @@ extension UICollectionView {
   }
   
   func dequeue<T: UICollectionViewCell>(id: String, indexPath: IndexPath) -> T {
-    return dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as! T
+    dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as! T
   }
 
 }

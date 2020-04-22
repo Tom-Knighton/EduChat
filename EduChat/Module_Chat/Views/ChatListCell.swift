@@ -28,7 +28,7 @@ class ChatListCell: UITableViewCell {
         //PROFILE PICTURE:
         self.chatCover.layer.cornerRadius = self.chatCover.frame.width / 2
         self.chatCover.layer.masksToBounds = true
-        self.chatCover.layer.borderColor = UIColor.flatGray.cgColor
+        self.chatCover.layer.borderColor = UIColor.flatGray().cgColor
         self.chatCover.layer.borderWidth = 0.5
         
         if chat.members?.count == 1 { //Only 1 member
@@ -57,12 +57,12 @@ class ChatListCell: UITableViewCell {
     }
     
     @objc func didLongTap(_ sender : UILongPressGestureRecognizer) {
-        let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content)!
+        /*let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content)!
         UserMethods.GetUserById(userid: 1) { (usr, err) in
             if usr != nil { vc.currentUser = usr;         UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true) }
-        }
+        }*/
         
-        /*if sender.state == .began { //Only recognise 1 tap
+        if sender.state == .began { //Only recognise 1 tap
             let alert = UIAlertController(title: "Chat Options", message: "Select an option", preferredStyle: .actionSheet)
             if chat?.members?.count ?? 0 > 2 { // IF GROUP CHAT // ^ Creates action sheet
                 alert.addAction(UIAlertAction(title: "Change Name", style: .default, handler: { (_) in //adds change name action
@@ -93,7 +93,7 @@ class ChatListCell: UITableViewCell {
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
             
-        }*/
+        }
     }
 
 }

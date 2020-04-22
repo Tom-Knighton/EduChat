@@ -2,8 +2,8 @@
 //  Copyright © 2016 Schnaub. All rights reserved.
 //
 
-import UIKit
 import SwiftyGif
+import UIKit
 
 protocol AgrumeCellDelegate: AnyObject {
 
@@ -11,7 +11,7 @@ protocol AgrumeCellDelegate: AnyObject {
 
   func dismissAfterFlick()
   func dismissAfterTap()
-
+  func toggleOverlayVisibility()
 }
 
 final class AgrumeCell: UICollectionViewCell {
@@ -122,12 +122,12 @@ final class AgrumeCell: UICollectionViewCell {
 extension AgrumeCell: UIGestureRecognizerDelegate {
 
   private var notZoomed: Bool {
-    return scrollView.zoomScale == 1
+    scrollView.zoomScale == 1
   }
 
   private var isImageViewOffscreen: Bool {
     let visibleRect = scrollView.convert(contentView.bounds, from: contentView)
-    return animator?.items(in: visibleRect).count == 0
+    return animator?.items(in: visibleRect).isEmpty == true
   }
 
   override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -137,14 +137,14 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
         return true
       }
       return abs(velocity.y) > abs(velocity.x)
-    } else if let _ = gestureRecognizer as? UISwipeGestureRecognizer, notZoomed {
+    } else if gestureRecognizer as? UISwipeGestureRecognizer != nil, notZoomed {
       return false
     }
     return true
   }
 
   func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-    if let _ = gestureRecognizer as? UIPanGestureRecognizer {
+    if gestureRecognizer as? UIPanGestureRecognizer != nil {
       return notZoomed
     }
     return true
@@ -231,6 +231,8 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
       dismiss()
     case .zoomOut:
       zoom(to: .zero, scale: 1)
+    case .toggleOverlayVisibility:
+      delegate?.toggleOverlayVisibility()
     }
   }
 
@@ -305,7 +307,7 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
     }
   }
 
-  private func cancelCurrentImageDrag(_ animated: Bool) {
+  private func cancelCurrentImageDrag(_ animated: Bool, duration: TimeInterval = 0.7) {
     animator?.removeAllBehaviors()
     attachmentBehavior = nil
     isDraggingImage = false
@@ -314,7 +316,7 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
       imageView.transform = .identity
       recenterImage(size: scrollView.contentSize)
     } else {
-      UIView.animate(withDuration: 0.7,
+      UIView.animate(withDuration: duration,
                      delay: 0,
                      usingSpringWithDamping: 0.7,
                      initialSpringVelocity: 0,
@@ -333,13 +335,18 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
       }
   }
   
+  func recenterDuringRotation(size: CGSize) {
+    self.recenterImage(size: size)
+    self.updateScrollViewAndImageViewForCurrentMetrics()
+  }
+  
   func recenterImage(size: CGSize) {
     imageView.center = CGPoint(x: size.width / 2, y: size.height / 2)
   }
 
   private func updateScrollViewAndImageViewForCurrentMetrics() {
     scrollView.frame = contentView.frame
-    if let image = imageView.image {
+    if let image = imageView.image ?? imageView.currentImage {
       imageView.frame = resizedFrame(forSize: image.size)
     }
     scrollView.contentSize = imageView.frame.size
@@ -405,8 +412,8 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
   }
 
   private func appropriateValue(defaultValue: CGFloat) -> CGFloat {
-    let screenWidth = UIScreen.main.bounds.width
-    let screenHeight = UIScreen.main.bounds.height
+    let screenWidth = UIApplication.shared.windows.first?.bounds.width ?? UIScreen.main.bounds.width
+    let screenHeight = UIApplication.shared.windows.first?.bounds.height ?? UIScreen.main.bounds.height
     // Default value that works well for the screenSize adjusted for the actual size of the device
     return defaultValue * ((320 * 480) / (screenWidth * screenHeight))
   }
@@ -422,7 +429,7 @@ extension AgrumeCell: UIGestureRecognizerDelegate {
 extension AgrumeCell: UIScrollViewDelegate {
 
   func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-    return imageView
+    imageView
   }
 
   func scrollViewDidZoom(_ scrollView: UIScrollView) {

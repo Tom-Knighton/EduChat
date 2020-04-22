@@ -14,7 +14,7 @@ public class FeedMethods {
     
     static let URLBASE : String = "https://educhat.tomk.online/api/Feed/"
     
-    static func GetPostById(postId : Int, completion: ((Any?) -> ())?) {
+    static func GetPostById(postId : Int, completion: ((FeedPost?) -> ())?) {
         Alamofire.request(URLBASE+"GetPostById/\(postId)").responseJSON { (response) in //Calls GetPostById API
             if let json = response.result.value as? [String:Any] { //if we can get the response as json
                 if let type = json["postType"] as? String { //If the json is valid
@@ -44,10 +44,10 @@ public class FeedMethods {
         }
     }
     
-    static func GetAllPostsForSubject(subjectId: Int, completion: (([Any]?) -> ())?) {
+    static func GetAllPostsForSubject(subjectId: Int, completion: (([FeedPost?]?) -> ())?) {
         Alamofire.request(URLBASE+"GetAllPostsForSubject/\(subjectId)").responseJSON { (response) in
             if let json = response.result.value as? [[String:Any]] {
-                var posts : [Any] = []
+                var posts : [FeedPost?] = []
                 for child in json {
                     if let type = child["postType"] as? String {
                         switch(type){
@@ -71,7 +71,7 @@ public class FeedMethods {
         }
     }
     
-    static func SetLikeForPost(postid: Int, userid: Int, like: Bool, completion: ((Any?) -> ())?) {
+    static func SetLikeForPost(postid: Int, userid: Int, like: Bool, completion: ((FeedPost?) -> ())?) {
         Alamofire.request(URLBASE+"SetLikeForPost/\(postid)/\(userid)/\(like)", method: .put).responseJSON { (response) in
             // ^ Calls SetLikeForPost
             if let json = response.result.value as? [String:Any] { //If we get any json returned

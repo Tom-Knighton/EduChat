@@ -168,9 +168,9 @@ class Chat_View: MessagesViewController {
                 alert.addAction(UIAlertAction(title: "View Profile", style: .default, handler: { (_) in //Adds view profile
                     UserMethods.GetUserById(userid: msg.UserId ?? 0, completion: { (user, err) in //Gets msg user
                         if let user = user { //if user is not nil
-                            guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
-                            vc.currentUser = user; //sets profile to currentUser
-                            UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+                            //guard let vc = (UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "profileView") as? Profile_Content) else { return } //loads profile view
+                            //vc.currentUser = user; //sets profile to currentUser
+                            //UIApplication.topViewController()?.navigationController?.pushViewController(vc, animated: true)
                             //^ Pushes view onto stack
                         }
                     })
@@ -205,7 +205,7 @@ extension Chat_View {
         self.messageInputBar.setRightStackViewWidthConstant(to: 38, animated: false)
         //Initialises send button:
         self.messageInputBar.setStackViewItems([self.messageInputBar.sendButton, InputBarButtonItem.fixedSpace(2)], forStack: .right, animated: false)
-        self.messageInputBar.sendButton.imageView?.backgroundColor = UIColor.flatSkyBlue
+        self.messageInputBar.sendButton.imageView?.backgroundColor = UIColor.flatSkyBlue()
         self.messageInputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 1.5, bottom: 1.5, right: 2)
         self.messageInputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
         self.messageInputBar.sendButton.image = UIImage(named: "send")
@@ -261,7 +261,7 @@ extension Chat_View : MessagesDataSource {
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         avatarView.sd_setImage(with: URL(string: self.messages[indexPath.section].User?.UserProfilePictureURL ?? ""))
         avatarView.isHidden = isNextMessageSameSender(at: indexPath)
-        avatarView.layer.borderWidth = 2; avatarView.layer.borderColor = UIColor.flatGray.cgColor
+        avatarView.layer.borderWidth = 2; avatarView.layer.borderColor = UIColor.flatGray().cgColor
         //sets avatar to the image of the sender, hides if it is not the last message in a row from that user
     }
     

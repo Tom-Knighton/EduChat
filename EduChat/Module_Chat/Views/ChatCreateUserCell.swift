@@ -25,7 +25,7 @@ class ChatCreateUserCell: UITableViewCell {
         self.User = user //Sets global user to this one
         self.userNameLabel.text = user?.UserName ?? "" //Sets label to user's name
         self.userProfileImage.sd_setImage(with: URL(string: user?.UserProfilePictureURL ?? ""), completed: nil) //Sets image to user's image
-        self.userProfileImage.layer.borderColor = UIColor.flatGray.cgColor
+        self.userProfileImage.layer.borderColor = UIColor.flatGray().cgColor
         self.userProfileImage.layer.borderWidth = 0.5
         self.userProfileImage.layer.cornerRadius = 30; self.userProfileImage.layer.masksToBounds = true
         let isSelected = self.ChatCreateDelegate?.getSelectedUsers().contains(user?.UserId ?? 0) //Gets from our delegate whether the user is in the array or not

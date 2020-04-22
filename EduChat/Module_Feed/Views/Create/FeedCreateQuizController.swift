@@ -74,7 +74,7 @@ extension FeedCreateQuizController : UITableViewDataSource, UITableViewDelegate 
             vc.delegate = self
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        edit.backgroundColor = .flatBlue
+        edit.backgroundColor = .flatBlue()
         return [remove, edit]
     }
     

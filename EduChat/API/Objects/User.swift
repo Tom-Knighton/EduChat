@@ -25,6 +25,7 @@ public class User: Mappable, Codable {
     var IsAdmin : Bool?
     var IsDeleted : Bool?
     var UserPassHash : String?
+    var Bio : String?
     
     var Subjects : [Subject]?
     var Chats : [Chat]?
@@ -49,6 +50,7 @@ public class User: Mappable, Codable {
         self.UserProfilePictureURL <- map["userProfilePictureURL"]; self.UserSchool <- map["userSchool"]; self.UserGender <- map["userGender"]; self.UserDOB <- map["userDOB"]
         self.IsModerator <- map["isModerator"]; self.IsAdmin <- map["isAdmin"]; self.IsDeleted <- map["isDeleted"]; self.UserPassHash <- map["userPassHash"]; self.Subjects <- map["subjects"]
         self.Friendships <- map["friendships"]; self.Chats <- map["chats"]
+        self.Bio <- map["userBio"]
         //Mapping function, as json will return result in camelCase rather than CamelCase
     }
     
@@ -70,6 +72,23 @@ extension User : SenderType {
     public var displayName: String {
         return self.UserName ?? ""
     }
+}
+
+public class UserBio : Codable, Mappable {
+    var BioId : Int?
+    var UserId : Int?
+    var Bio : String?
+    var IsCurrent : Bool?
+    var DateCreated : String?
     
+    public init?(UserId: Int, Bio: String) {
+        self.BioId = 0; self.UserId = UserId; self.Bio = Bio; self.IsCurrent = true; self.DateCreated = Date().toString()
+    }
     
+    public required init?(map: Map) {}
+    
+    public func mapping(map: Map) {
+        self.BioId <- map["bioId"]; self.UserId <- map["userId"]; self.Bio <- map["bio"]
+        self.IsCurrent <- map["isCurrent"]; self.DateCreated <- map["dateCreated"]
+    }
 }

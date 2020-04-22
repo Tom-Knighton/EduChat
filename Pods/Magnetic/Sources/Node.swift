@@ -30,6 +30,7 @@ import SpriteKit
         set { label.text = newValue }
     }
     
+    open var tag: Any? 
     /**
      The image displayed by the node.
      */
@@ -53,7 +54,6 @@ import SpriteKit
     }
     
     open var texture: SKTexture?
-    open var tag : Any?
     
     /**
      The selection state of the node.

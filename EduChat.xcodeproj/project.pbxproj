@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3D83D19514CF14694B8E56B2 /* Pods_EduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0AD9554694451EBFBE752E /* Pods_EduChat.framework */; };
 		E2030E9722FEFBE600932345 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2030E9622FEFBE600932345 /* AppDelegate.swift */; };
 		E2030E9922FEFBE600932345 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2030E9822FEFBE600932345 /* ViewController.swift */; };
 		E2030E9C22FEFBE600932345 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9A22FEFBE600932345 /* Main.storyboard */; };
 		E2030E9E22FEFBEA00932345 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9D22FEFBEA00932345 /* Assets.xcassets */; };
 		E2030EA122FEFBEA00932345 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2030E9F22FEFBEA00932345 /* LaunchScreen.storyboard */; };
-		E2190562231FA06400612407 /* Profile_Subject_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2190561231FA06400612407 /* Profile_Subject_Manager.swift */; };
+		E21F11AA241FA5B600984612 /* EduChat+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F11A9241FA5B600984612 /* EduChat+UICollectionView.swift */; };
+		E21F11AC241FA7E700984612 /* ProfilePostsCollectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21F11AB241FA7E700984612 /* ProfilePostsCollectionCells.swift */; };
 		E227CC6723A91E7100D0BDDA /* FeedPostContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E227CC6623A91E7100D0BDDA /* FeedPostContentCell.swift */; };
 		E22E869523CF440800447E38 /* EduChat+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E869423CF440800447E38 /* EduChat+UIButton.swift */; };
 		E22EBE1423D7386D006B0893 /* FeedQuizCreateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EBE1323D7386D006B0893 /* FeedQuizCreateModels.swift */; };
 		E22EBE1623D7452B006B0893 /* FeedCreateQuizController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22EBE1523D7452B006B0893 /* FeedCreateQuizController.swift */; };
+		E23024D8241E9E0C005A3BF4 /* EduChat+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23024D7241E9E0C005A3BF4 /* EduChat+UIView.swift */; };
 		E23ACAFA2326885900A97BCC /* ChatMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23ACAF92326885900A97BCC /* ChatMethods.swift */; };
 		E23DF35C2304C5A300864B09 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23DF35B2304C5A300864B09 /* ActivityView.swift */; };
 		E249D5A7231EBFE100E90DB3 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E249D59F231EBFE000E90DB3 /* Montserrat-Regular.ttf */; };
@@ -29,7 +30,6 @@
 		E249D5AD231EBFE100E90DB3 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E249D5A5231EBFE100E90DB3 /* Montserrat-Medium.ttf */; };
 		E249D5AE231EBFE100E90DB3 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E249D5A6231EBFE100E90DB3 /* Montserrat-Bold.ttf */; };
 		E249D5B1231EC7CC00E90DB3 /* profileSubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249D5B0231EC7CC00E90DB3 /* profileSubjectCell.swift */; };
-		E249D5B3231EE91E00E90DB3 /* Profile_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E249D5B2231EE91E00E90DB3 /* Profile_Host.swift */; };
 		E24C0D9B23D8783600A2C157 /* EduChat+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24C0D9A23D8783600A2C157 /* EduChat+UITextField.swift */; };
 		E24F0CD62322D3300007B247 /* Chat_Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24F0CD52322D3300007B247 /* Chat_Signal.swift */; };
 		E2552955232C38E9009714D9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2552954232C38E9009714D9 /* ChatMessage.swift */; };
@@ -44,11 +44,10 @@
 		E25DF8CF238D6F390058A8A1 /* MediaItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25DF8CE238D6F390058A8A1 /* MediaItems.swift */; };
 		E25E613823BBA69400943EC6 /* FeedPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E613723BBA69400943EC6 /* FeedPost.swift */; };
 		E25E613A23BBAB8000943EC6 /* FeedMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25E613923BBAB8000943EC6 /* FeedMethods.swift */; };
+		E26285C423E8482B0057D3F3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E26285C323E8482B0057D3F3 /* Profile.storyboard */; };
+		E26285CA23E84EF00057D3F3 /* ProfileHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26285C923E84EF00057D3F3 /* ProfileHeaderCell.swift */; };
+		E26285CC23E850F90057D3F3 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26285CB23E850F90057D3F3 /* ProfileController.swift */; };
 		E264DCAA23D7B6A500C00604 /* FeedCreateQuizQuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264DCA923D7B6A500C00604 /* FeedCreateQuizQuestionController.swift */; };
-		E2656D31231FA2FB00D791F7 /* Profile_Subject_Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D30231FA2FB00D791F7 /* Profile_Subject_Cell.swift */; };
-		E2656D35231FCEFD00D791F7 /* Settings_Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D34231FCEFD00D791F7 /* Settings_Controller.swift */; };
-		E2656D39231FD33E00D791F7 /* Settings_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D38231FD33E00D791F7 /* Settings_Host.swift */; };
-		E2656D3B232027C400D791F7 /* Settings_Profile_Pic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2656D3A232027C400D791F7 /* Settings_Profile_Pic.swift */; };
 		E267BB3423CF936200462007 /* EduChat+UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E267BB3323CF936200462007 /* EduChat+UIStackView.swift */; };
 		E27040C723C60E380063C53B /* FeedCommentsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27040C623C60E380063C53B /* FeedCommentsTable.swift */; };
 		E27040C923C60E580063C53B /* FeedCommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E27040C823C60E580063C53B /* FeedCommentsCell.swift */; };
@@ -65,12 +64,20 @@
 		E2930033232669BE00F94F46 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2930032232669BE00F94F46 /* ChatListCell.swift */; };
 		E293003523266AA600F94F46 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293003423266AA600F94F46 /* Chat.swift */; };
 		E293003723266B9D00F94F46 /* ChatMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = E293003623266B9D00F94F46 /* ChatMember.swift */; };
+		E2942E71241E6544002CB0D1 /* ProfileSettingsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2942E70241E6544002CB0D1 /* ProfileSettingsDelegate.swift */; };
+		E2A9143E23EC40BB007D89FB /* ProfileSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9143D23EC40BB007D89FB /* ProfileSettingsController.swift */; };
+		E2A9144023EC4806007D89FB /* ProfileSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A9143F23EC4806007D89FB /* ProfileSettingsCell.swift */; };
 		E2B20AB1239AE531005BCF9C /* Chat_Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20AB0239AE531005BCF9C /* Chat_Friends.swift */; };
 		E2B20AB4239AE5B2005BCF9C /* ChatFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20AB3239AE5B2005BCF9C /* ChatFriendsCell.swift */; };
 		E2B20AB6239BEF5D005BCF9C /* Friendship.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20AB5239BEF5D005BCF9C /* Friendship.swift */; };
 		E2B20AB8239BF0C9005BCF9C /* FriendshipMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B20AB7239BF0C9005BCF9C /* FriendshipMethods.swift */; };
+		E2B8D1B823EA15BC003FC0DA /* ProfileSubjectManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B8D1B723EA15BC003FC0DA /* ProfileSubjectManagerController.swift */; };
+		E2B8D1BA23EA15CC003FC0DA /* ProfileSubjectManagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B8D1B923EA15CC003FC0DA /* ProfileSubjectManagerCell.swift */; };
+		E2B8D1BC23EB7C32003FC0DA /* EduChat+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B8D1BB23EB7C32003FC0DA /* EduChat+UIColor.swift */; };
 		E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8A7122FF0512003B9F93 /* UserMethods.swift */; };
 		E2BA8A7522FF0529003B9F93 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA8A7422FF0529003B9F93 /* User.swift */; };
+		E2C0C657241E98CA00C95081 /* Pods_EduChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC0AD9554694451EBFBE752E /* Pods_EduChat.framework */; };
+		E2C0C658241E98CA00C95081 /* Pods_EduChat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC0AD9554694451EBFBE752E /* Pods_EduChat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2CB18DA2301897D009517DD /* Login_Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2CB18D92301897D009517DD /* Login_Signup.storyboard */; };
 		E2CB18DC23018FC0009517DD /* Login_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18DB23018FC0009517DD /* Login_Host.swift */; };
 		E2CB18F12301C00C009517DD /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18F02301C00C009517DD /* LoginController.swift */; };
@@ -78,12 +85,28 @@
 		E2CB18F92302B811009517DD /* SignUp_Host.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18F82302B811009517DD /* SignUp_Host.swift */; };
 		E2CB18FB2302EDE9009517DD /* SignupEmailUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CB18FA2302EDE9009517DD /* SignupEmailUsername.swift */; };
 		E2D0E17D230EC6F30087F551 /* MainHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D0E17C230EC6F30087F551 /* MainHost.swift */; };
+		E2D232CB23F204BE002425BD /* AppSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D232CA23F204BE002425BD /* AppSettingsController.swift */; };
+		E2D232CD23F2DCC9002425BD /* AppSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D232CC23F2DCC9002425BD /* AppSettingsCell.swift */; };
+		E2D232CF23F2E31E002425BD /* EduChat+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D232CE23F2E31E002425BD /* EduChat+UIViewController.swift */; };
 		E2DDC41223128813002844F3 /* EduChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDC41123128813002844F3 /* EduChat.swift */; };
 		E2DDC4142312E968002844F3 /* zeroPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDC4132312E968002844F3 /* zeroPage.swift */; };
 		E2EE3D9123CB4DDF00B2B543 /* PinterestSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE3D9023CB4DDF00B2B543 /* PinterestSegment.swift */; };
-		E2F2E6B2230607D900376FB8 /* Profile_Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2E6B1230607D900376FB8 /* Profile_Content.swift */; };
 		E2FDDDE823D72AF900CC5D02 /* FeedQuizResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FDDDE723D72AF900CC5D02 /* FeedQuizResultCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E2C0C659241E98CA00C95081 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E2C0C658241E98CA00C95081 /* Pods_EduChat.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4AD0358259FD8994DDADA730 /* Pods-EduChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EduChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-EduChat/Pods-EduChat.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,11 +119,13 @@
 		E2030E9D22FEFBEA00932345 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2030EA022FEFBEA00932345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2030EA222FEFBEA00932345 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2190561231FA06400612407 /* Profile_Subject_Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Subject_Manager.swift; sourceTree = "<group>"; };
+		E21F11A9241FA5B600984612 /* EduChat+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UICollectionView.swift"; sourceTree = "<group>"; };
+		E21F11AB241FA7E700984612 /* ProfilePostsCollectionCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostsCollectionCells.swift; sourceTree = "<group>"; };
 		E227CC6623A91E7100D0BDDA /* FeedPostContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPostContentCell.swift; sourceTree = "<group>"; };
 		E22E869423CF440800447E38 /* EduChat+UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UIButton.swift"; sourceTree = "<group>"; };
 		E22EBE1323D7386D006B0893 /* FeedQuizCreateModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedQuizCreateModels.swift; sourceTree = "<group>"; };
 		E22EBE1523D7452B006B0893 /* FeedCreateQuizController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCreateQuizController.swift; sourceTree = "<group>"; };
+		E23024D7241E9E0C005A3BF4 /* EduChat+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UIView.swift"; sourceTree = "<group>"; };
 		E23ACAF92326885900A97BCC /* ChatMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMethods.swift; sourceTree = "<group>"; };
 		E23DF35B2304C5A300864B09 /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
 		E249D59F231EBFE000E90DB3 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -112,7 +137,6 @@
 		E249D5A5231EBFE100E90DB3 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		E249D5A6231EBFE100E90DB3 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		E249D5B0231EC7CC00E90DB3 /* profileSubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileSubjectCell.swift; sourceTree = "<group>"; };
-		E249D5B2231EE91E00E90DB3 /* Profile_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Host.swift; sourceTree = "<group>"; };
 		E24C0D9A23D8783600A2C157 /* EduChat+UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UITextField.swift"; sourceTree = "<group>"; };
 		E24F0CD52322D3300007B247 /* Chat_Signal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_Signal.swift; sourceTree = "<group>"; };
 		E2552954232C38E9009714D9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -127,11 +151,10 @@
 		E25DF8CE238D6F390058A8A1 /* MediaItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItems.swift; sourceTree = "<group>"; };
 		E25E613723BBA69400943EC6 /* FeedPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPost.swift; sourceTree = "<group>"; };
 		E25E613923BBAB8000943EC6 /* FeedMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeedMethods.swift; path = Objects/FeedMethods.swift; sourceTree = "<group>"; };
+		E26285C323E8482B0057D3F3 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		E26285C923E84EF00057D3F3 /* ProfileHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCell.swift; sourceTree = "<group>"; };
+		E26285CB23E850F90057D3F3 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		E264DCA923D7B6A500C00604 /* FeedCreateQuizQuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCreateQuizQuestionController.swift; sourceTree = "<group>"; };
-		E2656D30231FA2FB00D791F7 /* Profile_Subject_Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Subject_Cell.swift; sourceTree = "<group>"; };
-		E2656D34231FCEFD00D791F7 /* Settings_Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_Controller.swift; sourceTree = "<group>"; };
-		E2656D38231FD33E00D791F7 /* Settings_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_Host.swift; sourceTree = "<group>"; };
-		E2656D3A232027C400D791F7 /* Settings_Profile_Pic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings_Profile_Pic.swift; sourceTree = "<group>"; };
 		E267BB3323CF936200462007 /* EduChat+UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UIStackView.swift"; sourceTree = "<group>"; };
 		E27040C623C60E380063C53B /* FeedCommentsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsTable.swift; sourceTree = "<group>"; };
 		E27040C823C60E580063C53B /* FeedCommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCommentsCell.swift; sourceTree = "<group>"; };
@@ -148,10 +171,16 @@
 		E2930032232669BE00F94F46 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		E293003423266AA600F94F46 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		E293003623266B9D00F94F46 /* ChatMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMember.swift; sourceTree = "<group>"; };
+		E2942E70241E6544002CB0D1 /* ProfileSettingsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsDelegate.swift; sourceTree = "<group>"; };
+		E2A9143D23EC40BB007D89FB /* ProfileSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsController.swift; sourceTree = "<group>"; };
+		E2A9143F23EC4806007D89FB /* ProfileSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsCell.swift; sourceTree = "<group>"; };
 		E2B20AB0239AE531005BCF9C /* Chat_Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat_Friends.swift; sourceTree = "<group>"; };
 		E2B20AB3239AE5B2005BCF9C /* ChatFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFriendsCell.swift; sourceTree = "<group>"; };
 		E2B20AB5239BEF5D005BCF9C /* Friendship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friendship.swift; sourceTree = "<group>"; };
 		E2B20AB7239BF0C9005BCF9C /* FriendshipMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendshipMethods.swift; sourceTree = "<group>"; };
+		E2B8D1B723EA15BC003FC0DA /* ProfileSubjectManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSubjectManagerController.swift; sourceTree = "<group>"; };
+		E2B8D1B923EA15CC003FC0DA /* ProfileSubjectManagerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSubjectManagerCell.swift; sourceTree = "<group>"; };
+		E2B8D1BB23EB7C32003FC0DA /* EduChat+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UIColor.swift"; sourceTree = "<group>"; };
 		E2BA8A7122FF0512003B9F93 /* UserMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMethods.swift; sourceTree = "<group>"; };
 		E2BA8A7422FF0529003B9F93 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E2CB18D92301897D009517DD /* Login_Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login_Signup.storyboard; sourceTree = "<group>"; };
@@ -161,10 +190,12 @@
 		E2CB18F82302B811009517DD /* SignUp_Host.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_Host.swift; sourceTree = "<group>"; };
 		E2CB18FA2302EDE9009517DD /* SignupEmailUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupEmailUsername.swift; sourceTree = "<group>"; };
 		E2D0E17C230EC6F30087F551 /* MainHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHost.swift; sourceTree = "<group>"; };
+		E2D232CA23F204BE002425BD /* AppSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsController.swift; sourceTree = "<group>"; };
+		E2D232CC23F2DCC9002425BD /* AppSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsCell.swift; sourceTree = "<group>"; };
+		E2D232CE23F2E31E002425BD /* EduChat+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EduChat+UIViewController.swift"; sourceTree = "<group>"; };
 		E2DDC41123128813002844F3 /* EduChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EduChat.swift; sourceTree = "<group>"; };
 		E2DDC4132312E968002844F3 /* zeroPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zeroPage.swift; sourceTree = "<group>"; };
 		E2EE3D9023CB4DDF00B2B543 /* PinterestSegment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinterestSegment.swift; sourceTree = "<group>"; };
-		E2F2E6B1230607D900376FB8 /* Profile_Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile_Content.swift; sourceTree = "<group>"; };
 		E2FDDDE723D72AF900CC5D02 /* FeedQuizResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedQuizResultCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,7 +204,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3D83D19514CF14694B8E56B2 /* Pods_EduChat.framework in Frameworks */,
+				E2C0C657241E98CA00C95081 /* Pods_EduChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +249,10 @@
 				E2BA8A7022FF04FD003B9F93 /* API */,
 				E2030E9622FEFBE600932345 /* AppDelegate.swift */,
 				E2030E9822FEFBE600932345 /* ViewController.swift */,
+				E2CB18D92301897D009517DD /* Login_Signup.storyboard */,
 				E2030E9A22FEFBE600932345 /* Main.storyboard */,
 				E2746E3023A8E6C8008CD3E2 /* Feed.storyboard */,
+				E26285C323E8482B0057D3F3 /* Profile.storyboard */,
 				E2030E9D22FEFBEA00932345 /* Assets.xcassets */,
 				E2030E9F22FEFBEA00932345 /* LaunchScreen.storyboard */,
 				E2030EA222FEFBEA00932345 /* Info.plist */,
@@ -278,27 +311,12 @@
 				E22E869423CF440800447E38 /* EduChat+UIButton.swift */,
 				E267BB3323CF936200462007 /* EduChat+UIStackView.swift */,
 				E24C0D9A23D8783600A2C157 /* EduChat+UITextField.swift */,
+				E2B8D1BB23EB7C32003FC0DA /* EduChat+UIColor.swift */,
+				E2D232CE23F2E31E002425BD /* EduChat+UIViewController.swift */,
+				E23024D7241E9E0C005A3BF4 /* EduChat+UIView.swift */,
+				E21F11A9241FA5B600984612 /* EduChat+UICollectionView.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		E2656D32231FCEE100D791F7 /* Subjects */ = {
-			isa = PBXGroup;
-			children = (
-				E2190561231FA06400612407 /* Profile_Subject_Manager.swift */,
-				E2656D30231FA2FB00D791F7 /* Profile_Subject_Cell.swift */,
-			);
-			path = Subjects;
-			sourceTree = "<group>";
-		};
-		E2656D33231FCEEB00D791F7 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				E2656D34231FCEFD00D791F7 /* Settings_Controller.swift */,
-				E2656D38231FD33E00D791F7 /* Settings_Host.swift */,
-				E2656D3A232027C400D791F7 /* Settings_Profile_Pic.swift */,
-			);
-			path = Settings;
 			sourceTree = "<group>";
 		};
 		E2746E2823A8DF31008CD3E2 /* Module_Feed */ = {
@@ -326,10 +344,8 @@
 		E28FD6C12304CFD300141153 /* Module_Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E2656D33231FCEEB00D791F7 /* Settings */,
-				E2656D32231FCEE100D791F7 /* Subjects */,
-				E2F2E6B1230607D900376FB8 /* Profile_Content.swift */,
-				E249D5B2231EE91E00E90DB3 /* Profile_Host.swift */,
+				E2942E72241E6982002CB0D1 /* Profile */,
+				E2A9143C23EC408F007D89FB /* Settings */,
 			);
 			path = Module_Profile;
 			sourceTree = "<group>";
@@ -349,6 +365,30 @@
 				E2D0E17C230EC6F30087F551 /* MainHost.swift */,
 			);
 			path = Misc;
+			sourceTree = "<group>";
+		};
+		E2942E72241E6982002CB0D1 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				E26285C923E84EF00057D3F3 /* ProfileHeaderCell.swift */,
+				E26285CB23E850F90057D3F3 /* ProfileController.swift */,
+				E2B8D1B723EA15BC003FC0DA /* ProfileSubjectManagerController.swift */,
+				E2B8D1B923EA15CC003FC0DA /* ProfileSubjectManagerCell.swift */,
+				E21F11AB241FA7E700984612 /* ProfilePostsCollectionCells.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		E2A9143C23EC408F007D89FB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E2A9143D23EC40BB007D89FB /* ProfileSettingsController.swift */,
+				E2A9143F23EC4806007D89FB /* ProfileSettingsCell.swift */,
+				E2D232CA23F204BE002425BD /* AppSettingsController.swift */,
+				E2D232CC23F2DCC9002425BD /* AppSettingsCell.swift */,
+				E2942E70241E6544002CB0D1 /* ProfileSettingsDelegate.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E2B20AB2239AE596005BCF9C /* Views */ = {
@@ -393,7 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				E28EE1402302FAC800161EB4 /* SignupContent */,
-				E2CB18D92301897D009517DD /* Login_Signup.storyboard */,
 				E2CB18F02301C00C009517DD /* LoginController.swift */,
 				E2CB18DB23018FC0009517DD /* Login_Host.swift */,
 				E2CB18F42301D042009517DD /* FirstPageHost.swift */,
@@ -438,6 +477,7 @@
 				E2030E9022FEFBE600932345 /* Frameworks */,
 				E2030E9122FEFBE600932345 /* Resources */,
 				660007B8AB48BA6997C35054 /* [CP] Embed Pods Frameworks */,
+				E2C0C659241E98CA00C95081 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -460,6 +500,7 @@
 				TargetAttributes = {
 					E2030E9222FEFBE600932345 = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -503,6 +544,7 @@
 				E249D5AE231EBFE100E90DB3 /* Montserrat-Bold.ttf in Resources */,
 				E249D5AC231EBFE100E90DB3 /* Montserrat-LightItalic.ttf in Resources */,
 				E249D5AD231EBFE100E90DB3 /* Montserrat-Medium.ttf in Resources */,
+				E26285C423E8482B0057D3F3 /* Profile.storyboard in Resources */,
 				E2030E9C22FEFBE600932345 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,12 +596,13 @@
 			files = (
 				E2930033232669BE00F94F46 /* ChatListCell.swift in Sources */,
 				E2B20AB1239AE531005BCF9C /* Chat_Friends.swift in Sources */,
+				E2D232CD23F2DCC9002425BD /* AppSettingsCell.swift in Sources */,
 				E293003723266B9D00F94F46 /* ChatMember.swift in Sources */,
 				E25E613823BBA69400943EC6 /* FeedPost.swift in Sources */,
 				E2BA8A7522FF0529003B9F93 /* User.swift in Sources */,
-				E2656D31231FA2FB00D791F7 /* Profile_Subject_Cell.swift in Sources */,
 				E22E869523CF440800447E38 /* EduChat+UIButton.swift in Sources */,
 				E2B20AB4239AE5B2005BCF9C /* ChatFriendsCell.swift in Sources */,
+				E21F11AC241FA7E700984612 /* ProfilePostsCollectionCells.swift in Sources */,
 				E23ACAFA2326885900A97BCC /* ChatMethods.swift in Sources */,
 				E2CB18F92302B811009517DD /* SignUp_Host.swift in Sources */,
 				E25D565E23A11B08005A8750 /* ChatCreateUserCell.swift in Sources */,
@@ -567,48 +610,54 @@
 				E24C0D9B23D8783600A2C157 /* EduChat+UITextField.swift in Sources */,
 				E25E613A23BBAB8000943EC6 /* FeedMethods.swift in Sources */,
 				E2CB18DC23018FC0009517DD /* Login_Host.swift in Sources */,
+				E21F11AA241FA5B600984612 /* EduChat+UICollectionView.swift in Sources */,
 				E27040C923C60E580063C53B /* FeedCommentsCell.swift in Sources */,
 				E291555B23006DE300524EC1 /* Extensions.swift in Sources */,
 				E2DDC4142312E968002844F3 /* zeroPage.swift in Sources */,
 				E2030E9922FEFBE600932345 /* ViewController.swift in Sources */,
 				E25D565C23A11974005A8750 /* Chat_Create.swift in Sources */,
+				E2942E71241E6544002CB0D1 /* ProfileSettingsDelegate.swift in Sources */,
+				E2B8D1B823EA15BC003FC0DA /* ProfileSubjectManagerController.swift in Sources */,
 				E27040C723C60E380063C53B /* FeedCommentsTable.swift in Sources */,
 				E267BB3423CF936200462007 /* EduChat+UIStackView.swift in Sources */,
 				E29300312326698A00F94F46 /* ChatListContent.swift in Sources */,
 				E22EBE1423D7386D006B0893 /* FeedQuizCreateModels.swift in Sources */,
-				E2656D3B232027C400D791F7 /* Settings_Profile_Pic.swift in Sources */,
 				E2B20AB8239BF0C9005BCF9C /* FriendshipMethods.swift in Sources */,
 				E2030E9722FEFBE600932345 /* AppDelegate.swift in Sources */,
+				E2D232CB23F204BE002425BD /* AppSettingsController.swift in Sources */,
+				E2A9144023EC4806007D89FB /* ProfileSettingsCell.swift in Sources */,
 				E293003523266AA600F94F46 /* Chat.swift in Sources */,
 				E2746E2A23A8DF52008CD3E2 /* FeedMainTable.swift in Sources */,
 				E28EE1422302FAEB00161EB4 /* SignupNameDOB.swift in Sources */,
+				E26285CA23E84EF00057D3F3 /* ProfileHeaderCell.swift in Sources */,
 				E2552955232C38E9009714D9 /* ChatMessage.swift in Sources */,
 				E2FDDDE823D72AF900CC5D02 /* FeedQuizResultCell.swift in Sources */,
 				E2CB18F12301C00C009517DD /* LoginController.swift in Sources */,
 				E25B717B23116E6F00393E22 /* Subject.swift in Sources */,
 				E2D0E17D230EC6F30087F551 /* MainHost.swift in Sources */,
-				E2656D35231FCEFD00D791F7 /* Settings_Controller.swift in Sources */,
 				E264DCAA23D7B6A500C00604 /* FeedCreateQuizQuestionController.swift in Sources */,
 				E23DF35C2304C5A300864B09 /* ActivityView.swift in Sources */,
+				E26285CC23E850F90057D3F3 /* ProfileController.swift in Sources */,
 				E2B20AB6239BEF5D005BCF9C /* Friendship.swift in Sources */,
-				E2656D39231FD33E00D791F7 /* Settings_Host.swift in Sources */,
-				E2190562231FA06400612407 /* Profile_Subject_Manager.swift in Sources */,
 				E2CB18F52301D042009517DD /* FirstPageHost.swift in Sources */,
 				E25DF8CF238D6F390058A8A1 /* MediaItems.swift in Sources */,
-				E249D5B3231EE91E00E90DB3 /* Profile_Host.swift in Sources */,
 				E2772B5B2317DCEF00579233 /* MainScreensController.swift in Sources */,
 				E28EE1442303123F00161EB4 /* SignupPasswordSchool.swift in Sources */,
-				E2F2E6B2230607D900376FB8 /* Profile_Content.swift in Sources */,
+				E2B8D1BA23EA15CC003FC0DA /* ProfileSubjectManagerCell.swift in Sources */,
 				E25DE506233118B0007829E1 /* Chat_View.swift in Sources */,
+				E2D232CF23F2E31E002425BD /* EduChat+UIViewController.swift in Sources */,
 				E22EBE1623D7452B006B0893 /* FeedCreateQuizController.swift in Sources */,
 				E277CD4423D4CDDB003D2251 /* FeedQuizController.swift in Sources */,
 				E2BA8A7222FF0512003B9F93 /* UserMethods.swift in Sources */,
 				E25AC71B23CC6892002E3DB1 /* FeedCreateController.swift in Sources */,
+				E23024D8241E9E0C005A3BF4 /* EduChat+UIView.swift in Sources */,
 				E256D29923CC6DF800A7F43A /* EduChat+UITextView.swift in Sources */,
 				E27E53FC230030B300A4F3FF /* AuthenticatingUser.swift in Sources */,
 				E24F0CD62322D3300007B247 /* Chat_Signal.swift in Sources */,
 				E28EE1462303173800161EB4 /* SignupFinish.swift in Sources */,
+				E2A9143E23EC40BB007D89FB /* ProfileSettingsController.swift in Sources */,
 				E25B717923116BF900393E22 /* SubjectPickerSignup.swift in Sources */,
+				E2B8D1BC23EB7C32003FC0DA /* EduChat+UIColor.swift in Sources */,
 				E249D5B1231EC7CC00E90DB3 /* profileSubjectCell.swift in Sources */,
 				E2DDC41223128813002844F3 /* EduChat.swift in Sources */,
 				E227CC6723A91E7100D0BDDA /* FeedPostContentCell.swift in Sources */,
@@ -766,7 +815,9 @@
 			baseConfigurationReference = 4D73E6D507E9043B23405E7E /* Pods-EduChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 8H3J46CN24;
 				INFOPLIST_FILE = EduChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -776,8 +827,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = online.tomk.EduChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -786,7 +838,9 @@
 			baseConfigurationReference = 4AD0358259FD8994DDADA730 /* Pods-EduChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 8H3J46CN24;
 				INFOPLIST_FILE = EduChat/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -797,7 +851,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = online.tomk.EduChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -82,7 +82,6 @@ class MainScreensController: UIPageViewController, UIPageViewControllerDelegate,
         pageContainer.setViewControllers([secondViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
         
         self.view.addSubview(pageContainer.view)
-        
         MainScreensController.chatConnection.setup_signal()
         NotificationCenter.default.addObserver(self, selector: #selector(enableSwipe(_:)), name: .enableSwipe, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(disableSwipe(_:)), name: .disableSwipe, object: nil)

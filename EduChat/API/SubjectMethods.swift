@@ -13,7 +13,6 @@ import AlamofireObjectMapper
 public class SubjectMethods {
     
     static let URLBASE : String = "https://educhat.tomk.online/api/Subject/"
-    //static let URLBASE : String = "http://localhost:5000/api/Subject"
     enum Errors : Error { case NotFound }
     
     

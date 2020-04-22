@@ -22,11 +22,11 @@ class ChatFriendsCell: UITableViewCell {
         
         self.userImage?.layer.cornerRadius = 30
         self.userName?.layer.masksToBounds = true
-        self.userImage?.layer.borderColor = UIColor.flatGray.cgColor
+        self.userImage?.layer.borderColor = UIColor.flatGray().cgColor
         self.userImage?.layer.borderWidth = 0.5 //UI For the profile pic, sets to circle and with border
         
         if friendship?.IsBlocked ?? false { //If the user is blocked
-            self.backgroundColor = UIColor.flatRedDark //Set background to a red colour
+            self.backgroundColor = UIColor.flatRedDark() //Set background to a red colour
         } else { self.backgroundColor = .white} //Else set it to white
         
     }

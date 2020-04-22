@@ -27,102 +27,96 @@ public class FeedLike: Mappable, Codable {
     
 }
 
-public class FeedTextPost : Mappable, Codable {
-    public required init?(map: Map) {}
+public class FeedPost : Mappable, Codable {
+    var PostId: Int?
+    var PostType: String?
+    var PosterId: Int?; var Poster: User?
+    var SubjectId: Int?; var Subject: Subject?
+    var DatePosted: String?
+    var IsAnnouncement: Bool?
+    var IsDeleted: Bool?
     
+    var Likes : [FeedLike]?
+    
+    public required init?(map: Map) {}
     public func mapping(map: Map) {
-        self.PostId <- map["postId"]; self.PosterId <- map["posterId"];
-        self.SubjectId <- map["subjectId"]; self.PostType <- map["postType"];
-        self.DatePosted <- map["datePosted"]; self.IsAnnouncement <- map["isAnnouncement"];
+        self.PostId <- map["postId"]
+        self.PostType <- map["postType"]
+        self.PosterId <- map["posterId"]; self.Poster <- map["poster"]
+        self.Subject <- map["subjectId"]; self.Subject <- map["subject"]
+        self.DatePosted <- map["datePosted"]
+        self.IsAnnouncement <- map["isAnnouncement"]
         self.IsDeleted <- map["isDeleted"]
-        self.PostText <- map["postText"]
-        self.Poster <- map["poster"]
         self.Likes <- map["likes"]
     }
     
-    var PostId : Int?
-    var PosterId : Int?
-    var SubjectId : Int?
-    var PostType : String?
-    var DatePosted : String?
-    var IsAnnouncement : Bool?
-    var IsDeleted : Bool?
-    var PostText : String?
-    
-    var Likes : [FeedLike]?
-    var Poster : User?; var Subject : Subject?
-    
-    public init?(PostId : Int, PosterId: Int, SubjectId: Int, PostType: String, DatePosted: String, IsAnnouncement: Bool, IsDeleted: Bool, PostText : String) {
-        self.PostId = PostId; self.PosterId = PosterId; self.SubjectId = SubjectId; self.PostType = PostType
-        self.DatePosted = DatePosted; self.IsAnnouncement = IsAnnouncement; self.IsDeleted = IsDeleted; self.PostText = PostText
+    public init?(postId: Int, posterId: Int, subjectId: Int, postType: String, datePosted: String, isAnnouncement: Bool, isDeleted: Bool) {
+        self.PostId = postId
+        self.PosterId = posterId; self.SubjectId = subjectId
+        self.PostType = postType; self.DatePosted = datePosted
+        self.IsAnnouncement = isAnnouncement; self.IsDeleted = isDeleted
     }
     
     public func isLiked() -> Bool {
-        return self.Likes?.contains(where: {$0.UserId == EduChat.currentUser?.UserId ?? 0}) ?? false
-        //Returns true if the [Likes] array contains an object with the current user's id.
-    }
-    
-    public func modifyLike(like: Bool, postid: Int) {
-        if like && (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0}) == false) {
-            self.Likes?.append(FeedLike(UserId: EduChat.currentUser?.UserId ?? 0, PostId: postid, IsLiked: like)!)
-        }
-        else {
-            if (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0 })) == true {
-                self.Likes?.removeAll(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0})
-            }
-        }
-    }
+       return self.Likes?.contains(where: {$0.UserId == EduChat.currentUser?.UserId ?? 0}) ?? false
+       //Returns true if the [Likes] array contains an object with the current user's id.
+   }
+   
+   public func modifyLike(like: Bool, postid: Int) {
+       if like && (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0}) == false) {
+           self.Likes?.append(FeedLike(UserId: EduChat.currentUser?.UserId ?? 0, PostId: postid, IsLiked: like)!)
+       }
+       else {
+           if (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0 })) == true {
+               self.Likes?.removeAll(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0})
+           }
+       }
+   }
 }
 
-public class FeedMediaPost : Mappable, Codable {
-    public required init?(map: Map) {}
+public class FeedTextPost : FeedPost {
+    public required init?(map: Map) { super.init(map: map) }
     
-    public func mapping(map: Map) {
-        self.PostId <- map["postId"]; self.PosterId <- map["posterId"];
-        self.SubjectId <- map["subjectId"]; self.PostType <- map["postType"];
-        self.DatePosted <- map["datePosted"]; self.IsAnnouncement <- map["isAnnouncement"];
-        self.IsDeleted <- map["isDeleted"]
+    public override func mapping(map: Map) {
+        self.PostText <- map["postText"]
+    }
+    
+    var PostText : String?
+    
+    public init?(PostId : Int, PosterId: Int, SubjectId: Int, PostType: String, DatePosted: String, IsAnnouncement: Bool, IsDeleted: Bool, PostText : String) {
+        super.init(postId: PostId, posterId: PosterId, subjectId: SubjectId, postType: PostType, datePosted: DatePosted, isAnnouncement: IsAnnouncement, isDeleted: IsDeleted)
+        self.PostText = PostText
+    }
+    
+    required init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
+    }
+    
+   
+}
+
+public class FeedMediaPost : FeedPost {
+    public required init?(map: Map) { super.init(map: map) }
+    
+    public override func mapping(map: Map) {
+        super.mapping(map: map)
         self.UrlToPost <- map["urlToPost"]
         self.PostDescription <- map["postDescription"]
         self.IsVideo <- map["isVideo"]
-        self.Poster <- map["poster"]
-        self.Likes <- map["likes"]
     }
     
-    var PostId : Int?
-    var PosterId : Int?
-    var SubjectId : Int?
-    var PostType : String?
-    var DatePosted : String?
-    var IsAnnouncement : Bool?
-    var IsDeleted : Bool?
     var UrlToPost : String?
     var PostDescription : String?
     var IsVideo : Bool?
     
-    var Likes : [FeedLike]?
-    var Poster : User?; var Subject : Subject?
-    
     public init?(PostId : Int, PosterId: Int, SubjectId: Int, PostType: String, DatePosted: String, IsAnnouncement: Bool, IsDeleted: Bool, UrlToPost : String, PostDescription: String, IsVideo: Bool) {
-        self.PostId = PostId; self.PosterId = PosterId; self.SubjectId = SubjectId; self.PostType = PostType
-        self.DatePosted = DatePosted; self.IsAnnouncement = IsAnnouncement; self.IsDeleted = IsDeleted; self.UrlToPost = UrlToPost; self.PostDescription = PostDescription;
+        super.init(postId: PostId, posterId: PosterId, subjectId: SubjectId, postType: PostType, datePosted: DatePosted, isAnnouncement: IsAnnouncement, isDeleted: IsDeleted)
+        self.UrlToPost = UrlToPost; self.PostDescription = PostDescription;
         self.IsVideo = IsVideo
     }
     
-    public func isLiked() -> Bool {
-        return self.Likes?.contains(where: {$0.UserId == EduChat.currentUser?.UserId ?? 0}) ?? false
-        //Returns true if the [Likes] array contains an object with the current user's id.
-    }
-    
-    public func modifyLike(like: Bool, postid: Int) {
-        if like && (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0}) == false) {
-            self.Likes?.append(FeedLike(UserId: EduChat.currentUser?.UserId ?? 0, PostId: postid, IsLiked: like)!)
-        }
-        else {
-            if (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0 })) == true {
-                self.Likes?.removeAll(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0})
-            }
-        }
+    required init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
     }
 }
 
@@ -155,54 +149,29 @@ public class FeedComment : Mappable, Codable {
 
 
 
-public class FeedPoll : Mappable, Codable {
-    public required init?(map: Map) {}
+public class FeedPoll : FeedPost {
+    public required init?(map: Map) { super.init(map: map) }
     
-    public func mapping(map: Map) {
-        self.PostId <- map["postId"]; self.PosterId <- map["posterId"];
-        self.SubjectId <- map["subjectId"]; self.PostType <- map["postType"];
-        self.DatePosted <- map["datePosted"]; self.IsAnnouncement <- map["isAnnouncement"];
-        self.IsDeleted <- map["isDeleted"]
+    public override func mapping(map: Map) {
         self.Answers <- map["answers"]
-        self.Poster <- map["poster"]
         self.PollQuestion <- map["pollQuestion"]
-        self.Likes <- map["likes"]
     }
     
-    var PostId : Int?
-    var PosterId : Int?
-    var SubjectId : Int?
-    var PostType : String?
-    var DatePosted : String?
-    var IsAnnouncement : Bool?
-    var IsDeleted : Bool?
     var PollQuestion : String?
     var Answers: [FeedPollAnswer]?
-    var Poster : User?; var Subject : Subject?
-    var Likes : [FeedLike]?
+    
     public init?(PostId : Int, PosterId: Int, SubjectId: Int, PostType: String, DatePosted: String, IsAnnouncement: Bool, IsDeleted: Bool, question: String) {
-        self.PostId = PostId; self.PosterId = PosterId; self.SubjectId = SubjectId; self.PostType = PostType
-        self.DatePosted = DatePosted; self.IsAnnouncement = IsAnnouncement; self.IsDeleted = IsDeleted;
+        super.init(postId: PostId, posterId: PosterId, subjectId: SubjectId, postType: PostType, datePosted: DatePosted, isAnnouncement: IsAnnouncement, isDeleted: IsDeleted)
         self.PollQuestion = question
+    }
+    
+    required init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
     }
     
     public func hasVoted(userId: Int) -> Bool {
         return self.Answers?.contains(where: {$0.Votes?.contains(where: {$0.UserId == userId}) ?? false}) ?? false
         //^ if the answers array contains any value where the votes of that answer contain a vote made by the specified user
-    }
-    public func isLiked() -> Bool {
-        return self.Likes?.contains(where: {$0.UserId == EduChat.currentUser?.UserId ?? 0}) ?? false
-        //Returns true if the [Likes] array contains an object with the current user's id.
-    }
-    public func modifyLike(like: Bool, postid: Int) {
-        if like && (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0}) == false) {
-            self.Likes?.append(FeedLike(UserId: EduChat.currentUser?.UserId ?? 0, PostId: postid, IsLiked: like)!)
-        }
-        else {
-            if (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0 })) == true {
-                self.Likes?.removeAll(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0})
-            }
-        }
     }
 }
 
@@ -244,54 +213,29 @@ public class FeedAnswerVote : Mappable, Codable {
 
 //QUIZ:
 
-public class FeedQuiz : Mappable, Codable {
-    public required init?(map: Map) {}
+public class FeedQuiz : FeedPost {
+    public required init?(map: Map) { super.init(map: map) }
     
-    public func mapping(map: Map) {
-        self.PostId <- map["postId"]; self.PosterId <- map["posterId"];
-        self.SubjectId <- map["subjectId"]; self.PostType <- map["postType"];
-        self.DatePosted <- map["datePosted"]; self.IsAnnouncement <- map["isAnnouncement"];
-        self.IsDeleted <- map["isDeleted"]
-        self.Poster <- map["poster"]
-        self.Likes <- map["likes"]
+    public override func mapping(map: Map) {
+        super.mapping(map: map)
         self.QuizTitle <- map["quizTitle"]
         self.DifficultyLevel <- map["difficultyLevel"]
         self.Questions <- map["questions"]
         self.Results <- map["results"]
     }
     
-    var PostId : Int?
-    var PosterId : Int?
-    var SubjectId : Int?
-    var PostType : String?
-    var DatePosted : String?
-    var IsAnnouncement : Bool?
-    var IsDeleted : Bool?
-    var Poster : User?; var Subject : Subject?
-    var Likes : [FeedLike]?
     var QuizTitle : String?
     var DifficultyLevel : String?
     var Questions : [FeedQuizQuestion]?
     var Results : [FeedQuizResult]?
     
     public init?(PostId : Int, PosterId: Int, SubjectId: Int, PostType: String, DatePosted: String, IsAnnouncement: Bool, IsDeleted: Bool, quizTitle: String, difficulty: String) {
-        self.PostId = PostId; self.PosterId = PosterId; self.SubjectId = SubjectId; self.PostType = PostType
-        self.DatePosted = DatePosted; self.IsAnnouncement = IsAnnouncement; self.IsDeleted = IsDeleted;
+        super.init(postId: PostId, posterId: PosterId, subjectId: SubjectId, postType: PostType, datePosted: DatePosted, isAnnouncement: IsAnnouncement, isDeleted: IsDeleted)
         self.QuizTitle = quizTitle; self.DifficultyLevel = difficulty
     }
-    public func isLiked() -> Bool {
-        return self.Likes?.contains(where: {$0.UserId == EduChat.currentUser?.UserId ?? 0}) ?? false
-        //Returns true if the [Likes] array contains an object with the current user's id.
-    }
-    public func modifyLike(like: Bool, postid: Int) {
-        if like && (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0}) == false) {
-            self.Likes?.append(FeedLike(UserId: EduChat.currentUser?.UserId ?? 0, PostId: postid, IsLiked: like)!)
-        }
-        else {
-            if (self.Likes?.contains(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0 })) == true {
-                self.Likes?.removeAll(where: { $0.UserId == EduChat.currentUser?.UserId ?? 0})
-            }
-        }
+    
+    required init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
     }
 }
 

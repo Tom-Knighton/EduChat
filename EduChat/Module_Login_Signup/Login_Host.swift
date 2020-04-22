@@ -13,14 +13,12 @@ class Login_Host: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
-        
         loginButton.layer.cornerRadius = 20
         loginButton.layer.masksToBounds = true
         self.endEditingWhenViewTapped()
 
-        
+        self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+
     }
     
     @IBAction func loginButtonPressed(_ sender: Any) {
@@ -35,5 +33,14 @@ class Login_Host: UIViewController {
     @IBOutlet weak var loginPassField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        guard #available(iOS 13, *) else {
+            return
+        }
+        if traitCollection.userInterfaceStyle == .dark { self.view.backgroundColor = .systemBackground }
+        else {
+             self.view.backgroundColor = GradientColor(gradientStyle: .diagonal, frame: self.view.bounds, colors: [UIColor(hexString: "#007991")!, UIColor(hexString: "#78ffd6")!])
+        }
+    }
 }

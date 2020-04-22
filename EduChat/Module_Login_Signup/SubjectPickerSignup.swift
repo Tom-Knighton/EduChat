@@ -40,7 +40,7 @@ class SubjectPickerSignup: UIViewController, MagneticDelegate {
     }
     
     func addNode(subject : Subject) {
-        let color = UIColor(randomFlatColorExcludingColorsIn: [UIColor.flatGray, UIColor.flatGrayDark])
+        let color = UIColor(randomFlatColorExcludingColorsIn: [UIColor.flatGray(), UIColor.flatGrayDark()])
         let node = Node(text: subject.SubjectName, image: nil, color: color, radius: 50)
         node.label.fontSize = 9
         node.tag = subject

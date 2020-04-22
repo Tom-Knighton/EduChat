@@ -27,4 +27,5 @@ target 'EduChat' do
   pod 'Loaf', '~> 0.5'
   pod 'ListPlaceholder'
   pod 'HGPlaceholders'
+  pod 'NightNight'
 end

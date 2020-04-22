@@ -102,7 +102,6 @@ open class AudioMessageCell: MessageContentCell {
             super.handleTapGesture(gesture)
         }
     }
-    
 
     // MARK: - Configure Cell
 

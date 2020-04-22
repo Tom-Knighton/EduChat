@@ -43,7 +43,7 @@ class FeedCreateController: UITableViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Post", style: .plain, target: self, action: #selector(postPost(_:)))
         
         //POLL:
-        self.addPollAnswerButton.setBackgroundColor(color: .flatBlue, forState: .normal)
+        self.addPollAnswerButton.setBackgroundColor(color: .flatBlue(), forState: .normal)
     }
 
     override func viewWillAppear(_ animated: Bool) {
